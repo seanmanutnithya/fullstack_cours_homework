@@ -9,7 +9,7 @@ const TableBody = () => {
       {students.map((s, idx) => (
         <tr
           data-index={idx}
-          className={selectedIds.includes(s.id) ? "is-selected" : ""}
+          className={`table-row${selectedIds.includes(s.id) ? " is-selected" : ""}`}
           key={s.id}>
           <td className="col-check">
             <input
