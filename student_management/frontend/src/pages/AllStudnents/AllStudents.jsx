@@ -11,6 +11,9 @@ import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { wireHoverScale } from "../../animation/hover";
+
+gsap.registerPlugin(useGSAP);
 
 const AllStudents = () => {
   const containerRef = useRef(null);
@@ -32,9 +35,11 @@ const AllStudents = () => {
         .fromTo(
           ".table-row",
           { opacity: 0, x: -8 },
-          { opacity: 1, x: 0, duration: 0.25, stagger: 0.03 },
-          "-=0.2",
           {
+            opacity: 1,
+            x: 0,
+            duration: 0.25,
+            stagger: 0.03,
             onComplete: () => {
               wireHoverScale(".btn", 1.035);
               wireHoverScale(".icon-btn", 1.08);
@@ -42,6 +47,7 @@ const AllStudents = () => {
               wireHoverScale(".page-btn", 1.08);
             },
           },
+          "-=0.2",
         );
     },
     { scope: containerRef },
