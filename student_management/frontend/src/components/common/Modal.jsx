@@ -14,8 +14,12 @@ const Modal = () => {
     phone: "",
     remark: "",
   });
+  const [errors, setErrors] = useState({});
   const modalRef = useRef(null);
+  const formRef = useRef(null);
+
   useEffect(() => {
+    setErrors({});
     if (editingStudent) {
       setForm({
         name: editingStudent.name ?? "",
@@ -26,14 +30,6 @@ const Modal = () => {
         remark: editingStudent.remark ?? "",
       });
     } else {
-      setForm({
-        name: "",
-        gender: "",
-        ids: "",
-        std_class: "",
-        phone: "",
-        remark: "",
-      });
       setForm({
         name: "",
         gender: "",
@@ -66,11 +62,30 @@ const Modal = () => {
 
   if (!modalOpen) return null;
 
-  const handleChange = (e) =>
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+    if (value.trim() !== "") {
+      setErrors((prev) => ({ ...prev, [name]: false }));
+    }
+  };
 
   const handleSave = () => {
-    saveStudent(form);
+    const requiredFields = ["name", "gender", "ids", "std_class", "phone"];
+    const newErrors = {};
+    requiredFields.forEach((key) => {
+      if (!form[key] || String(form[key]).trim() === "") {
+        newErrors[key] = true;
+      }
+    });
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+    } else {
+      setErrors({});
+    }
+
+    saveStudent(form, formRef);
   };
 
   return (
@@ -83,6 +98,7 @@ const Modal = () => {
       <div
         className="modal"
         id="studentModal"
+        ref={formRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby="modalTitle"
@@ -103,7 +119,7 @@ const Modal = () => {
 
         <form className="modal-body" id="studentForm">
           <div className="form-grid">
-            <div className="field">
+            <div className={`field ${errors.name ? "is-invalid" : ""}`}>
               <label htmlFor="studentName">Full name</label>
               <input
                 type="text"
@@ -113,8 +129,9 @@ const Modal = () => {
                 value={form.name}
                 onChange={handleChange}
               />
+              <span className="field-error">Full name is required.</span>
             </div>
-            <div className="field">
+            <div className={`field ${errors.gender ? "is-invalid" : ""}`}>
               <label htmlFor="studentGender">Gender</label>
               <input
                 type="text"
@@ -124,8 +141,9 @@ const Modal = () => {
                 value={form.gender}
                 onChange={handleChange}
               />
+              <span className="field-error">Gender is required.</span>
             </div>
-            <div className="field">
+            <div className={`field ${errors.ids ? "is-invalid" : ""}`}>
               <label htmlFor="studentId">Student ID</label>
               <input
                 type="text"
@@ -135,8 +153,9 @@ const Modal = () => {
                 value={form.ids}
                 onChange={handleChange}
               />
+              <span className="field-error">Student ID is required.</span>
             </div>
-            <div className="field">
+            <div className={`field ${errors.std_class ? "is-invalid" : ""}`}>
               <label htmlFor="studentclassName">Class</label>
               <input
                 type="text"
@@ -146,8 +165,9 @@ const Modal = () => {
                 value={form.std_class}
                 onChange={handleChange}
               />
+              <span className="field-error">Class is required.</span>
             </div>
-            <div className="field">
+            <div className={`field ${errors.phone ? "is-invalid" : ""}`}>
               <label htmlFor="studentPhone">Phone number</label>
               <input
                 type="tel"
@@ -157,9 +177,12 @@ const Modal = () => {
                 value={form.phone}
                 onChange={handleChange}
               />
+              <span className="field-error">Phone number is required.</span>
             </div>
             <div className="field">
-              <label htmlFor="studentRemark">Remark</label>
+              <label htmlFor="studentRemark">
+                Remark <span className="field-hint">(optional)</span>
+              </label>
               <input
                 type="text"
                 id="studentRemark"

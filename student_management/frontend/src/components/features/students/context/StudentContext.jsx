@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import studentData from "../../../../../../database/data.json";
 import { showToast } from "@/hooks/useToast";
+import { shake } from "@/animation/shake";
 const StudentContext = createContext(null);
 
 export function StudentProvider({ children }) {
@@ -60,12 +61,22 @@ export function StudentProvider({ children }) {
     setEditingId(null);
     setModalOpen(false);
   };
-  const saveStudent = (data) => {
+  const saveStudent = (data, ref) => {
+    const requiredFields = ["name", "gender", "ids", "std_class", "phone"];
+    const isFormInvalid = requiredFields.some(
+      (key) => !data[key] || String(data[key]).trim() === "",
+    );
+    if (isFormInvalid) {
+      if (ref?.current) shake(ref.current);
+      showToast("Please fill in all required fields", "info");
+      return;
+    }
     setStudents((prev) =>
       editingId !== null ?
         prev.map((s) => (s.id === editingId ? { ...s, ...data } : s))
-      : [...prev, data],
+      : [...prev, { ...data, id: data.ids || Date.now().toString() }],
     );
+    showToast(editingId !== null ? "Saved" : "Added", "circle-check");
     closeModal();
   };
   const value = {

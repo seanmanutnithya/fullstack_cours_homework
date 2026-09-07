@@ -1,13 +1,33 @@
 import gsap from "gsap";
 
 let toastTimer = null;
-export function showToast(message) {
+export function showToast(message, type = "success") {
   const toastEl = document.getElementById("toast");
   const toastMsg = document.getElementById("toastMsg");
 
   if (!toastEl || !toastMsg) return;
 
   toastMsg.textContent = message;
+
+  const iconCheck = document.getElementById("toastIconCheck");
+  const iconInfo = document.getElementById("toastIconInfo");
+  const iconAlert = document.getElementById("toastIconAlert");
+
+  if (iconCheck) iconCheck.style.display = "none";
+  if (iconInfo) iconInfo.style.display = "none";
+  if (iconAlert) iconAlert.style.display = "none";
+
+  if (type === "info" && iconInfo) {
+    iconInfo.style.display = "inline-block";
+  } else if (
+    (type === "alert" || type === "error" || type === "alert-circle") &&
+    iconAlert
+  ) {
+    iconAlert.style.display = "inline-block";
+  } else if (iconCheck) {
+    iconCheck.style.display = "inline-block";
+  }
+
   clearTimeout(toastTimer);
 
   if (gsap) {

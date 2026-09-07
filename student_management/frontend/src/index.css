@@ -952,6 +952,24 @@ input[type="checkbox"] {
   box-shadow: 0 0 0 4px var(--color-primary-light);
 }
 
+.field.is-invalid input,
+.field.is-invalid select,
+.field.is-invalid textarea {
+  border-color: var(--color-danger) !important;
+  box-shadow: 0 0 0 4px var(--color-danger-bg);
+}
+
+.field-error {
+  display: none;
+  font-size: var(--fs-xs);
+  color: var(--color-danger);
+  margin-top: 4px;
+}
+
+.field.is-invalid .field-error {
+  display: block;
+}
+
 .modal-foot {
   display: flex;
   align-items: center;
