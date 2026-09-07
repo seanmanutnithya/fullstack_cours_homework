@@ -1,7 +1,9 @@
 import { Save, X } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 
 import { useStudent } from "../features/students/context/StudentContext";
+import { useGSAP } from "@gsap/react";
 const Modal = () => {
   const { modalOpen, closeModal, saveStudent, editingStudent } = useStudent();
   const [form, setForm] = useState({
@@ -12,6 +14,7 @@ const Modal = () => {
     phone: "",
     remark: "",
   });
+  const modalRef = useRef(null);
   useEffect(() => {
     if (editingStudent) {
       setForm({
@@ -42,6 +45,25 @@ const Modal = () => {
     }
   }, [editingStudent, modalOpen]);
 
+  useGSAP(
+    () => {
+      if (modalOpen) {
+        gsap.fromTo(
+          ".modal-overlay",
+          { opacity: 0 },
+          { opacity: 1, duration: 0.25, ease: "power1.out" },
+        );
+        gsap.fromTo(
+          ".modal",
+          { y: 24, opacity: 0, scale: 0.96 },
+          { y: 0, opacity: 1, scale: 1, duration: 0.3, ease: "power1.out" },
+          "-=0.15",
+        );
+      }
+    },
+    { dependencies: [modalOpen], scope: modalRef },
+  );
+
   if (!modalOpen) return null;
 
   const handleChange = (e) =>
@@ -53,9 +75,10 @@ const Modal = () => {
 
   return (
     <div
-      className="modal-overlay visible opacity-100"
+      className="modal-overlay"
+      style={{ opacity: 1, visibility: "visible" }}
       id="modalOverlay"
-      style={{ visibility: "visible", opacity: 1 }}
+      ref={modalRef}
       onClick={closeModal}>
       <div
         className="modal"
