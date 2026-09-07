@@ -1,3 +1,12 @@
+import {
+  AlertCircle,
+  CheckCircle2,
+  GraduationCap,
+  ShieldCheck,
+  Lock,
+  Eye,
+  Mail,
+} from "lucide-react";
 import React from "react";
 
 const LoginForm = () => {
@@ -13,11 +22,11 @@ const LoginForm = () => {
             type="button"
             className="role-option is-active"
             data-role="admin">
-            <i data-lucide="shield-check"></i>
+            <ShieldCheck />
             <span>Admin</span>
           </button>
           <button type="button" className="role-option" data-role="teacher">
-            <i data-lucide="graduation-cap"></i>
+            <GraduationCap />
             <span>Teacher</span>
           </button>
         </div>
@@ -25,7 +34,7 @@ const LoginForm = () => {
         <div className="field" data-field="loginEmail">
           <label for="loginEmail">Email address</label>
           <div className="input-wrap">
-            <i data-lucide="mail" className="input-icon"></i>
+            <Mail className="input-icon" />
             <input
               type="email"
               id="loginEmail"
@@ -33,12 +42,8 @@ const LoginForm = () => {
               autocomplete="email"
               inputmode="email"
             />
-            <i
-              data-lucide="check-circle-2"
-              className="status-icon status-valid"></i>
-            <i
-              data-lucide="alert-circle"
-              className="status-icon status-invalid"></i>
+            <CheckCircle2 className="status-icon status-valid" />
+            <AlertCircle className="status-icon status-invalid" />
           </div>
           <span className="field-error">Enter a valid email address.</span>
         </div>
@@ -46,7 +51,7 @@ const LoginForm = () => {
         <div className="field" data-field="loginPassword">
           <label for="loginPassword">Password</label>
           <div className="input-wrap">
-            <i data-lucide="lock" className="input-icon"></i>
+            <Lock className="input-icon" />
             <input
               type="password"
               id="loginPassword"
@@ -57,7 +62,7 @@ const LoginForm = () => {
               type="button"
               className="visibility-toggle"
               aria-label="Show password">
-              <i data-lucide="eye"></i>
+              <Eye />
             </button>
           </div>
           <span className="field-error">Password is required.</span>

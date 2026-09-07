@@ -1,9 +1,11 @@
+import { GraduationCap } from "lucide-react";
+
 const AuthBanner = () => {
   return (
     <aside className="auth-visual">
       <div className="auth-visual-top">
         <div className="brand-icon">
-          <i data-lucide="graduation-cap"></i>
+          <GraduationCap />
         </div>
         <span className="brand-name brand-name--light">ia Academy</span>
       </div>

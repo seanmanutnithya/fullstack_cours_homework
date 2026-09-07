@@ -1,3 +1,12 @@
+import {
+  AlertCircle,
+  CheckCircle2,
+  Lock,
+  Eye,
+  GraduationCap,
+  ShieldCheck,
+  User,
+} from "lucide-react";
 import React from "react";
 
 const SignupForm = () => {
@@ -12,11 +21,11 @@ const SignupForm = () => {
           type="button"
           className="role-option is-active"
           data-role="admin">
-          <i data-lucide="shield-check"></i>
+          <ShieldCheck />
           <span>Admin</span>
         </button>
         <button type="button" className="role-option" data-role="teacher">
-          <i data-lucide="graduation-cap"></i>
+          <GraduationCap />
           <span>Teacher</span>
         </button>
       </div>
@@ -24,19 +33,15 @@ const SignupForm = () => {
       <div className="field" data-field="signupName">
         <label for="signupName">Full name</label>
         <div className="input-wrap">
-          <i data-lucide="user" className="input-icon"></i>
+          <User className="input-icon" />
           <input
             type="text"
             id="signupName"
             placeholder="e.g. Robert Pena"
             autocomplete="name"
           />
-          <i
-            data-lucide="check-circle-2"
-            className="status-icon status-valid"></i>
-          <i
-            data-lucide="alert-circle"
-            className="status-icon status-invalid"></i>
+          <CheckCircle2 className="status-valid" />
+          <AlertCircle className="status-icon status-invalid" />
         </div>
         <span className="field-error">Please enter your full name.</span>
       </div>
@@ -53,12 +58,8 @@ const SignupForm = () => {
               autocomplete="email"
               inputmode="email"
             />
-            <i
-              data-lucide="check-circle-2"
-              className="status-icon status-valid"></i>
-            <i
-              data-lucide="alert-circle"
-              className="status-icon status-invalid"></i>
+            <CheckCircle2 className="status-valid" />
+            <AlertCircle className="status-icon status-invalid" />
           </div>
           <span className="field-error">Enter a valid email address.</span>
         </div>
@@ -74,12 +75,8 @@ const SignupForm = () => {
               autocomplete="tel"
               inputmode="tel"
             />
-            <i
-              data-lucide="check-circle-2"
-              className="status-icon status-valid"></i>
-            <i
-              data-lucide="alert-circle"
-              className="status-icon status-invalid"></i>
+            <CheckCircle2 className="status-valid" />
+            <AlertCircle className="status-icon status-invalid" />
           </div>
           <span className="field-error">
             Enter a valid phone number (7–15 digits).
@@ -102,7 +99,7 @@ const SignupForm = () => {
               type="button"
               className="visibility-toggle"
               aria-label="Show password">
-              <i data-lucide="eye"></i>
+              <Eye />
             </button>
           </div>
           <span className="field-error">Use at least 8 characters.</span>
@@ -111,7 +108,7 @@ const SignupForm = () => {
         <div className="field" data-field="signupConfirm">
           <label for="signupConfirm">Confirm password</label>
           <div className="input-wrap">
-            <i data-lucide="lock" className="input-icon"></i>
+            <Lock className="input-icon" />
             <input
               type="password"
               id="signupConfirm"
@@ -122,7 +119,7 @@ const SignupForm = () => {
               type="button"
               className="visibility-toggle"
               aria-label="Show password">
-              <i data-lucide="eye"></i>
+              <Eye />
             </button>
           </div>
           <span className="field-error">Passwords don't match.</span>
