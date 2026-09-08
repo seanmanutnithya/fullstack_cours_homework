@@ -1,18 +1,20 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Lock, Mail } from "lucide-react";
 import { useAuther } from "@/context/AuthContext";
-import { Button, TextField, PasswordField } from "@/components/ui";
+import { Button, TextField, PasswordField, useToast } from "@/components/ui";
+import { shake } from "@/animation/shake";
 import RoleSwitch from "./RoleSwitch";
 
-const LoginForm = ({ isActive, onSwitchToSignup }) => {
+const LoginForm = ({ isActive, onSwitchToSignup, role, onRoleChange }) => {
   const navigate = useNavigate();
+  const { toast } = useToast();
+  const formRef = useRef(null);
   const { handleLogin, loginLoading, authError, clearAuthError, isEmailValid } =
     useAuther();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("admin");
   const [rememberMe, setRememberMe] = useState(false);
   const [touched, setTouched] = useState({ email: false, password: false });
 
@@ -22,13 +24,23 @@ const LoginForm = ({ isActive, onSwitchToSignup }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setTouched({ email: true, password: true });
-    if (!emailValid || !passwordValid) return;
-    const success = await handleLogin(email, password, role);
-    if (success) navigate("/");
+    if (!emailValid || !passwordValid) {
+      shake(formRef.current);
+      return;
+    }
+    const { success, message } = await handleLogin(email, password, role);
+    if (success) {
+      toast.success("Logged in successfully");
+      navigate("/");
+    } else {
+      shake(formRef.current);
+      toast.error(message || "Login failed. Please try again!");
+    }
   };
 
   return (
     <form
+      ref={formRef}
       className={`auth-panel${isActive ? " is-active" : ""}`}
       noValidate
       onSubmit={handleSubmit}
@@ -36,7 +48,7 @@ const LoginForm = ({ isActive, onSwitchToSignup }) => {
       <h1 className="auth-title">Welcome back</h1>
       <p className="auth-subtitle">Log in to your ia Academy workspace.</p>
 
-      <RoleSwitch value={role} onChange={setRole} formName="login" />
+      <RoleSwitch value={role} onChange={onRoleChange} formName="login" />
 
       <TextField
         name="loginEmail"

@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Lock, Phone, User, Mail } from "lucide-react";
 import { useAuther } from "@/context/AuthContext";
-import { Button, TextField, PasswordField } from "@/components/ui";
+import { Button, TextField, PasswordField, useToast } from "@/components/ui";
+import { shake } from "@/animation/shake";
 import RoleSwitch from "./RoleSwitch";
 
-const SignupForm = ({ isActive, onSwitchToLogin }) => {
+const SignupForm = ({ isActive, onSwitchToLogin, role, onRoleChange }) => {
   const navigate = useNavigate();
+  const { toast } = useToast();
+  const formRef = useRef(null);
   const {
     handleSignup,
     signupLoading,
@@ -22,7 +25,6 @@ const SignupForm = ({ isActive, onSwitchToLogin }) => {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
-  const [role, setRole] = useState("admin");
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [touched, setTouched] = useState({
     name: false,
@@ -57,14 +59,29 @@ const SignupForm = ({ isActive, onSwitchToLogin }) => {
       !passwordValid ||
       !confirmValid ||
       !agreedToTerms
-    )
+    ) {
+      shake(formRef.current);
       return;
-    const success = await handleSignup(name, email, phone, password, role);
-    if (success) navigate("/");
+    }
+    const { success, message } = await handleSignup(
+      name,
+      email,
+      phone,
+      password,
+      role,
+    );
+    if (success) {
+      toast.success("Account created successfully");
+      navigate("/");
+    } else {
+      shake(formRef.current);
+      toast.error(message || "Cannot create account");
+    }
   };
 
   return (
     <form
+      ref={formRef}
       className={`auth-panel${isActive ? " is-active" : ""}`}
       noValidate
       onSubmit={handleSubmit}
@@ -72,7 +89,7 @@ const SignupForm = ({ isActive, onSwitchToLogin }) => {
       <h1 className="auth-title">Create your account</h1>
       <p className="auth-subtitle">Set up access for an admin or teacher.</p>
 
-      <RoleSwitch value={role} onChange={setRole} formName="signup" />
+      <RoleSwitch value={role} onChange={onRoleChange} formName="signup" />
 
       <TextField
         name="signupName"

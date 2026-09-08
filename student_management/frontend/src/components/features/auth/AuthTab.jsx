@@ -1,4 +1,18 @@
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+
 const AuthTabs = ({ activeTab, onTabChange }) => {
+  const indicatorRef = useRef(null);
+
+  useGSAP(() => {
+    gsap.to(indicatorRef.current, {
+      xPercent: activeTab === "login" ? 0 : 100,
+      duration: 0.28,
+      ease: "power3.out",
+    });
+  }, [activeTab]);
+
   return (
     <div className="auth-tabs" role="tablist">
       <button
@@ -17,7 +31,7 @@ const AuthTabs = ({ activeTab, onTabChange }) => {
       >
         Sign up
       </button>
-      <span className="auth-tab-indicator" />
+      <span className="auth-tab-indicator" ref={indicatorRef} />
     </div>
   );
 };

@@ -57,7 +57,7 @@ export function AuthProvider({ children }) {
     setIsAuthericated(false);
   }, []);
 
-  // Returns true on success, false on failure
+  // Returns { success, message }
   const handleLogin = useCallback(async (email, password, role) => {
     setLoginLoading(true);
     setAuthError(null);
@@ -66,7 +66,7 @@ export function AuthProvider({ children }) {
       if (email === "admin@gmail.com" && password === "123") {
         localStorage.setItem("token", "test-token");
         setIsAuthericated(true);
-        return true;
+        return { success: true };
       }
       const res = await fetch("/api/auth/login", {
         method: "POST",
@@ -77,16 +77,16 @@ export function AuthProvider({ children }) {
       if (!res.ok) throw new Error(data.message || "Login failed");
       localStorage.setItem("token", data.token);
       setIsAuthericated(true);
-      return true;
+      return { success: true };
     } catch (err) {
       setAuthError(err.message);
-      return false;
+      return { success: false, message: err.message };
     } finally {
       setLoginLoading(false);
     }
   }, []);
 
-  // Returns true on success, false on failure
+  // Returns { success, message }
   const handleSignup = useCallback(async (name, email, phone, password, role) => {
     setSignupLoading(true);
     setAuthError(null);
@@ -100,10 +100,10 @@ export function AuthProvider({ children }) {
       if (!res.ok) throw new Error(data.message || "Sign up failed");
       localStorage.setItem("token", data.token);
       setIsAuthericated(true);
-      return true;
+      return { success: true };
     } catch (err) {
       setAuthError(err.message);
-      return false;
+      return { success: false, message: err.message };
     } finally {
       setSignupLoading(false);
     }
