@@ -1,5 +1,5 @@
 import Actions from "./Actions";
-import { useStudent } from "../context/StudentContext";
+import { useStudent } from "@/context/StudentContext";
 
 const TableBody = () => {
   const { students, selectedIds, toggleSelect } = useStudent();

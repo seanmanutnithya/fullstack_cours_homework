@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Save } from "lucide-react";
-import { useStudent } from "../context/StudentContext";
+import { useStudent } from "@/context/StudentContext";
 import { Modal, Button, TextField } from "@/components/ui";
 
 const emptyForm = {

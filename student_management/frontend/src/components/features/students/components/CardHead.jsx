@@ -1,5 +1,5 @@
 import { ChevronDown, Search, Calendar, Trash2 } from "lucide-react";
-import { useStudent } from "../context/StudentContext";
+import { useStudent } from "@/context/StudentContext";
 import { CardHeader, IconButton } from "@/components/ui";
 const CardHead = () => {
   const { requestDeleteSelected } = useStudent();

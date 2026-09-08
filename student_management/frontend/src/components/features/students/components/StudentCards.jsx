@@ -1,4 +1,4 @@
-import { useStudent } from "../context/StudentContext";
+import { useStudent } from "@/context/StudentContext";
 import Actions from "./Actions";
 
 const StudentCards = () => {

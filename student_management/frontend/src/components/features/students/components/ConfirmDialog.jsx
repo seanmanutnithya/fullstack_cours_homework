@@ -1,5 +1,5 @@
 import { Trash2 } from "lucide-react";
-import { useStudent } from "../context/StudentContext";
+import { useStudent } from "@/context/StudentContext";
 import { Modal, Button } from "@/components/ui";
 
 const ConfirmDialog = () => {

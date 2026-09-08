@@ -1,5 +1,5 @@
 import { ChevronRight, Plus } from "lucide-react";
-import { useStudent } from "../context/StudentContext";
+import { useStudent } from "@/context/StudentContext";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui";
 const PageHead = () => {
