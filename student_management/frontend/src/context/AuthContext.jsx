@@ -3,7 +3,6 @@ import {
   useCallback,
   useContext,
   useMemo,
-  useRef,
   useState,
 } from "react";
 import { EMAIL_RE, PHONE_RE } from "@/lib/validations";
@@ -27,16 +26,14 @@ const STRENGTH_COLORS = [
   "var(--color-success)",
 ];
 
-// validator
 function isEmailValid(value) {
   return EMAIL_RE.test(value.trim());
 }
 function isPhoneValid(value) {
   const digit = value.replace(/[^\d]/g, "");
-  return PHONE_RE.test(value.trim() && digit >= 7 && digit <= 15);
+  return digit.length >= 7 && digit.length <= 15 && PHONE_RE.test(value.trim());
 }
 
-// password strength
 function scorePassword(value) {
   let score = 0;
   if (value.length >= 8) score++;
@@ -51,20 +48,76 @@ export function AuthProvider({ children }) {
   const [loginLoading, setLoginLoading] = useState(false);
   const [signupLoading, setSignupLoading] = useState(false);
   const [authError, setAuthError] = useState(null);
+  const [isAuthericated, setIsAuthericated] = useState(
+    () => !!localStorage.getItem("token"),
+  );
 
-  // password strength
+  const logout = useCallback(() => {
+    localStorage.removeItem("token");
+    setIsAuthericated(false);
+  }, []);
+
+  // Returns true on success, false on failure
+  const handleLogin = useCallback(async (email, password, role) => {
+    setLoginLoading(true);
+    setAuthError(null);
+    try {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password, role }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || "Login failed");
+      localStorage.setItem("token", data.token);
+      setIsAuthericated(true);
+      return true;
+    } catch (err) {
+      setAuthError(err.message);
+      return false;
+    } finally {
+      setLoginLoading(false);
+    }
+  }, []);
+
+  // Returns true on success, false on failure
+  const handleSignup = useCallback(async (name, email, phone, password, role) => {
+    setSignupLoading(true);
+    setAuthError(null);
+    try {
+      const res = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, phone, password, role }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || "Sign up failed");
+      localStorage.setItem("token", data.token);
+      setIsAuthericated(true);
+      return true;
+    } catch (err) {
+      setAuthError(err.message);
+      return false;
+    } finally {
+      setSignupLoading(false);
+    }
+  }, []);
+
   const getPasswordStrength = useCallback((value) => {
     const score = scorePassword(value);
     return {
       score,
       percent: value ? Math.min(100, (score / 5) * 100) : 0,
-      label: value ? STRENGTH_LABELS[score] : "password strength",
+      label: value ? STRENGTH_LABELS[score] : "Password strength",
       color: STRENGTH_COLORS[score],
     };
   }, []);
+
   const clearAuthError = useCallback(() => setAuthError(null), []);
+
   const value = useMemo(
     () => ({
+      isAuthericated,
       loginLoading,
       signupLoading,
       authError,
@@ -72,22 +125,28 @@ export function AuthProvider({ children }) {
       isPhoneValid,
       getPasswordStrength,
       clearAuthError,
+      handleLogin,
+      handleSignup,
+      logout,
     }),
     [
+      isAuthericated,
       loginLoading,
       signupLoading,
       authError,
-      isEmailValid,
-      isPhoneValid,
       getPasswordStrength,
       clearAuthError,
+      handleLogin,
+      handleSignup,
+      logout,
     ],
   );
+
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
+
 export function useAuther() {
   const ctx = useContext(AuthContext);
-
   if (!ctx) throw new Error("useAuth must be used inside <AuthProvider/>");
   return ctx;
 }

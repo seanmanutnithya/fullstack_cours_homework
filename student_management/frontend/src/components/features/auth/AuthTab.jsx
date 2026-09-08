@@ -1,23 +1,23 @@
-import React from "react";
-
-const AuthTabs = () => {
+const AuthTabs = ({ activeTab, onTabChange }) => {
   return (
     <div className="auth-tabs" role="tablist">
       <button
-        className="auth-tab is-active"
-        id="tabLogin"
+        className={`auth-tab${activeTab === "login" ? " is-active" : ""}`}
         role="tab"
-        aria-selected="true">
+        aria-selected={activeTab === "login"}
+        onClick={() => onTabChange("login")}
+      >
         Log in
       </button>
       <button
-        className="auth-tab"
-        id="tabSignup"
+        className={`auth-tab${activeTab === "signup" ? " is-active" : ""}`}
         role="tab"
-        aria-selected="false">
+        aria-selected={activeTab === "signup"}
+        onClick={() => onTabChange("signup")}
+      >
         Sign up
       </button>
-      <span className="auth-tab-indicator" id="tabIndicator"></span>
+      <span className="auth-tab-indicator" />
     </div>
   );
 };
