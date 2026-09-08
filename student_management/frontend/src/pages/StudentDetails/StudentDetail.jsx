@@ -1,19 +1,9 @@
 import { Link } from "react-router-dom";
 import "./StudentDetail.css";
-import {
-  ChevronRight,
-  ArrowLeft,
-  Mail,
-  Phone,
-  MapPin,
-  Pencil,
-  Trash2,
-  Award,
-  CheckCircle2,
-  CalendarClock,
-  User,
-  Users,
-} from "lucide-react";
+import { ChevronRight, ArrowLeft, User, Users } from "lucide-react";
+import ProfileHeader from "@/components/features/studentDetail/components/ProfileHeader";
+import { studentDetailStat } from "@/assets/data/stats";
+import StatCard from "@/components/cards/StatCard";
 const StudentDetail = () => {
   return (
     <main className="main">
@@ -38,108 +28,21 @@ const StudentDetail = () => {
         </div>
 
         {/* <!-- ============ Profile header ============ --> */}
-        <section className="card profile-header" id="profileHeader">
-          <div className="profile-header-main">
-            <div className="profile-avatar-wrap">
-              <img
-                src="https://i.pravatar.cc/160?img=9"
-                alt=""
-                className="profile-avatar"
-                id="profileAvatar"
-              />
-              <span className="status-badge status-badge--active">Active</span>
-            </div>
-            <div className="profile-header-info">
-              <h2 className="profile-name">Jessia Rose</h2>
-              <p className="profile-meta">
-                Roll #10 · className 02 · Section B
-              </p>
-              <div className="profile-contact-row">
-                <span className="profile-contact">
-                  <Mail />
-                  jessia.rose@iaacademy.edu
-                </span>
-                <span className="profile-contact">
-                  <Phone />
-                  +123 8988 569
-                </span>
-                <span className="profile-contact">
-                  <MapPin />
-                  TA-107, Newyork
-                </span>
-              </div>
-            </div>
-          </div>
-          <div className="profile-header-actions">
-            <button className="btn btn-secondary" id="editStudentBtn">
-              <Pencil />
-              <span>Edit</span>
-            </button>
-            <button className="btn btn-danger" id="deleteStudentBtn">
-              <Trash2 />
-              <span>Delete</span>
-            </button>
-          </div>
-        </section>
+        <ProfileHeader />
 
         {/* <!-- ============ Stat cards ============ --> */}
         <section className="stat-grid">
-          <div className="stat-card">
-            <div className="stat-ring-wrap">
-              <svg className="stat-ring" viewBox="0 0 80 80">
-                <circle
-                  className="stat-ring-track"
-                  cx="40"
-                  cy="40"
-                  r="34"></circle>
-                <circle
-                  className="stat-ring-fill"
-                  id="attendanceRing"
-                  cx="40"
-                  cy="40"
-                  r="34"></circle>
-              </svg>
-              <span className="stat-ring-value" id="attendanceValue">
-                0%
-              </span>
-            </div>
-            <div>
-              <span className="stat-card-title">Attendance</span>
-              <span className="stat-card-sub">Last 30 days</span>
-            </div>
-          </div>
-
-          <div className="stat-card">
-            <div className="stat-icon stat-icon--purple">
-              <Award />
-            </div>
-            <div>
-              <span className="stat-card-value">A-</span>
-              <span className="stat-card-title">Overall grade</span>
-            </div>
-          </div>
-
-          <div className="stat-card">
-            <div className="stat-icon stat-icon--green">
-              <CheckCircle2 />
-            </div>
-            <div>
-              <span className="stat-card-value">Paid</span>
-              <span className="stat-card-title">Fee status</span>
-            </div>
-          </div>
-
-          <div className="stat-card">
-            <div className="stat-icon stat-icon--amber">
-              <CalendarClock />
-            </div>
-            <div>
-              <span className="stat-card-value">2 yrs</span>
-              <span className="stat-card-title">At this school</span>
-            </div>
-          </div>
+          {studentDetailStat.map((s, idx) => (
+            <StatCard
+              key={idx}
+              Icon={s.icon}
+              colorClass={s.colorClass}
+              value={s.value}
+              label={s.label}
+              ring={s.ring}
+            />
+          ))}
         </section>
-
         {/* <!-- ============ Tabs ============ --> */}
         <section className="card tab-card">
           <div

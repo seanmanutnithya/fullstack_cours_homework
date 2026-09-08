@@ -37,18 +37,17 @@ const HomePage = () => {
           {/* <!-- ============ Stat cards ============ --> */}
           <section className="stat-grid" id="statGrid">
             {stats.map((s, idx) => (
-              <div key={idx}>
-                <StatCard
-                  Icon={s.icon}
-                  colorClass={s.colorClass}
-                  value={s.value}
-                  prefix={s.prefix}
-                  suffix={s.suffix}
-                  label={s.label}
-                  trend={s.trend}
-                  trendDirection={s.trendDirection}
-                />
-              </div>
+              <StatCard
+                key={idx}
+                Icon={s.icon}
+                colorClass={s.colorClass}
+                value={s.value}
+                prefix={s.prefix}
+                suffix={s.suffix}
+                label={s.label}
+                trend={s.trend}
+                trendDirection={s.trendDirection}
+              />
             ))}
           </section>
           {/* <!-- ============ Main grid: charts/lists left, activity/events right ============ --> */}

@@ -1,7 +1,15 @@
 import gsap from "gsap";
-import { createContext, useCallback, useContext, useMemo, useRef } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+} from "react";
 
 const SidebarContext = createContext(null);
+const DESKTOP_QUERY = "(min-width: 769px)";
 
 export function SidebarProvider({ children }) {
   const overlayRef = useRef(null);
@@ -34,6 +42,25 @@ export function SidebarProvider({ children }) {
       onComplete: () => gsap.set(overlay, { display: "none" }),
     });
   }, []);
+
+  useEffect(() => {
+    const mql = window.matchMedia(DESKTOP_QUERY);
+    const resetForDesktop = (e) => {
+      if (!e.matches) return;
+      const overlay = overlayRef.current;
+      const sidebar = sidebarRef.current;
+      gsap.killTweensOf([overlay, sidebar]);
+      gsap.set(overlay, {
+        display: "none",
+        opacity: 0,
+        pointerEvents: "none",
+      });
+      gsap.set(sidebar, { clearProps: "transform" });
+    };
+    mql.addEventListener("change", resetForDesktop);
+    return () => mql.removeEventListener("change", resetForDesktop);
+  }, []);
+
   const value = useMemo(
     () => ({
       overlayRef,
