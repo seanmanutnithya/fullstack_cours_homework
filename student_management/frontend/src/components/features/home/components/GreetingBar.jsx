@@ -4,7 +4,7 @@ import { Megaphone, UserPlus } from "lucide-react";
 import { useCurrentDate } from "@/hooks/useCurrentDate";
 import NoticeModal from "./NoticeModal";
 import { Link } from "react-router-dom";
-import { useStudent } from "../../students/context/StudentContext";
+import { useStudent } from "@/context/StudentContext";
 const GreetingBar = () => {
   useCurrentDate();
   const [modalOpen, setModalOpen] = useState(false);

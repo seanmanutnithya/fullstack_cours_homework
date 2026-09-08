@@ -8,8 +8,7 @@ import ConfirmDialog from "@/components/features/students/components/ConfirmDial
 import StudentFormModal from "@/components/features/students/components/StudentFormModal";
 import { Pagination } from "@/components/ui";
 import { usePagination } from "@/hooks/usePagination";
-import { useStudent } from "@/components/features/students/context/StudentContext";
-
+import { useStudent } from "@/context/StudentContext";
 import { ChevronDown } from "lucide-react";
 
 import { useRef } from "react";
@@ -75,8 +74,11 @@ const AllStudents = () => {
 
             <div className="card-foot">
               <span className="results-note">
-                Showing <strong>{pageStart}–{pageEnd}</strong> of{" "}
-                <strong>{students.length}</strong> students
+                Showing{" "}
+                <strong>
+                  {pageStart}–{pageEnd}
+                </strong>{" "}
+                of <strong>{students.length}</strong> students
               </span>
               <nav
                 className="pagination"

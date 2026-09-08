@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext.jsx";
-import { StudentProvider } from "./components/features/students/context/StudentContext.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import { StudentProvider } from "./context/StudentContext.jsx";
 import DashboardLayout from "./layout/DashboardLayout.jsx";
 import HomePage from "./pages/Home/HomePage.jsx";
 import AllStudents from "./pages/students/AllStudents.jsx";

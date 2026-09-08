@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import studentData from "../../../../../../database/data.json";
+import studentData from "../../../database/data.json";
 import { useToast } from "@/components/ui";
 import { shake } from "@/animation/shake";
 const StudentContext = createContext(null);

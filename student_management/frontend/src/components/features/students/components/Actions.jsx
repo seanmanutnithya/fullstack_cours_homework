@@ -1,5 +1,5 @@
 import { Pencil, Trash2 } from "lucide-react";
-import { useStudent } from "../context/StudentContext";
+import { useStudent } from "@/context/StudentContext";
 const Actions = ({ name, id }) => {
   const { requestDeleteSingle, openEdit } = useStudent();
   return (
