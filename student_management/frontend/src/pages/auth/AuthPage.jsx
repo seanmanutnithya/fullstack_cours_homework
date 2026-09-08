@@ -1,11 +1,13 @@
 import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+
 import LoginForm from "@/components/features/auth/LoginForm";
 import SignupForm from "@/components/features/auth/SignupForm";
 import AuthTabs from "@/components/features/auth/AuthTab";
 import AuthBanner from "@/components/features/auth/AuthBanner";
 import { wireHoverScale } from "@/animation/hover";
+
 import "./AuthPage.css";
 
 const AuthPage = () => {

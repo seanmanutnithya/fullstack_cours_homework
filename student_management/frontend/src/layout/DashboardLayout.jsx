@@ -1,17 +1,12 @@
-import MobileTopBar from "@/components/layout/MobileTopBar";
-import Navbar from "@/components/layout/Navbar";
+import { SidebarProvider } from "@/context/SidebarContext";
 import React from "react";
+import DashboardContent from "./DashboardContent";
 
 const DashboardLayout = ({ children }) => {
   return (
-    <>
-      <MobileTopBar />
-      <div className="app-shell">
-        <div className="sidebar-overlay" id="sidebarOverlay" />
-        <Navbar />
-        {children}
-      </div>
-    </>
+    <SidebarProvider>
+      <DashboardContent>{children}</DashboardContent>
+    </SidebarProvider>
   );
 };
 
