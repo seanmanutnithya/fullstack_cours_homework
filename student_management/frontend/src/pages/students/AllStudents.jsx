@@ -1,6 +1,7 @@
 import "../../styles/index.css";
 import PageHead from "@/components/features/students/components/PageHead";
 import Table from "@/components/features/students/components/Table";
+import StudentCards from "@/components/features/students/components/StudentCards";
 import TopBar from "@/components/layout/TopBar";
 import CardHead from "@/components/features/students/components/CardHead";
 import ConfirmDialog from "@/components/features/students/components/ConfirmDialog";
@@ -70,7 +71,7 @@ const AllStudents = () => {
             {/* <!-- Table (desktop / tablet) --> */}
             <Table />
             {/* <!-- Card list (mobile) --> */}
-            {/* <StudentCards /> */}
+            <StudentCards />
 
             <div className="card-foot">
               <span className="results-note">
