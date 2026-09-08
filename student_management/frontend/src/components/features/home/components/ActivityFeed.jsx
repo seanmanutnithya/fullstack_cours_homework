@@ -2,16 +2,17 @@ import { RefreshCw } from "lucide-react";
 import { useState } from "react";
 
 import { activities } from "@/assets/data/stats";
-import { showToast } from "@/hooks/useToast";
+import { Card, IconButton, useToast } from "@/components/ui";
 
 const ActivityFeed = () => {
+  const { toast } = useToast();
   const [isSpinning, setIsSpinning] = useState(false);
 
   async function handleRefresh() {
     if (isSpinning) return;
     setIsSpinning(true);
     try {
-      showToast("Activity feed refreshed");
+      toast.success("Activity feed refreshed");
     } catch (error) {
       console.error("Failed to refresh activity feed:", error);
     } finally {
@@ -20,17 +21,20 @@ const ActivityFeed = () => {
   }
 
   return (
-    <section className="card activity-card">
-      <div className="card-head">
-        <h2 className="card-title">Recent activity</h2>
-        <button
-          className="icon-btn icon-btn--ghost"
+    <Card
+      className="activity-card"
+      title="Recent activity"
+      actions={
+        <IconButton
+          ghost
+          icon={RefreshCw}
+          iconClassName={isSpinning ? "btn-spin" : ""}
           title="Refresh"
           id="refreshActivityBtn"
-          onClick={handleRefresh}>
-          <RefreshCw className={isSpinning ? "btn-spin" : ""} />
-        </button>
-      </div>
+          label="Refresh"
+          onClick={handleRefresh}
+        />
+      }>
       <ul className="activity-feed" id="activityFeed">
         {activities.map((a, idx) => (
           <li className="activity-item" key={idx}>
@@ -46,7 +50,7 @@ const ActivityFeed = () => {
           </li>
         ))}
       </ul>
-    </section>
+    </Card>
   );
 };
 

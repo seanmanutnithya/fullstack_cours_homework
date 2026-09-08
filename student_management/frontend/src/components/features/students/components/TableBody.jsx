@@ -30,7 +30,9 @@ const TableBody = () => {
           <td>{s.std_class}</td>
           <td>{s.phone}</td>
           <td>{s.remark == null ? "" : s.remark}</td>
-          <Actions name={s.name} id={s.id} />
+          <td className="col-action">
+            <Actions name={s.name} id={s.id} />
+          </td>
         </tr>
       ))}
     </tbody>

@@ -1,18 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  AlertCircle,
-  CheckCircle2,
-  Lock,
-  Eye,
-  EyeOff,
-  GraduationCap,
-  ShieldCheck,
-  User,
-  Mail,
-  Phone,
-} from "lucide-react";
+import { Lock, Phone, User, Mail } from "lucide-react";
 import { useAuther } from "@/context/AuthContext";
+import { Button, TextField, PasswordField } from "@/components/ui";
+import RoleSwitch from "./RoleSwitch";
 
 const SignupForm = ({ isActive, onSwitchToLogin }) => {
   const navigate = useNavigate();
@@ -32,8 +23,6 @@ const SignupForm = ({ isActive, onSwitchToLogin }) => {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [role, setRole] = useState("admin");
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirm, setShowConfirm] = useState(false);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [touched, setTouched] = useState({
     name: false,
@@ -50,9 +39,6 @@ const SignupForm = ({ isActive, onSwitchToLogin }) => {
   const phoneValid = isPhoneValid(phone);
   const passwordValid = password.length >= 8;
   const confirmValid = confirm.length > 0 && confirm === password;
-
-  const fieldClass = (key, valid) =>
-    `field${touched[key] && !valid ? " is-invalid" : touched[key] && valid ? " is-valid" : ""}`;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -86,154 +72,107 @@ const SignupForm = ({ isActive, onSwitchToLogin }) => {
       <h1 className="auth-title">Create your account</h1>
       <p className="auth-subtitle">Set up access for an admin or teacher.</p>
 
-      <div className="role-switch" data-form="signup">
-        <span className="role-switch-pill" />
-        <button
-          type="button"
-          className={`role-option${role === "admin" ? " is-active" : ""}`}
-          onClick={() => setRole("admin")}
-        >
-          <ShieldCheck />
-          <span>Admin</span>
-        </button>
-        <button
-          type="button"
-          className={`role-option${role === "teacher" ? " is-active" : ""}`}
-          onClick={() => setRole("teacher")}
-        >
-          <GraduationCap />
-          <span>Teacher</span>
-        </button>
-      </div>
+      <RoleSwitch value={role} onChange={setRole} formName="signup" />
 
-      <div className={fieldClass("name", nameValid)}>
-        <label htmlFor="signupName">Full name</label>
-        <div className="input-wrap">
-          <User className="input-icon" />
-          <input
-            type="text"
-            id="signupName"
-            placeholder="e.g. Robert Pena"
-            autoComplete="name"
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value);
-              clearAuthError();
-            }}
-            onBlur={() => setTouched((t) => ({ ...t, name: true }))}
-          />
-          <CheckCircle2 className="status-icon status-valid" />
-          <AlertCircle className="status-icon status-invalid" />
-        </div>
-        <span className="field-error">Please enter your full name.</span>
+      <TextField
+        name="signupName"
+        label="Full name"
+        icon={User}
+        statusIcons
+        placeholder="e.g. Robert Pena"
+        autoComplete="name"
+        value={name}
+        onChange={(e) => {
+          setName(e.target.value);
+          clearAuthError();
+        }}
+        onBlur={() => setTouched((t) => ({ ...t, name: true }))}
+        error={touched.name && !nameValid ? "Please enter your full name." : null}
+        valid={touched.name && nameValid}
+      />
+
+      <div className="field-grid">
+        <TextField
+          name="signupEmail"
+          label="Email address"
+          type="email"
+          icon={Mail}
+          statusIcons
+          placeholder="you@iaacademy.edu"
+          autoComplete="email"
+          inputMode="email"
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            clearAuthError();
+          }}
+          onBlur={() => setTouched((t) => ({ ...t, email: true }))}
+          error={
+            touched.email && !emailValid ? "Enter a valid email address." : null
+          }
+          valid={touched.email && emailValid}
+        />
+
+        <TextField
+          name="signupPhone"
+          label="Phone number"
+          type="tel"
+          icon={Phone}
+          statusIcons
+          placeholder="+123 6988 567"
+          autoComplete="tel"
+          inputMode="tel"
+          value={phone}
+          onChange={(e) => {
+            setPhone(e.target.value);
+            clearAuthError();
+          }}
+          onBlur={() => setTouched((t) => ({ ...t, phone: true }))}
+          error={
+            touched.phone && !phoneValid
+              ? "Enter a valid phone number (7–15 digits)."
+              : null
+          }
+          valid={touched.phone && phoneValid}
+        />
       </div>
 
       <div className="field-grid">
-        <div className={fieldClass("email", emailValid)}>
-          <label htmlFor="signupEmail">Email address</label>
-          <div className="input-wrap">
-            <Mail className="input-icon" />
-            <input
-              type="email"
-              id="signupEmail"
-              placeholder="you@iaacademy.edu"
-              autoComplete="email"
-              inputMode="email"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-                clearAuthError();
-              }}
-              onBlur={() => setTouched((t) => ({ ...t, email: true }))}
-            />
-            <CheckCircle2 className="status-icon status-valid" />
-            <AlertCircle className="status-icon status-invalid" />
-          </div>
-          <span className="field-error">Enter a valid email address.</span>
-        </div>
+        <PasswordField
+          name="signupPassword"
+          label="Password"
+          icon={Lock}
+          placeholder="Min. 8 characters"
+          autoComplete="new-password"
+          value={password}
+          onChange={(e) => {
+            setPassword(e.target.value);
+            clearAuthError();
+          }}
+          onBlur={() => setTouched((t) => ({ ...t, password: true }))}
+          error={
+            touched.password && !passwordValid
+              ? "Use at least 8 characters."
+              : null
+          }
+        />
 
-        <div className={fieldClass("phone", phoneValid)}>
-          <label htmlFor="signupPhone">Phone number</label>
-          <div className="input-wrap">
-            <Phone className="input-icon" />
-            <input
-              type="tel"
-              id="signupPhone"
-              placeholder="+123 6988 567"
-              autoComplete="tel"
-              inputMode="tel"
-              value={phone}
-              onChange={(e) => {
-                setPhone(e.target.value);
-                clearAuthError();
-              }}
-              onBlur={() => setTouched((t) => ({ ...t, phone: true }))}
-            />
-            <CheckCircle2 className="status-icon status-valid" />
-            <AlertCircle className="status-icon status-invalid" />
-          </div>
-          <span className="field-error">
-            Enter a valid phone number (7–15 digits).
-          </span>
-        </div>
-      </div>
-
-      <div className="field-grid">
-        <div className={fieldClass("password", passwordValid)}>
-          <label htmlFor="signupPassword">Password</label>
-          <div className="input-wrap">
-            <Lock className="input-icon" />
-            <input
-              type={showPassword ? "text" : "password"}
-              id="signupPassword"
-              placeholder="Min. 8 characters"
-              autoComplete="new-password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-                clearAuthError();
-              }}
-              onBlur={() => setTouched((t) => ({ ...t, password: true }))}
-            />
-            <button
-              type="button"
-              className="visibility-toggle"
-              aria-label={showPassword ? "Hide password" : "Show password"}
-              onClick={() => setShowPassword((v) => !v)}
-            >
-              {showPassword ? <EyeOff /> : <Eye />}
-            </button>
-          </div>
-          <span className="field-error">Use at least 8 characters.</span>
-        </div>
-
-        <div className={fieldClass("confirm", confirmValid)}>
-          <label htmlFor="signupConfirm">Confirm password</label>
-          <div className="input-wrap">
-            <Lock className="input-icon" />
-            <input
-              type={showConfirm ? "text" : "password"}
-              id="signupConfirm"
-              placeholder="Re-enter password"
-              autoComplete="new-password"
-              value={confirm}
-              onChange={(e) => {
-                setConfirm(e.target.value);
-                clearAuthError();
-              }}
-              onBlur={() => setTouched((t) => ({ ...t, confirm: true }))}
-            />
-            <button
-              type="button"
-              className="visibility-toggle"
-              aria-label={showConfirm ? "Hide password" : "Show password"}
-              onClick={() => setShowConfirm((v) => !v)}
-            >
-              {showConfirm ? <EyeOff /> : <Eye />}
-            </button>
-          </div>
-          <span className="field-error">Passwords don&apos;t match.</span>
-        </div>
+        <PasswordField
+          name="signupConfirm"
+          label="Confirm password"
+          icon={Lock}
+          placeholder="Re-enter password"
+          autoComplete="new-password"
+          value={confirm}
+          onChange={(e) => {
+            setConfirm(e.target.value);
+            clearAuthError();
+          }}
+          onBlur={() => setTouched((t) => ({ ...t, confirm: true }))}
+          error={
+            touched.confirm && !confirmValid ? "Passwords don't match." : null
+          }
+        />
       </div>
 
       <div className="password-strength">
@@ -281,16 +220,9 @@ const SignupForm = ({ isActive, onSwitchToLogin }) => {
         </p>
       )}
 
-      <button
-        type="submit"
-        className="btn btn-primary btn-block"
-        disabled={signupLoading}
-      >
-        <span className="btn-label">
-          {signupLoading ? "Creating account…" : "Create account"}
-        </span>
-        {signupLoading && <span className="btn-spinner" />}
-      </button>
+      <Button type="submit" block loading={signupLoading}>
+        {signupLoading ? "Creating account…" : "Create account"}
+      </Button>
 
       <p className="auth-switch">
         Already have an account?{" "}

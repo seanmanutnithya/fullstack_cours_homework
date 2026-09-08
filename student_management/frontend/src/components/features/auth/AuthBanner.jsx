@@ -13,8 +13,8 @@ const AuthBanner = () => {
       <div className="auth-visual-body">
         <h2>Manage your school, effortlessly.</h2>
         <p>
-          One dashboard for students, teachers, attendance, exams and more —
-          built for administrators and teaching staff.
+          One dashboard for students, teachers, attendance, exams and more built
+          for administrators and teaching staff.
         </p>
       </div>
 

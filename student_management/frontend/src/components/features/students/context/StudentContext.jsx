@@ -1,10 +1,11 @@
 import { createContext, useContext, useState } from "react";
 import studentData from "../../../../../../database/data.json";
-import { showToast } from "@/hooks/useToast";
+import { useToast } from "@/components/ui";
 import { shake } from "@/animation/shake";
 const StudentContext = createContext(null);
 
 export function StudentProvider({ children }) {
+  const { toast } = useToast();
   const [students, setStudents] = useState(studentData);
   const [selectedIds, setSelectedIds] = useState([]);
   const [confirmOpen, setConfirmOpen] = useState(false);
@@ -29,7 +30,7 @@ export function StudentProvider({ children }) {
   };
   const requestDeleteSelected = () => {
     if (selectedIds.length == 0) {
-      showToast("Select student to delete first", "info");
+      toast.info("Select student to delete first");
       return;
     }
     setPendingDeleteIds(null);
@@ -68,7 +69,7 @@ export function StudentProvider({ children }) {
     );
     if (isFormInvalid) {
       if (ref?.current) shake(ref.current);
-      showToast("Please fill in all required fields", "info");
+      toast.info("Please fill in all required fields");
       return;
     }
     setStudents((prev) =>
@@ -76,7 +77,7 @@ export function StudentProvider({ children }) {
         prev.map((s) => (s.id === editingId ? { ...s, ...data } : s))
       : [...prev, { ...data, id: data.ids || Date.now().toString() }],
     );
-    showToast(editingId !== null ? "Saved" : "Added", "circle-check");
+    toast.success(editingId !== null ? "Saved" : "Added");
     closeModal();
   };
   const value = {

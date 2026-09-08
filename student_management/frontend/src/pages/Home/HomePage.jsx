@@ -7,7 +7,6 @@ import QuickListCard from "@/components/features/home/components/QuickListCard";
 import ActivityFeed from "@/components/features/home/components/ActivityFeed";
 import EventLists from "@/components/features/home/components/EventsList";
 import Charts from "@/components/features/home/components/Charts";
-import Toast from "@/components/Toast";
 
 import { stats } from "@/assets/data/stats";
 import { wireHoverScale } from "@/animation/hover";
@@ -72,9 +71,6 @@ const HomePage = () => {
           </div>
         </div>
       </main>
-
-      {/* <!-- Toast --> */}
-      <Toast />
     </>
   );
 };

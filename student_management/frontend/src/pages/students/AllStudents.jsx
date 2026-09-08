@@ -1,13 +1,15 @@
-import "../../index.css";
+import "../../styles/index.css";
 import PageHead from "@/components/features/students/components/PageHead";
 import Table from "@/components/features/students/components/Table";
 import TopBar from "@/components/layout/TopBar";
 import CardHead from "@/components/features/students/components/CardHead";
-import ConfimDialog from "@/components/features/students/components/ConfimDialog";
-import Modal from "@/components/common/Modal";
-import Toast from "@/components/Toast";
+import ConfirmDialog from "@/components/features/students/components/ConfirmDialog";
+import StudentFormModal from "@/components/features/students/components/StudentFormModal";
+import { Pagination } from "@/components/ui";
+import { usePagination } from "@/hooks/usePagination";
+import { useStudent } from "@/components/features/students/context/StudentContext";
 
-import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
@@ -16,6 +18,11 @@ import { wireHoverScale } from "../../animation/hover";
 
 const AllStudents = () => {
   const containerRef = useRef(null);
+  const { students } = useStudent();
+  const { page, pageCount, pageStart, pageEnd, setPage } = usePagination({
+    total: students.length,
+    pageSize: 10,
+  });
   useGSAP(
     () => {
       const tl = gsap.timeline({ defaults: { ease: "power1.out" } });
@@ -54,8 +61,8 @@ const AllStudents = () => {
     <>
       <main className="main" ref={containerRef}>
         <TopBar />
-        <ConfimDialog />
-        <Modal />
+        <ConfirmDialog />
+        <StudentFormModal />
         <div className="page">
           <PageHead />
           <section className="card">
@@ -67,26 +74,18 @@ const AllStudents = () => {
 
             <div className="card-foot">
               <span className="results-note">
-                Showing <strong>1–10</strong> of
-                <strong>1,000</strong> students
+                Showing <strong>{pageStart}–{pageEnd}</strong> of{" "}
+                <strong>{students.length}</strong> students
               </span>
               <nav
                 className="pagination"
                 id="pagination"
                 aria-label="Pagination">
-                <button className="page-btn" aria-label="Previous page">
-                  <ChevronLeft />
-                </button>
-                <button className="page-btn is-active">1</button>
-                <button className="page-btn">2</button>
-                <button className="page-btn">3</button>
-                <button className="page-btn">4</button>
-                <button className="page-btn">5</button>
-                <span className="page-ellipsis">···</span>
-                <button className="page-btn">100</button>
-                <button className="page-btn" aria-label="Next page">
-                  <ChevronRight />
-                </button>
+                <Pagination
+                  page={page}
+                  pageCount={pageCount}
+                  onPageChange={setPage}
+                />
                 <button
                   className="select-field select-field--sm"
                   id="pageSizeBtn">
@@ -98,7 +97,6 @@ const AllStudents = () => {
           </section>
         </div>
       </main>
-      <Toast />
     </>
   );
 };

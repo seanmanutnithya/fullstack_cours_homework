@@ -1,6 +1,7 @@
 import { ChevronRight, Plus } from "lucide-react";
 import { useStudent } from "../context/StudentContext";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui";
 const PageHead = () => {
   const { openAddStudent } = useStudent();
   return (
@@ -13,13 +14,9 @@ const PageHead = () => {
           <span className="is-current">Students</span>
         </p>
       </div>
-      <button
-        className="btn btn-primary"
-        id="addStudentBtn"
-        onClick={() => openAddStudent()}>
-        <Plus />
-        <span>Add Students</span>
-      </button>
+      <Button icon={Plus} id="addStudentBtn" onClick={() => openAddStudent()}>
+        Add Students
+      </Button>
     </div>
   );
 };

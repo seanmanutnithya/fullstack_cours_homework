@@ -1,4 +1,5 @@
 import { GraduationCap, X } from "lucide-react";
+import { IconButton } from "@/components/ui";
 
 const Branding = () => {
   return (
@@ -8,12 +9,12 @@ const Branding = () => {
           <GraduationCap />
         </div>
         <span className="brand-name">Ia Academy</span>
-        <button
-          className="icon-btn sidebar-close"
+        <IconButton
+          icon={X}
+          className="sidebar-close"
           id="sidebarCloseBtn"
-          aria-label="Close menu">
-          <X />
-        </button>
+          label="Close menu"
+        />
       </div>
     </>
   );
