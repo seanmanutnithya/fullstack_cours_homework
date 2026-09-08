@@ -15,6 +15,8 @@ const TextField = ({
   ...rest
 }) => {
   const inputId = id ?? name;
+  const input = <input id={inputId} name={name} type={type} {...rest} />;
+
   return (
     <Field
       label={label}
@@ -23,16 +25,18 @@ const TextField = ({
       valid={valid}
       hint={hint}
       className={className}>
-      <div className="input-wrap">
-        {Icon && <Icon className="input-icon" />}
-        <input id={inputId} name={name} type={type} {...rest} />
-        {statusIcons && (
-          <>
-            <CheckCircle2 className="status-icon status-valid" />
-            <AlertCircle className="status-icon status-invalid" />
-          </>
-        )}
-      </div>
+      {Icon || statusIcons ?
+        <div className="input-wrap">
+          {Icon && <Icon className="input-icon" />}
+          {input}
+          {statusIcons && (
+            <>
+              <CheckCircle2 className="status-icon status-valid" />
+              <AlertCircle className="status-icon status-invalid" />
+            </>
+          )}
+        </div>
+      : input}
     </Field>
   );
 };

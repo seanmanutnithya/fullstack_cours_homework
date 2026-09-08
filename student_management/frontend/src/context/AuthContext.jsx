@@ -62,6 +62,12 @@ export function AuthProvider({ children }) {
     setLoginLoading(true);
     setAuthError(null);
     try {
+      // TEMP: frontend-only test login, no backend required. Remove once /api/auth/login is live.
+      if (email === "admin@gmail.com" && password === "123") {
+        localStorage.setItem("token", "test-token");
+        setIsAuthericated(true);
+        return true;
+      }
       const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

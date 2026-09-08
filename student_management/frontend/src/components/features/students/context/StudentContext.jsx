@@ -40,9 +40,11 @@ export function StudentProvider({ children }) {
     if (pendingDeleteIds !== null) {
       setStudents((prev) => prev.filter((s) => s.id !== pendingDeleteIds));
       setSelectedIds((prev) => prev.filter((id) => id !== pendingDeleteIds));
+      toast.success("Student deleted");
     } else {
       setStudents((prev) => prev.filter((s) => !selectedIds.includes(s.id)));
       setSelectedIds([]);
+      toast.success("Students deleted");
     }
     setConfirmOpen(false);
     setPendingDeleteIds(null);
