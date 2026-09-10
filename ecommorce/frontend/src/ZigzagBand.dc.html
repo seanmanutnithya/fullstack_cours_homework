@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div ref="{{ ref_root }}" style="position:relative;width:100%;overflow:hidden;pointer-events:none">
+  <svg ref="{{ ref_svg }}" viewBox="0 0 1200 210" preserveAspectRatio="none" style="width:100%;height:150px;display:block;overflow:visible">
+    <defs>
+      <path id="{{ pid }}" fill="none" d="M -60 148 C 140 28, 330 24, 486 104 S 800 208, 954 118 S 1180 24, 1266 70"></path>
+    </defs>
+    <path data-ink="" fill="none" stroke="var(--rd-ink,#43263C)" stroke-width="62" stroke-linecap="round" pathLength="1" d="M -60 148 C 140 28, 330 24, 486 104 S 800 208, 954 118 S 1180 24, 1266 70"></path>
+    <path data-fill="" fill="none" stroke="var(--rd-yellow,#FFD93B)" stroke-width="54" stroke-linecap="round" pathLength="1" d="M -60 148 C 140 28, 330 24, 486 104 S 800 208, 954 118 S 1180 24, 1266 70"></path>
+  </svg>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:900,&quot;height&quot;:170},&quot;text&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Rumdoul · brewed in Phnom Penh · Khmer vibe only&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;speed&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:34,&quot;min&quot;:10,&quot;max&quot;:90,&quot;step&quot;:2,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;}}">
+const SVGNS = 'http://www.w3.org/2000/svg';
+class Component extends DCLogic {
+  constructor(p) { super(p); this.root = React.createRef(); this.svg = React.createRef(); this.pid = 'rdzz' + Math.random().toString(36).slice(2, 8); }
+  componentDidMount() { this.paint(); this.wire(); }
+  componentWillUnmount() { clearTimeout(this._t); if (this.ctx) this.ctx.revert(); }
+  paint() {
+    const svg = this.svg.current;
+    if (!svg) return;
+    const old = svg.querySelector('[data-txt]');
+    if (old) old.remove();
+    const raw = (this.props.text || 'Rumdoul \u00b7 brewed in Phnom Penh \u00b7 Khmer vibe only') + ' \u2726 ';
+    const t = document.createElementNS(SVGNS, 'text');
+    t.setAttribute('data-txt', '');
+    t.setAttribute('fill', 'var(--rd-ink,#43263C)');
+    t.setAttribute('dominant-baseline', 'middle');
+    t.setAttribute('style', "font:800 21px 'Baloo 2',system-ui;letter-spacing:.14em");
+    const tp = document.createElementNS(SVGNS, 'textPath');
+    tp.setAttribute('data-tp', '');
+    tp.setAttribute('href', '#' + this.pid);
+    tp.setAttribute('startOffset', '0%');
+    tp.textContent = (raw + raw + raw + raw + raw).toUpperCase();
+    t.appendChild(tp);
+    svg.appendChild(t);
+    this.tp = tp;
+    this.txt = t;
+  }
+  wire() {
+    const g = window.gsap, el = this.root.current;
+    if (!g || !window.ScrollTrigger || !el) { this._t = setTimeout(() => this.wire(), 180); return; }
+    const self = this;
+    this.ctx = g.context(function () {
+      const tl = g.timeline({ scrollTrigger: { trigger: el, start: 'top 96%', end: 'bottom 52%', scrub: .6 } });
+      tl.fromTo(el.querySelectorAll('[data-ink],[data-fill]'),
+        { strokeDasharray: 1, strokeDashoffset: 1 },
+        { strokeDashoffset: 0, duration: 1, ease: 'none', stagger: .05, immediateRender: false }, 0);
+      if (self.txt) tl.fromTo(self.txt, { opacity: 0 }, { opacity: 1, duration: .3, ease: 'none', immediateRender: false }, .5);
+      if (self.tp) g.to(self.tp, { attr: { startOffset: '-38%' }, duration: self.props.speed || 34, ease: 'none', repeat: -1 });
+    }, el);
+  }
+  renderVals() { return { ref_root: this.root, ref_svg: this.svg, pid: this.pid }; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,3123 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="./support.js"></script>
+  </head>
+  <body>
+    <x-dc>
+      <helmet>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Noto+Sans+Khmer:wght@500;700&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,600;6..12,700;6..12,800&display=swap"
+          rel="stylesheet" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+        <script src="./image-slot.js"></script>
+        <style>
+          :root {
+            --rd-cream: #fdf2e4;
+            --rd-cream-2: #fff9f0;
+            --rd-pink: #f76d9e;
+            --rd-pink-deep: #de3372;
+            --rd-pink-soft: #ffd3e2;
+            --rd-yellow: #ffd93b;
+            --rd-yellow-soft: #fff0ad;
+            --rd-ink: #43263c;
+            --rd-ink-soft: #7a5a6f;
+            --rd-violet-soft: #c9bef5;
+            --rd-coral-soft: #ffae94;
+            --rd-white: #ffffff;
+            --rd-ember: #f0532b;
+            --rd-leaf: #3f8f6b;
+          }
+          *,
+          *::before,
+          *::after {
+            box-sizing: border-box;
+          }
+          html {
+            scroll-behavior: smooth;
+          }
+          body {
+            margin: 0;
+            background: var(--rd-cream);
+            color: var(--rd-ink);
+            font-family: "Nunito Sans", system-ui, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+          }
+          a {
+            color: var(--rd-pink-deep);
+            text-decoration: none;
+          }
+          a:hover {
+            color: var(--rd-ink);
+          }
+          button {
+            font-family: inherit;
+          }
+          input,
+          select {
+            font-family: inherit;
+          }
+          ::selection {
+            background: var(--rd-yellow);
+            color: var(--rd-ink);
+          }
+          @keyframes rd-marquee {
+            from {
+              transform: translateX(0);
+            }
+            to {
+              transform: translateX(-50%);
+            }
+          }
+          @keyframes rd-bob {
+            0%,
+            100% {
+              transform: translateY(0) rotate(var(--r, 0deg));
+            }
+            50% {
+              transform: translateY(-14px) rotate(var(--r, 0deg));
+            }
+          }
+          @keyframes rd-spin {
+            to {
+              transform: rotate(360deg);
+            }
+          }
+        </style>
+      </helmet>
+
+      <div style="position: relative; width: 100%; overflow-x: clip">
+        <header
+          style="
+            position: sticky;
+            top: 0;
+            z-index: 60;
+            background: rgba(253, 242, 228, 0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 2.5px solid var(--rd-ink);
+          ">
+          <div
+            style="
+              width: min(94vw, 1320px);
+              margin: 0 auto;
+              display: flex;
+              align-items: center;
+              gap: 18px;
+              padding: 11px 0;
+              flex-wrap: wrap;
+            ">
+            <a
+              href="#top"
+              style="display: flex; align-items: center; gap: 10px; flex: none">
+              <span
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: center;
+                  width: 42px;
+                  height: 42px;
+                  border-radius: 999px;
+                  background: var(--rd-yellow);
+                  border: 2.5px solid var(--rd-ink);
+                ">
+                <svg viewBox="0 0 24 24" style="width: 24px; height: 24px">
+                  <g fill="var(--rd-ink)">
+                    <ellipse cx="12" cy="5.6" rx="2.5" ry="4.4"></ellipse>
+                    <ellipse cx="12" cy="18.4" rx="2.5" ry="4.4"></ellipse>
+                    <ellipse cx="5.6" cy="12" rx="4.4" ry="2.5"></ellipse>
+                    <ellipse cx="18.4" cy="12" rx="4.4" ry="2.5"></ellipse>
+                  </g>
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="2.6"
+                    fill="var(--rd-pink-deep)"></circle>
+                </svg>
+              </span>
+              <span
+                style="display: flex; flex-direction: column; line-height: 1">
+                <span
+                  style="
+                    font:
+                      800 25px/1 &quot;Baloo 2&quot;,
+                      system-ui;
+                    letter-spacing: -0.02em;
+                    color: var(--rd-ink);
+                  "
+                  >Rumdoul</span
+                >
+                <span
+                  style="
+                    font:
+                      500 11px/1.4 &quot;Noto Sans Khmer&quot;,
+                      system-ui;
+                    color: var(--rd-pink-deep);
+                  "
+                  >&#6042;&#6086;&#6026;&#6076;&#6043; &#183; Khmer vibe</span
+                >
+              </span>
+            </a>
+            <span
+              style="
+                display: inline-flex;
+                align-items: center;
+                gap: 5px;
+                padding: 6px 12px 5px;
+                border-radius: 999px;
+                border: 2px solid var(--rd-ink);
+                background: var(--rd-white);
+                font: 700 12px/1 &quot;Nunito Sans&quot;;
+                color: var(--rd-ink);
+                flex: none;
+              ">
+              <svg
+                viewBox="0 0 24 24"
+                style="width: 13px; height: 13px; fill: var(--rd-pink-deep)">
+                <path
+                  d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"></path>
+              </svg>
+              Phnom Penh
+            </span>
+            <nav
+              class="hidden lg:flex"
+              style="align-items: center; gap: 24px; margin-left: 8px">
+              <a
+                href="#menu"
+                style="
+                  font: 700 14px/1 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink);
+                "
+                >Menu</a
+              >
+              <a
+                href="#spotlight"
+                style="
+                  font: 700 14px/1 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink);
+                "
+                >Top picks</a
+              >
+              <a
+                href="#club"
+                style="
+                  font: 700 14px/1 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink);
+                "
+                >Club</a
+              >
+              <a
+                href="#shops"
+                style="
+                  font: 700 14px/1 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink);
+                "
+                >Shops</a
+              >
+              <a
+                href="#reviews"
+                style="
+                  font: 700 14px/1 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink);
+                "
+                >Reviews</a
+              >
+            </nav>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-left: auto;
+                flex: none;
+              ">
+              <span
+                class="hidden sm:inline"
+                style="
+                  font:
+                    800 14px/1 &quot;Baloo 2&quot;,
+                    system-ui;
+                  color: var(--rd-ink);
+                "
+                >+855 23 900 620</span
+              >
+              <button
+                class="lg:hidden"
+                onClick="{{ toggleNav }}"
+                aria-label="Menu"
+                style="
+                  display: inline-flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 4px;
+                  width: 44px;
+                  height: 44px;
+                  border-radius: 14px;
+                  border: 2.5px solid var(--rd-ink);
+                  background: var(--rd-white);
+                  cursor: pointer;
+                  padding: 0;
+                ">
+                <span
+                  style="
+                    display: block;
+                    width: 18px;
+                    height: 2.5px;
+                    border-radius: 2px;
+                    background: var(--rd-ink);
+                  "></span>
+                <span
+                  style="
+                    display: block;
+                    width: 18px;
+                    height: 2.5px;
+                    border-radius: 2px;
+                    background: var(--rd-ink);
+                  "></span>
+                <span
+                  style="
+                    display: block;
+                    width: 12px;
+                    height: 2.5px;
+                    border-radius: 2px;
+                    background: var(--rd-ink);
+                  "></span>
+              </button>
+              <button
+                onClick="{{ openCart }}"
+                data-cart-btn=""
+                style="
+                  position: relative;
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 8px;
+                  padding: 10px 16px 9px;
+                  border-radius: 999px;
+                  border: 2.5px solid var(--rd-ink);
+                  background: var(--rd-pink);
+                  color: var(--rd-ink);
+                  font: 800 13px/1 &quot;Nunito Sans&quot;;
+                  letter-spacing: 0.05em;
+                  text-transform: uppercase;
+                  cursor: pointer;
+                  box-shadow: 0 3px 0 0 var(--rd-ink);
+                "
+                style-hover="background:var(--rd-yellow)">
+                <svg
+                  viewBox="0 0 24 24"
+                  style="width: 16px; height: 16px; fill: var(--rd-ink)">
+                  <path
+                    d="M7 6V5a5 5 0 0 1 10 0v1h3l1 15H3L4 6h3Zm2 0h6V5a3 3 0 0 0-6 0v1Z"></path>
+                </svg>
+                Bag
+                <span
+                  data-cart-count=""
+                  style="
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    min-width: 22px;
+                    height: 22px;
+                    padding: 0 5px;
+                    border-radius: 999px;
+                    background: var(--rd-ink);
+                    color: var(--rd-yellow);
+                    font: 800 12px/1 &quot;Nunito Sans&quot;;
+                  "
+                  >{{ cartCount }}</span
+                >
+              </button>
+            </div>
+            <div
+              class="lg:hidden"
+              style="flex:1 1 100%;overflow:hidden;transition:max-height .35s ease,opacity .3s ease;max-height:{{ navH }};opacity:{{ navO }}">
+              <nav
+                style="
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 8px;
+                  padding: 10px 0 4px;
+                ">
+                <a
+                  href="#menu"
+                  onClick="{{ closeNav }}"
+                  style="
+                    padding: 10px 15px 9px;
+                    border-radius: 999px;
+                    border: 2px solid var(--rd-ink);
+                    background: var(--rd-white);
+                    font: 800 12.5px/1 &quot;Nunito Sans&quot;;
+                    color: var(--rd-ink);
+                  "
+                  >Menu</a
+                >
+                <a
+                  href="#spotlight"
+                  onClick="{{ closeNav }}"
+                  style="
+                    padding: 10px 15px 9px;
+                    border-radius: 999px;
+                    border: 2px solid var(--rd-ink);
+                    background: var(--rd-white);
+                    font: 800 12.5px/1 &quot;Nunito Sans&quot;;
+                    color: var(--rd-ink);
+                  "
+                  >Top picks</a
+                >
+                <a
+                  href="#club"
+                  onClick="{{ closeNav }}"
+                  style="
+                    padding: 10px 15px 9px;
+                    border-radius: 999px;
+                    border: 2px solid var(--rd-ink);
+                    background: var(--rd-white);
+                    font: 800 12.5px/1 &quot;Nunito Sans&quot;;
+                    color: var(--rd-ink);
+                  "
+                  >Club</a
+                >
+                <a
+                  href="#shops"
+                  onClick="{{ closeNav }}"
+                  style="
+                    padding: 10px 15px 9px;
+                    border-radius: 999px;
+                    border: 2px solid var(--rd-ink);
+                    background: var(--rd-white);
+                    font: 800 12.5px/1 &quot;Nunito Sans&quot;;
+                    color: var(--rd-ink);
+                  "
+                  >Shops</a
+                >
+                <a
+                  href="#reviews"
+                  onClick="{{ closeNav }}"
+                  style="
+                    padding: 10px 15px 9px;
+                    border-radius: 999px;
+                    border: 2px solid var(--rd-ink);
+                    background: var(--rd-white);
+                    font: 800 12.5px/1 &quot;Nunito Sans&quot;;
+                    color: var(--rd-ink);
+                  "
+                  >Reviews</a
+                >
+              </nav>
+            </div>
+          </div>
+        </header>
+
+        <section
+          id="top"
+          data-hero=""
+          style="
+            position: relative;
+            background: var(--rd-pink);
+            border-bottom: 3px solid var(--rd-ink);
+            overflow: hidden;
+          ">
+          <div
+            style="
+              position: absolute;
+              inset: 0;
+              background-image: radial-gradient(
+                rgba(67, 38, 60, 0.13) 2.2px,
+                transparent 2.3px
+              );
+              background-size: 24px 24px;
+              pointer-events: none;
+            "></div>
+          <div
+            class="hidden md:block"
+            data-float=""
+            style="
+              --r: -8deg;
+              position: absolute;
+              left: -56px;
+              top: 44px;
+              width: 270px;
+              height: 230px;
+              border-radius: 28px;
+              border: 3px solid var(--rd-ink);
+              overflow: hidden;
+              transform: rotate(-8deg);
+              animation: rd-bob 7s ease-in-out infinite;
+            ">
+            <image-slot
+              id="rd-hero-left"
+              shape="rect"
+              placeholder="Iced Khmer coffee — hero left"></image-slot>
+          </div>
+          <div
+            class="hidden md:block"
+            data-float=""
+            style="
+              --r: 9deg;
+              position: absolute;
+              right: -48px;
+              bottom: 36px;
+              width: 290px;
+              height: 245px;
+              border-radius: 28px;
+              border: 3px solid var(--rd-ink);
+              overflow: hidden;
+              transform: rotate(9deg);
+              animation: rd-bob 8.5s ease-in-out infinite 0.6s;
+            ">
+            <image-slot
+              id="rd-hero-right"
+              shape="rect"
+              placeholder="Pastry board — hero right"></image-slot>
+          </div>
+          <div
+            style="
+              position: relative;
+              width: min(92vw, 900px);
+              margin: 0 auto;
+              padding: clamp(52px, 8vw, 104px) 0 clamp(64px, 8vw, 112px);
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 20px;
+              text-align: center;
+            ">
+            <span
+              style="
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 8px 16px 7px;
+                border-radius: 999px;
+                background: var(--rd-yellow);
+                border: 2.5px solid var(--rd-ink);
+                font: 800 11.5px/1 &quot;Nunito Sans&quot;;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+                color: var(--rd-ink);
+              "
+              >Roasted in Phnom Penh &#183; Delivered hot</span
+            >
+            <h1
+              data-hero-h=""
+              style="
+                margin: 0;
+                font:
+                  800 clamp(38px, 7.4vw, 86px)/0.94 &quot;Baloo 2&quot;,
+                  system-ui;
+                letter-spacing: -0.025em;
+                color: var(--rd-ink);
+                text-wrap: balance;
+                text-shadow: 5px 5px 0 var(--rd-yellow);
+              ">
+              Coffee with a<br />proper Khmer vibe
+            </h1>
+            <p
+              style="
+                margin: 0;
+                max-width: 56ch;
+                font: 400 clamp(15px, 1.7vw, 18px)/1.55 &quot;Nunito Sans&quot;;
+                color: var(--rd-ink);
+                opacity: 0.9;
+                text-wrap: pretty;
+              ">
+              Palm-sugar cold brew, pandan matcha and warm num kong straight out
+              of the oven. Order in two taps &mdash; we&rsquo;ll have it on your
+              desk before it stops steaming.
+            </p>
+            <div
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                gap: 14px;
+                justify-content: center;
+                margin-top: 8px;
+              ">
+              <a
+                href="#menu"
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 9px;
+                  padding: 16px 30px 15px;
+                  border-radius: 999px;
+                  border: 3px solid var(--rd-ink);
+                  background: var(--rd-yellow);
+                  color: var(--rd-ink);
+                  font: 800 14.5px/1 &quot;Nunito Sans&quot;;
+                  letter-spacing: 0.07em;
+                  text-transform: uppercase;
+                  box-shadow: 0 5px 0 0 var(--rd-ink);
+                "
+                >See the menu &#8594;</a
+              >
+              <button
+                onClick="{{ startCheckout }}"
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 9px;
+                  padding: 16px 30px 15px;
+                  border-radius: 999px;
+                  border: 3px solid var(--rd-ink);
+                  background: var(--rd-ink);
+                  color: var(--rd-yellow);
+                  font: 800 14.5px/1 &quot;Nunito Sans&quot;;
+                  letter-spacing: 0.07em;
+                  text-transform: uppercase;
+                  cursor: pointer;
+                  box-shadow: 0 5px 0 0 rgba(67, 38, 60, 0.35);
+                ">
+                Order &amp; pay now
+              </button>
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                gap: 22px;
+                justify-content: center;
+                margin-top: 14px;
+              ">
+              <span
+                style="
+                  font: 700 13px/1 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink);
+                "
+                >&#9733; 4.9 &#183; 2,140 reviews</span
+              >
+              <span
+                style="
+                  font: 700 13px/1 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink);
+                "
+                >&#9201; 25-min delivery</span
+              >
+              <span
+                style="
+                  font: 700 13px/1 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink);
+                "
+                >&#9829; 3 shops in the city</span
+              >
+            </div>
+          </div>
+          <div
+            class="hidden sm:block"
+            style="
+              position: absolute;
+              right: clamp(10px, 3.5vw, 64px);
+              top: 34px;
+              width: clamp(94px, 10vw, 126px);
+              aspect-ratio: 1;
+            ">
+            <dc-import
+              name="StickerBadge"
+              ring="fresh daily &#183; 100% arabica"
+              center="6AM"
+              bg="var(--rd-yellow)"
+              hint-size="118px,118px"></dc-import>
+          </div>
+        </section>
+
+        <div style="position: relative; margin-top: -56px; z-index: 5">
+          <dc-import
+            name="ZigzagBand"
+            text="Rumdoul &#183; your daily Khmer vibe &#183; brewed fresh at 6am"
+            speed="{{ ribbonSpeed }}"
+            hint-size="100%,150px"></dc-import>
+        </div>
+
+        <section
+          style="position: relative; padding: 8px 0 clamp(48px, 6vw, 86px)">
+          <div
+            style="
+              width: min(94vw, 1320px);
+              margin: 0 auto;
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(258px, 1fr));
+              gap: 18px;
+            ">
+            <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="4">
+              <dc-import
+                name="CategoryCard"
+                item="{{ cat }}"
+                on-select="{{ filterTo }}"
+                hint-size="100%,132px"></dc-import>
+            </sc-for>
+          </div>
+        </section>
+
+        <section
+          id="spotlight"
+          data-stack-section=""
+          style="
+            position: relative;
+            background: var(--rd-cream-2);
+            border-top: 3px solid var(--rd-ink);
+            border-bottom: 3px solid var(--rd-ink);
+            overflow: hidden;
+          ">
+          <div
+            class="hidden xl:block"
+            style="
+              position: absolute;
+              left: 2.2vw;
+              top: 70px;
+              bottom: 70px;
+              width: 120px;
+              opacity: 0.95;
+            ">
+            <dc-import name="ZigzagSpine" hint-size="120px,100%"></dc-import>
+          </div>
+          <div
+            class="hidden lg:block"
+            style="
+              position: absolute;
+              right: 3vw;
+              top: 96px;
+              width: 132px;
+              height: 132px;
+            ">
+            <dc-import
+              name="StickerBadge"
+              ring="top picks &#183; this week"
+              center="TOP 4"
+              bg="var(--rd-pink-soft)"
+              duration="34"
+              hint-size="132px,132px"></dc-import>
+          </div>
+          <div
+            data-stack-inner=""
+            style="
+              width: min(92vw, 1280px);
+              margin: 0 auto;
+              padding: clamp(50px, 6vw, 86px) 0 clamp(56px, 7vw, 96px);
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: clamp(30px, 4vw, 54px);
+            ">
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 14px;
+                text-align: center;
+              ">
+              <span
+                style="
+                  display: inline-flex;
+                  padding: 7px 16px 6px;
+                  border-radius: 999px;
+                  background: var(--rd-pink-soft);
+                  border: 2.5px solid var(--rd-ink);
+                  font: 800 11.5px/1 &quot;Nunito Sans&quot;;
+                  letter-spacing: 0.16em;
+                  text-transform: uppercase;
+                  color: var(--rd-ink);
+                "
+                >Why everyone keeps coming back</span
+              >
+              <h2
+                style="
+                  margin: 0;
+                  font:
+                    800 clamp(32px, 5.6vw, 68px)/0.97 &quot;Baloo 2&quot;,
+                    system-ui;
+                  letter-spacing: -0.025em;
+                  color: var(--rd-ink);
+                  text-wrap: balance;
+                  max-width: 16ch;
+                ">
+                Four things we&rsquo;re a bit obsessed with
+              </h2>
+              <p
+                style="
+                  margin: 0;
+                  max-width: 52ch;
+                  font: 400 clamp(14px, 1.5vw, 16.5px)/1.55
+                    &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink-soft);
+                  text-wrap: pretty;
+                ">
+                Our top drink and top food of the moment &mdash; hover any card
+                to order it on the spot.
+              </p>
+            </div>
+            <div
+              data-stack-wrap=""
+              style="
+                position: relative;
+                width: 100%;
+                padding: 14px 16px;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(244px, 1fr));
+                gap: 22px;
+                align-items: stretch;
+              ">
+              <sc-for
+                list="{{ spotlights }}"
+                as="spot"
+                hint-placeholder-count="4">
+                <div
+                  data-stack-card=""
+                  style="display: flex; width: 100%; will-change: transform">
+                  <dc-import
+                    name="SpotlightCard"
+                    item="{{ spot }}"
+                    on-order="{{ openProduct }}"
+                    hint-size="100%,430px"></dc-import>
+                </div>
+              </sc-for>
+            </div>
+            <p
+              data-stack-hint=""
+              style="
+                margin: 0;
+                font: 700 12px/1 &quot;Nunito Sans&quot;;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+                color: var(--rd-ink-soft);
+              ">
+              Keep scrolling &#8595; the deck fans out
+            </p>
+          </div>
+        </section>
+
+        <div style="position: relative; margin: -40px 0 -34px; z-index: 4">
+          <dc-import
+            name="ZigzagBand"
+            text="a menu where everybody finds their thing &#183; ready in 6 minutes"
+            speed="42"
+            hint-size="100%,150px"></dc-import>
+        </div>
+
+        <section
+          id="menu"
+          style="position: relative; padding: clamp(56px, 7vw, 104px) 0">
+          <div
+            style="
+              width: min(94vw, 1320px);
+              margin: 0 auto;
+              display: flex;
+              flex-direction: column;
+              gap: clamp(26px, 3.4vw, 44px);
+            ">
+            <div
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                align-items: flex-end;
+                justify-content: space-between;
+                gap: 18px;
+              ">
+              <div style="display: flex; flex-direction: column; gap: 10px">
+                <span
+                  style="
+                    font: 800 11.5px/1 &quot;Nunito Sans&quot;;
+                    letter-spacing: 0.18em;
+                    text-transform: uppercase;
+                    color: var(--rd-pink-deep);
+                  "
+                  >Order online</span
+                >
+                <h2
+                  style="
+                    margin: 0;
+                    font:
+                      800 clamp(38px, 6.6vw, 80px)/0.94 &quot;Baloo 2&quot;,
+                      system-ui;
+                    letter-spacing: -0.03em;
+                    color: var(--rd-ink);
+                  ">
+                  The menu
+                </h2>
+              </div>
+              <p
+                style="
+                  margin: 0;
+                  max-width: 38ch;
+                  font: 400 14.5px/1.55 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink-soft);
+                  text-wrap: pretty;
+                ">
+                Twelve regulars, rotated with seasonal specials. Tap a card for
+                the full story, or drop it straight in the bag.
+              </p>
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                gap: clamp(20px, 2.4vw, 32px);
+                align-items: flex-start;
+              ">
+              <aside
+                style="
+                  flex: 1 1 208px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 16px;
+                  padding: 20px;
+                  border: 2.5px solid var(--rd-ink);
+                  border-radius: 24px;
+                  background: var(--rd-white);
+                  box-shadow: 0 7px 0 -1px rgba(67, 38, 60, 0.15);
+                ">
+                <h3
+                  style="
+                    margin: 0;
+                    font:
+                      800 16px/1 &quot;Baloo 2&quot;,
+                      system-ui;
+                    letter-spacing: 0.02em;
+                    text-transform: uppercase;
+                    color: var(--rd-ink);
+                  ">
+                  Category
+                </h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px">
+                  <sc-for
+                    list="{{ filters }}"
+                    as="f"
+                    hint-placeholder-count="5">
+                    <button
+                      onClick="{{ f.pick }}"
+                      style="padding:9px 14px 8px;border-radius:999px;border:2px solid var(--rd-ink);cursor:pointer;font:800 12px/1 'Nunito Sans';letter-spacing:.05em;text-transform:uppercase;background:{{ f.bg }};color:{{ f.fg }}">
+                      {{ f.label }}
+                    </button>
+                  </sc-for>
+                </div>
+                <div
+                  style="
+                    height: 2px;
+                    background: var(--rd-pink-soft);
+                    border-radius: 2px;
+                  "></div>
+                <h3
+                  style="
+                    margin: 0;
+                    font:
+                      800 16px/1 &quot;Baloo 2&quot;,
+                      system-ui;
+                    letter-spacing: 0.02em;
+                    text-transform: uppercase;
+                    color: var(--rd-ink);
+                  ">
+                  Good to know
+                </h3>
+                <ul
+                  style="
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 9px;
+                  ">
+                  <li
+                    style="
+                      display: flex;
+                      gap: 8px;
+                      font: 400 13px/1.4 &quot;Nunito Sans&quot;;
+                      color: var(--rd-ink-soft);
+                    ">
+                    <span style="color: var(--rd-leaf); font-weight: 800"
+                      >&#10003;</span
+                    >
+                    Oat &amp; coconut milk, no extra charge
+                  </li>
+                  <li
+                    style="
+                      display: flex;
+                      gap: 8px;
+                      font: 400 13px/1.4 &quot;Nunito Sans&quot;;
+                      color: var(--rd-ink-soft);
+                    ">
+                    <span style="color: var(--rd-leaf); font-weight: 800"
+                      >&#10003;</span
+                    >
+                    Free delivery over {{ freeOver }}
+                  </li>
+                  <li
+                    style="
+                      display: flex;
+                      gap: 8px;
+                      font: 400 13px/1.4 &quot;Nunito Sans&quot;;
+                      color: var(--rd-ink-soft);
+                    ">
+                    <span style="color: var(--rd-leaf); font-weight: 800"
+                      >&#10003;</span
+                    >
+                    ABA Pay, Wing, card &amp; cash
+                  </li>
+                </ul>
+                <div
+                  style="
+                    margin-top: 4px;
+                    padding: 14px;
+                    border-radius: 18px;
+                    background: var(--rd-yellow-soft);
+                    border: 2px solid var(--rd-ink);
+                  ">
+                  <p
+                    style="
+                      margin: 0 0 8px;
+                      font:
+                        800 14px/1.2 &quot;Baloo 2&quot;,
+                        system-ui;
+                      color: var(--rd-ink);
+                    ">
+                    Can&rsquo;t decide?
+                  </p>
+                  <p
+                    style="
+                      margin: 0 0 10px;
+                      font: 400 12.5px/1.45 &quot;Nunito Sans&quot;;
+                      color: var(--rd-ink);
+                      opacity: 0.85;
+                    ">
+                    Let us build a box of four bestsellers.
+                  </p>
+                  <button
+                    onClick="{{ addSurprise }}"
+                    style="
+                      width: 100%;
+                      padding: 10px;
+                      border-radius: 999px;
+                      border: 2.5px solid var(--rd-ink);
+                      background: var(--rd-pink);
+                      color: var(--rd-ink);
+                      font: 800 12px/1 &quot;Nunito Sans&quot;;
+                      letter-spacing: 0.06em;
+                      text-transform: uppercase;
+                      cursor: pointer;
+                    ">
+                    Surprise me
+                  </button>
+                </div>
+              </aside>
+              <div
+                style="
+                  flex: 999 1 min(100%, 640px);
+                  display: grid;
+                  grid-template-columns: repeat(auto-fill, minmax(232px, 1fr));
+                  gap: 20px;
+                ">
+                <sc-for
+                  list="{{ visibleItems }}"
+                  as="item"
+                  hint-placeholder-count="9">
+                  <dc-import
+                    name="MenuCard"
+                    item="{{ item }}"
+                    on-add="{{ addToCart }}"
+                    on-open="{{ openProduct }}"
+                    hint-size="100%,404px"></dc-import>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="club"
+          style="
+            position: relative;
+            background: var(--rd-ink);
+            border-top: 3px solid var(--rd-ink);
+            border-bottom: 3px solid var(--rd-ink);
+            overflow: hidden;
+          ">
+          <div
+            style="
+              position: absolute;
+              inset: 0;
+              opacity: 0.16;
+              background:
+                radial-gradient(
+                  circle at 12% 30%,
+                  var(--rd-pink) 0,
+                  transparent 38%
+                ),
+                radial-gradient(
+                  circle at 88% 70%,
+                  var(--rd-yellow) 0,
+                  transparent 40%
+                );
+              pointer-events: none;
+            "></div>
+          <div
+            style="
+              position: relative;
+              width: min(94vw, 1320px);
+              margin: 0 auto;
+              padding: clamp(52px, 6.5vw, 96px) 0;
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+              gap: clamp(28px, 4vw, 58px);
+              align-items: center;
+            ">
+            <div style="display: flex; flex-direction: column; gap: 18px">
+              <span
+                style="
+                  align-self: flex-start;
+                  padding: 7px 15px 6px;
+                  border-radius: 999px;
+                  background: var(--rd-yellow);
+                  border: 2.5px solid var(--rd-yellow);
+                  font: 800 11.5px/1 &quot;Nunito Sans&quot;;
+                  letter-spacing: 0.16em;
+                  text-transform: uppercase;
+                  color: var(--rd-ink);
+                "
+                >Rumdoul Club &#183; $9 / month</span
+              >
+              <h2
+                style="
+                  margin: 0;
+                  font:
+                    800 clamp(32px, 5.2vw, 62px)/0.97 &quot;Baloo 2&quot;,
+                    system-ui;
+                  letter-spacing: -0.025em;
+                  color: var(--rd-cream);
+                  text-wrap: balance;
+                ">
+                One subscription, a whole month of caffeine
+              </h2>
+              <p
+                style="
+                  margin: 0;
+                  max-width: 46ch;
+                  font: 400 15.5px/1.6 &quot;Nunito Sans&quot;;
+                  color: var(--rd-cream);
+                  opacity: 0.85;
+                  text-wrap: pretty;
+                ">
+                Members skip the queue, pay members-only prices and get a free
+                pastry every Friday. Cancel any time, no hard feelings.
+              </p>
+              <div
+                style="
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 12px;
+                  margin-top: 6px;
+                ">
+                <button
+                  onClick="{{ joinClub }}"
+                  style="
+                    padding: 15px 28px 14px;
+                    border-radius: 999px;
+                    border: 3px solid var(--rd-yellow);
+                    background: var(--rd-yellow);
+                    color: var(--rd-ink);
+                    font: 800 14px/1 &quot;Nunito Sans&quot;;
+                    letter-spacing: 0.07em;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                  ">
+                  Join the club
+                </button>
+                <a
+                  href="#menu"
+                  style="
+                    padding: 15px 28px 14px;
+                    border-radius: 999px;
+                    border: 3px solid var(--rd-cream);
+                    color: var(--rd-cream);
+                    font: 800 14px/1 &quot;Nunito Sans&quot;;
+                    letter-spacing: 0.07em;
+                    text-transform: uppercase;
+                  "
+                  >Browse first</a
+                >
+              </div>
+            </div>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 14px;
+              ">
+              <sc-for list="{{ perks }}" as="perk" hint-placeholder-count="4">
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 7px;
+                    padding: 20px 18px;
+                    border-radius: 22px;
+                    border: 2.5px solid var(--rd-cream);
+                    background: rgba(253, 242, 228, 0.07);
+                  ">
+                  <span
+                    style="
+                      font:
+                        800 30px/1 &quot;Baloo 2&quot;,
+                        system-ui;
+                      color: var(--rd-yellow);
+                    "
+                    >{{ perk.stat }}</span
+                  >
+                  <span
+                    style="
+                      font: 800 13.5px/1.25 &quot;Nunito Sans&quot;;
+                      color: var(--rd-cream);
+                    "
+                    >{{ perk.title }}</span
+                  >
+                  <span
+                    style="
+                      font: 400 12.5px/1.45 &quot;Nunito Sans&quot;;
+                      color: var(--rd-cream);
+                      opacity: 0.72;
+                    "
+                    >{{ perk.desc }}</span
+                  >
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </section>
+
+        <section id="reviews" style="padding: clamp(56px, 7vw, 100px) 0">
+          <div
+            style="
+              width: min(94vw, 1320px);
+              margin: 0 auto;
+              display: flex;
+              flex-direction: column;
+              gap: clamp(26px, 3.2vw, 42px);
+            ">
+            <div
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                align-items: flex-end;
+                gap: 18px;
+                justify-content: space-between;
+              ">
+              <h2
+                style="
+                  margin: 0;
+                  font:
+                    800 clamp(30px, 5vw, 60px)/0.97 &quot;Baloo 2&quot;,
+                    system-ui;
+                  letter-spacing: -0.025em;
+                  color: var(--rd-ink);
+                  max-width: 16ch;
+                  text-wrap: balance;
+                ">
+                Regulars say it better than we can
+              </h2>
+              <span
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 10px;
+                  padding: 11px 18px 10px;
+                  border-radius: 999px;
+                  border: 2.5px solid var(--rd-ink);
+                  background: var(--rd-yellow);
+                  font: 800 13px/1 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink);
+                "
+                >&#9733;&#9733;&#9733;&#9733;&#9733; 4.9 average</span
+              >
+            </div>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+                gap: 20px;
+              ">
+              <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="3">
+                <figure
+                  style="margin:0;display:flex;flex-direction:column;gap:14px;padding:24px;border-radius:26px;border:2.5px solid var(--rd-ink);background:{{ r.bg }};box-shadow:0 8px 0 -1px rgba(67,38,60,.16)">
+                  <span
+                    style="
+                      font: 800 15px/1 &quot;Nunito Sans&quot;;
+                      letter-spacing: 0.1em;
+                      color: var(--rd-ink);
+                    "
+                    >{{ r.stars }}</span
+                  >
+                  <blockquote
+                    style="
+                      margin: 0;
+                      font: 600 16.5px/1.5 &quot;Nunito Sans&quot;;
+                      color: var(--rd-ink);
+                      text-wrap: pretty;
+                    ">
+                    {{ r.quote }}
+                  </blockquote>
+                  <figcaption
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 11px;
+                      margin-top: auto;
+                    ">
+                    <span
+                      style="
+                        display: block;
+                        width: 44px;
+                        height: 44px;
+                        flex: none;
+                        border-radius: 999px;
+                        overflow: hidden;
+                        border: 2.5px solid var(--rd-ink);
+                      ">
+                      <image-slot
+                        id="{{ r.slotId }}"
+                        shape="circle"
+                        placeholder="&#128100;"></image-slot>
+                    </span>
+                    <span
+                      style="
+                        display: flex;
+                        flex-direction: column;
+                        line-height: 1.25;
+                      ">
+                      <span
+                        style="
+                          font: 800 14px/1.2 &quot;Nunito Sans&quot;;
+                          color: var(--rd-ink);
+                        "
+                        >{{ r.name }}</span
+                      >
+                      <span
+                        style="
+                          font: 400 12.5px/1.2 &quot;Nunito Sans&quot;;
+                          color: var(--rd-ink);
+                          opacity: 0.65;
+                        "
+                        >{{ r.role }}</span
+                      >
+                    </span>
+                  </figcaption>
+                </figure>
+              </sc-for>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="shops"
+          style="
+            background: var(--rd-cream-2);
+            border-top: 3px solid var(--rd-ink);
+            border-bottom: 3px solid var(--rd-ink);
+            padding: clamp(56px, 7vw, 100px) 0;
+          ">
+          <div
+            style="
+              width: min(94vw, 1320px);
+              margin: 0 auto;
+              display: flex;
+              flex-direction: column;
+              gap: clamp(26px, 3.2vw, 42px);
+            ">
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <span
+                style="
+                  font: 800 11.5px/1 &quot;Nunito Sans&quot;;
+                  letter-spacing: 0.18em;
+                  text-transform: uppercase;
+                  color: var(--rd-pink-deep);
+                "
+                >Come sit with us</span
+              >
+              <h2
+                style="
+                  margin: 0;
+                  font:
+                    800 clamp(30px, 5vw, 60px)/0.97 &quot;Baloo 2&quot;,
+                    system-ui;
+                  letter-spacing: -0.025em;
+                  color: var(--rd-ink);
+                ">
+                Three shops, one vibe
+              </h2>
+            </div>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+                gap: 20px;
+              ">
+              <sc-for list="{{ shops }}" as="s" hint-placeholder-count="3">
+                <article
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    border-radius: 26px;
+                    border: 2.5px solid var(--rd-ink);
+                    background: var(--rd-white);
+                    overflow: hidden;
+                    box-shadow: 0 8px 0 -1px rgba(67, 38, 60, 0.16);
+                  ">
+                  <div
+                    style="
+                      position: relative;
+                      height: 158px;
+                      border-bottom: 2.5px solid var(--rd-ink);
+                      background: var(--rd-pink-soft);
+                    ">
+                    <image-slot
+                      id="{{ s.slotId }}"
+                      shape="rect"
+                      placeholder="{{ s.hint }}"></image-slot>
+                  </div>
+                  <div
+                    style="
+                      display: flex;
+                      flex-direction: column;
+                      gap: 9px;
+                      padding: 20px;
+                    ">
+                    <h3
+                      style="
+                        margin: 0;
+                        font:
+                          800 21px/1.1 &quot;Baloo 2&quot;,
+                          system-ui;
+                        color: var(--rd-ink);
+                      ">
+                      {{ s.name }}
+                    </h3>
+                    <p
+                      style="
+                        margin: 0;
+                        font: 400 13.5px/1.45 &quot;Nunito Sans&quot;;
+                        color: var(--rd-ink-soft);
+                      ">
+                      {{ s.address }}
+                    </p>
+                    <div
+                      style="
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 8px;
+                        margin-top: 4px;
+                      ">
+                      <span
+                        style="
+                          padding: 6px 11px 5px;
+                          border-radius: 999px;
+                          background: var(--rd-yellow-soft);
+                          border: 2px solid var(--rd-ink);
+                          font: 700 11.5px/1 &quot;Nunito Sans&quot;;
+                          color: var(--rd-ink);
+                        "
+                        >{{ s.hours }}</span
+                      >
+                      <span
+                        style="
+                          padding: 6px 11px 5px;
+                          border-radius: 999px;
+                          background: var(--rd-cream);
+                          border: 2px solid var(--rd-ink);
+                          font: 700 11.5px/1 &quot;Nunito Sans&quot;;
+                          color: var(--rd-ink);
+                        "
+                        >{{ s.note }}</span
+                      >
+                    </div>
+                  </div>
+                </article>
+              </sc-for>
+            </div>
+          </div>
+        </section>
+
+        <section style="padding: clamp(48px, 6vw, 88px) 0 0">
+          <div
+            style="
+              width: min(94vw, 1320px);
+              margin: 0 auto;
+              display: flex;
+              flex-wrap: wrap;
+              align-items: center;
+              justify-content: space-between;
+              gap: 14px;
+              margin-bottom: 20px;
+            ">
+            <h2
+              style="
+                margin: 0;
+                font:
+                  800 clamp(26px, 4vw, 46px)/1 &quot;Baloo 2&quot;,
+                  system-ui;
+                letter-spacing: -0.02em;
+                color: var(--rd-ink);
+              ">
+              @rumdoul.coffee
+            </h2>
+            <a
+              href="#top"
+              style="
+                font: 800 12.5px/1 &quot;Nunito Sans&quot;;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: var(--rd-pink-deep);
+              "
+              >Follow along &#8594;</a
+            >
+          </div>
+          <div
+            style="
+              width: min(94vw, 1320px);
+              margin: 0 auto;
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+              gap: 12px;
+            ">
+            <sc-for list="{{ gram }}" as="g" hint-placeholder-count="6">
+              <div
+                style="
+                  position: relative;
+                  aspect-ratio: 1;
+                  border-radius: 20px;
+                  overflow: hidden;
+                  border: 2.5px solid var(--rd-ink);
+                  background: var(--rd-pink-soft);
+                ">
+                <image-slot
+                  id="{{ g.slotId }}"
+                  shape="rect"
+                  placeholder="{{ g.hint }}"></image-slot>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+
+        <section style="padding: clamp(48px, 6vw, 88px) 0">
+          <div
+            style="
+              width: min(94vw, 1320px);
+              margin: 0 auto;
+              display: flex;
+              flex-wrap: wrap;
+              align-items: center;
+              justify-content: space-between;
+              gap: 26px;
+              padding: clamp(28px, 4vw, 52px);
+              border-radius: 34px;
+              border: 3px solid var(--rd-ink);
+              background: var(--rd-yellow);
+              box-shadow: 0 10px 0 -2px rgba(67, 38, 60, 0.2);
+            ">
+            <div
+              style="
+                flex: 1 1 300px;
+                display: flex;
+                flex-direction: column;
+                gap: 9px;
+              ">
+              <h2
+                style="
+                  margin: 0;
+                  font:
+                    800 clamp(26px, 4vw, 44px)/1.02 &quot;Baloo 2&quot;,
+                    system-ui;
+                  letter-spacing: -0.02em;
+                  color: var(--rd-ink);
+                  text-wrap: balance;
+                ">
+                Get one free drink a month
+              </h2>
+              <p
+                style="
+                  margin: 0;
+                  max-width: 42ch;
+                  font: 400 14.5px/1.5 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink);
+                  opacity: 0.85;
+                  text-wrap: pretty;
+                ">
+                New drops, secret menu items and a birthday coffee on us. One
+                email a month, never more.
+              </p>
+            </div>
+            <form
+              onSubmit="{{ subscribe }}"
+              style="
+                flex: 1 1 300px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+              ">
+              <input
+                type="email"
+                required=""
+                placeholder="you@example.com"
+                style="
+                  flex: 1 1 190px;
+                  min-width: 0;
+                  padding: 15px 18px;
+                  border-radius: 999px;
+                  border: 2.5px solid var(--rd-ink);
+                  background: var(--rd-white);
+                  font: 600 14.5px/1 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink);
+                  outline: none;
+                " />
+              <button
+                type="submit"
+                style="
+                  flex: none;
+                  padding: 15px 26px 14px;
+                  border-radius: 999px;
+                  border: 2.5px solid var(--rd-ink);
+                  background: var(--rd-ink);
+                  color: var(--rd-yellow);
+                  font: 800 13px/1 &quot;Nunito Sans&quot;;
+                  letter-spacing: 0.07em;
+                  text-transform: uppercase;
+                  cursor: pointer;
+                ">
+                {{ subscribeLabel }}
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <footer
+          style="
+            background: var(--rd-ink);
+            border-top: 3px solid var(--rd-ink);
+            padding: clamp(46px, 5.5vw, 78px) 0 26px;
+          ">
+          <div
+            style="
+              width: min(94vw, 1320px);
+              margin: 0 auto;
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+              gap: clamp(26px, 3.4vw, 48px);
+            ">
+            <div style="display: flex; flex-direction: column; gap: 12px">
+              <span style="display: flex; align-items: center; gap: 10px">
+                <span
+                  style="
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 38px;
+                    height: 38px;
+                    border-radius: 999px;
+                    background: var(--rd-yellow);
+                  ">
+                  <svg viewBox="0 0 24 24" style="width: 22px; height: 22px">
+                    <g fill="var(--rd-ink)">
+                      <ellipse cx="12" cy="5.6" rx="2.5" ry="4.4"></ellipse>
+                      <ellipse cx="12" cy="18.4" rx="2.5" ry="4.4"></ellipse>
+                      <ellipse cx="5.6" cy="12" rx="4.4" ry="2.5"></ellipse>
+                      <ellipse cx="18.4" cy="12" rx="4.4" ry="2.5"></ellipse>
+                    </g>
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="2.6"
+                      fill="var(--rd-pink-deep)"></circle>
+                  </svg>
+                </span>
+                <span
+                  style="
+                    font:
+                      800 24px/1 &quot;Baloo 2&quot;,
+                      system-ui;
+                    color: var(--rd-cream);
+                  "
+                  >Rumdoul</span
+                >
+              </span>
+              <p
+                style="
+                  margin: 0;
+                  max-width: 32ch;
+                  font: 400 13.5px/1.55 &quot;Nunito Sans&quot;;
+                  color: var(--rd-cream);
+                  opacity: 0.7;
+                ">
+                Khmer coffee, Khmer sweets, Khmer vibe. Brewed in Phnom Penh
+                since 2019.
+              </p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <span
+                style="
+                  font: 800 11.5px/1 &quot;Nunito Sans&quot;;
+                  letter-spacing: 0.16em;
+                  text-transform: uppercase;
+                  color: var(--rd-yellow);
+                "
+                >Shop</span
+              >
+              <a
+                href="#menu"
+                style="
+                  font: 400 13.5px/1 &quot;Nunito Sans&quot;;
+                  color: var(--rd-cream);
+                "
+                >Menu</a
+              >
+              <a
+                href="#spotlight"
+                style="
+                  font: 400 13.5px/1 &quot;Nunito Sans&quot;;
+                  color: var(--rd-cream);
+                "
+                >Top picks</a
+              >
+              <a
+                href="#club"
+                style="
+                  font: 400 13.5px/1 &quot;Nunito Sans&quot;;
+                  color: var(--rd-cream);
+                "
+                >Rumdoul Club</a
+              >
+              <a
+                href="#shops"
+                style="
+                  font: 400 13.5px/1 &quot;Nunito Sans&quot;;
+                  color: var(--rd-cream);
+                "
+                >Store locator</a
+              >
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <span
+                style="
+                  font: 800 11.5px/1 &quot;Nunito Sans&quot;;
+                  letter-spacing: 0.16em;
+                  text-transform: uppercase;
+                  color: var(--rd-yellow);
+                "
+                >Help</span
+              >
+              <a
+                href="#top"
+                style="
+                  font: 400 13.5px/1 &quot;Nunito Sans&quot;;
+                  color: var(--rd-cream);
+                "
+                >Delivery &amp; payment</a
+              >
+              <a
+                href="#top"
+                style="
+                  font: 400 13.5px/1 &quot;Nunito Sans&quot;;
+                  color: var(--rd-cream);
+                "
+                >Allergens</a
+              >
+              <a
+                href="#reviews"
+                style="
+                  font: 400 13.5px/1 &quot;Nunito Sans&quot;;
+                  color: var(--rd-cream);
+                "
+                >Reviews</a
+              >
+              <a
+                href="#top"
+                style="
+                  font: 400 13.5px/1 &quot;Nunito Sans&quot;;
+                  color: var(--rd-cream);
+                "
+                >Careers</a
+              >
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <span
+                style="
+                  font: 800 11.5px/1 &quot;Nunito Sans&quot;;
+                  letter-spacing: 0.16em;
+                  text-transform: uppercase;
+                  color: var(--rd-yellow);
+                "
+                >Designed by</span
+              >
+              <span
+                style="
+                  font:
+                    800 17px/1.2 &quot;Baloo 2&quot;,
+                    system-ui;
+                  color: var(--rd-cream);
+                "
+                >Sean Manutnithya</span
+              >
+              <a
+                href="mailto:sean.manutnithya.cs@gmail.com"
+                style="
+                  font: 400 13.5px/1.35 &quot;Nunito Sans&quot;;
+                  color: var(--rd-yellow);
+                  word-break: break-all;
+                "
+                >sean.manutnithya.cs@gmail.com</a
+              >
+              <span
+                style="
+                  font: 400 12.5px/1.45 &quot;Nunito Sans&quot;;
+                  color: var(--rd-cream);
+                  opacity: 0.6;
+                "
+                >UI design &amp; front-end &#183; React, GSAP, Tailwind</span
+              >
+            </div>
+          </div>
+          <div
+            style="
+              width: min(94vw, 1320px);
+              margin: clamp(30px, 4vw, 52px) auto 0;
+              padding-top: 20px;
+              border-top: 1.5px solid rgba(253, 242, 228, 0.22);
+              display: flex;
+              flex-wrap: wrap;
+              gap: 12px;
+              justify-content: space-between;
+              align-items: center;
+            ">
+            <span
+              style="
+                font: 400 12.5px/1.5 &quot;Nunito Sans&quot;;
+                color: var(--rd-cream);
+                opacity: 0.68;
+              "
+              >&copy; 2026 Sean Manutnithya. All rights reserved. Rumdoul is a
+              concept brand created for portfolio purposes.</span
+            >
+            <a
+              href="mailto:sean.manutnithya.cs@gmail.com"
+              style="
+                font: 700 12.5px/1 &quot;Nunito Sans&quot;;
+                color: var(--rd-cream);
+                opacity: 0.85;
+              "
+              >Hire me &#8594; sean.manutnithya.cs@gmail.com</a
+            >
+          </div>
+        </footer>
+
+        <div
+          onClick="{{ closeAll }}"
+          style="position:fixed;inset:0;z-index:90;background:rgba(67,38,60,.55);backdrop-filter:blur(3px);transition:opacity .35s ease;opacity:{{ scrimO }};pointer-events:{{ scrimPE }}"></div>
+
+        <aside
+          data-drawer=""
+          style="position:fixed;top:0;right:0;bottom:0;z-index:100;width:min(92vw,428px);display:flex;flex-direction:column;background:var(--rd-cream);border-left:3px solid var(--rd-ink);box-shadow:-18px 0 50px -20px rgba(67,38,60,.5);transition:transform .46s cubic-bezier(.22,1,.36,1);transform:{{ drawerT }}">
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 12px;
+              padding: 20px 22px;
+              border-bottom: 2.5px solid var(--rd-ink);
+              background: var(--rd-yellow);
+              flex: none;
+            ">
+            <span
+              style="
+                font:
+                  800 24px/1 &quot;Baloo 2&quot;,
+                  system-ui;
+                color: var(--rd-ink);
+              "
+              >Your bag</span
+            >
+            <button
+              onClick="{{ closeAll }}"
+              style="
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 36px;
+                height: 36px;
+                border-radius: 999px;
+                border: 2.5px solid var(--rd-ink);
+                background: var(--rd-cream);
+                color: var(--rd-ink);
+                font: 800 16px/1 &quot;Nunito Sans&quot;;
+                cursor: pointer;
+              ">
+              &#10005;
+            </button>
+          </div>
+          <div
+            style="
+              flex: 1 1 auto;
+              overflow-y: auto;
+              padding: 18px 22px;
+              display: flex;
+              flex-direction: column;
+              gap: 12px;
+            ">
+            <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ false }}">
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  gap: 12px;
+                  padding: 48px 10px;
+                  text-align: center;
+                ">
+                <span
+                  style="
+                    font:
+                      800 46px/1 &quot;Baloo 2&quot;,
+                      system-ui;
+                  "
+                  >&#9749;</span
+                >
+                <p
+                  style="
+                    margin: 0;
+                    font:
+                      800 18px/1.2 &quot;Baloo 2&quot;,
+                      system-ui;
+                    color: var(--rd-ink);
+                  ">
+                  Nothing brewing yet
+                </p>
+                <p
+                  style="
+                    margin: 0;
+                    max-width: 26ch;
+                    font: 400 13.5px/1.5 &quot;Nunito Sans&quot;;
+                    color: var(--rd-ink-soft);
+                  ">
+                  Add a drink or a sweet and it&rsquo;ll show up right here.
+                </p>
+                <button
+                  onClick="{{ closeAll }}"
+                  style="
+                    margin-top: 6px;
+                    padding: 12px 22px 11px;
+                    border-radius: 999px;
+                    border: 2.5px solid var(--rd-ink);
+                    background: var(--rd-pink);
+                    color: var(--rd-ink);
+                    font: 800 12.5px/1 &quot;Nunito Sans&quot;;
+                    letter-spacing: 0.06em;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                  ">
+                  Back to the menu
+                </button>
+              </div>
+            </sc-if>
+            <sc-for list="{{ cartLines }}" as="line" hint-placeholder-count="0">
+              <div
+                style="
+                  display: flex;
+                  gap: 12px;
+                  padding: 12px;
+                  border-radius: 20px;
+                  border: 2.5px solid var(--rd-ink);
+                  background: var(--rd-white);
+                ">
+                <span
+                  style="
+                    display: block;
+                    width: 58px;
+                    height: 58px;
+                    flex: none;
+                    border-radius: 14px;
+                    overflow: hidden;
+                    border: 2px solid var(--rd-ink);
+                    background: var(--rd-pink-soft);
+                  ">
+                  <image-slot
+                    id="{{ line.slotId }}"
+                    shape="rect"
+                    placeholder=" "></image-slot>
+                </span>
+                <div
+                  style="
+                    flex: 1 1 auto;
+                    min-width: 0;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                  ">
+                  <span
+                    style="
+                      font:
+                        800 15px/1.15 &quot;Baloo 2&quot;,
+                        system-ui;
+                      color: var(--rd-ink);
+                    "
+                    >{{ line.name }}</span
+                  >
+                  <span
+                    style="
+                      font: 700 13px/1 &quot;Nunito Sans&quot;;
+                      color: var(--rd-pink-deep);
+                    "
+                    >{{ line.lineTotal }}</span
+                  >
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 8px;
+                      margin-top: 2px;
+                    ">
+                    <button
+                      onClick="{{ line.dec }}"
+                      style="
+                        width: 26px;
+                        height: 26px;
+                        border-radius: 999px;
+                        border: 2px solid var(--rd-ink);
+                        background: var(--rd-cream);
+                        color: var(--rd-ink);
+                        font: 800 14px/1 &quot;Nunito Sans&quot;;
+                        cursor: pointer;
+                      ">
+                      &minus;
+                    </button>
+                    <span
+                      style="
+                        min-width: 18px;
+                        text-align: center;
+                        font: 800 14px/1 &quot;Nunito Sans&quot;;
+                        color: var(--rd-ink);
+                      "
+                      >{{ line.qty }}</span
+                    >
+                    <button
+                      onClick="{{ line.inc }}"
+                      style="
+                        width: 26px;
+                        height: 26px;
+                        border-radius: 999px;
+                        border: 2px solid var(--rd-ink);
+                        background: var(--rd-yellow);
+                        color: var(--rd-ink);
+                        font: 800 14px/1 &quot;Nunito Sans&quot;;
+                        cursor: pointer;
+                      ">
+                      +
+                    </button>
+                    <button
+                      onClick="{{ line.remove }}"
+                      style="
+                        margin-left: auto;
+                        background: none;
+                        border: none;
+                        padding: 0;
+                        font: 700 11.5px/1 &quot;Nunito Sans&quot;;
+                        letter-spacing: 0.08em;
+                        text-transform: uppercase;
+                        color: var(--rd-ink-soft);
+                        cursor: pointer;
+                      ">
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+          <div
+            style="
+              flex: none;
+              padding: 18px 22px 22px;
+              border-top: 2.5px solid var(--rd-ink);
+              background: var(--rd-white);
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+            ">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                font: 400 13.5px/1 &quot;Nunito Sans&quot;;
+                color: var(--rd-ink-soft);
+              ">
+              <span>Subtotal</span><span>{{ subtotal }}</span>
+            </div>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                font: 400 13.5px/1 &quot;Nunito Sans&quot;;
+                color: var(--rd-ink-soft);
+              ">
+              <span>Delivery</span><span>{{ delivery }}</span>
+            </div>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                font:
+                  800 20px/1 &quot;Baloo 2&quot;,
+                  system-ui;
+                color: var(--rd-ink);
+                padding-top: 6px;
+                border-top: 2px dashed var(--rd-pink-soft);
+              ">
+              <span>Total</span><span>{{ total }}</span>
+            </div>
+            <button
+              onClick="{{ startCheckout }}"
+              style="
+                margin-top: 6px;
+                width: 100%;
+                padding: 16px;
+                border-radius: 999px;
+                border: 3px solid var(--rd-ink);
+                background: var(--rd-pink);
+                color: var(--rd-ink);
+                font: 800 14px/1 &quot;Nunito Sans&quot;;
+                letter-spacing: 0.07em;
+                text-transform: uppercase;
+                cursor: pointer;
+                box-shadow: 0 4px 0 0 var(--rd-ink);
+              ">
+              Checkout &amp; pay
+            </button>
+          </div>
+        </aside>
+
+        <sc-if value="{{ product }}" hint-placeholder-val="{{ false }}">
+          <div
+            style="
+              position: fixed;
+              inset: 0;
+              z-index: 110;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 20px;
+              pointer-events: none;
+            ">
+            <div
+              data-modal=""
+              style="
+                pointer-events: auto;
+                width: min(94vw, 760px);
+                max-height: 88vh;
+                overflow-y: auto;
+                border-radius: 32px;
+                border: 3px solid var(--rd-ink);
+                background: var(--rd-cream);
+                box-shadow: 0 30px 70px -24px rgba(67, 38, 60, 0.6);
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+              ">
+              <div
+                style="
+                  position: relative;
+                  min-height: 270px;
+                  background: var(--rd-pink-soft);
+                  border-right: 3px solid var(--rd-ink);
+                ">
+                <image-slot
+                  id="{{ productSlot }}"
+                  shape="rect"
+                  placeholder="{{ productHint }}"></image-slot>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 12px;
+                  padding: 26px;
+                ">
+                <div
+                  style="
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    gap: 12px;
+                  ">
+                  <span
+                    style="
+                      padding: 6px 12px 5px;
+                      border-radius: 999px;
+                      background: var(--rd-yellow);
+                      border: 2px solid var(--rd-ink);
+                      font: 800 10.5px/1 &quot;Nunito Sans&quot;;
+                      letter-spacing: 0.14em;
+                      text-transform: uppercase;
+                      color: var(--rd-ink);
+                    "
+                    >{{ productTag }}</span
+                  >
+                  <button
+                    onClick="{{ closeAll }}"
+                    style="
+                      display: inline-flex;
+                      align-items: center;
+                      justify-content: center;
+                      width: 34px;
+                      height: 34px;
+                      flex: none;
+                      border-radius: 999px;
+                      border: 2.5px solid var(--rd-ink);
+                      background: var(--rd-white);
+                      color: var(--rd-ink);
+                      font: 800 15px/1 &quot;Nunito Sans&quot;;
+                      cursor: pointer;
+                    ">
+                    &#10005;
+                  </button>
+                </div>
+                <h3
+                  style="
+                    margin: 0;
+                    font:
+                      800 30px/1.02 &quot;Baloo 2&quot;,
+                      system-ui;
+                    letter-spacing: -0.02em;
+                    color: var(--rd-ink);
+                  ">
+                  {{ productName }}
+                </h3>
+                <p
+                  style="
+                    margin: 0;
+                    font: 400 14px/1.55 &quot;Nunito Sans&quot;;
+                    color: var(--rd-ink-soft);
+                    text-wrap: pretty;
+                  ">
+                  {{ productDesc }}
+                </p>
+                <div style="display: flex; flex-wrap: wrap; gap: 7px">
+                  <sc-for
+                    list="{{ productNotes }}"
+                    as="note"
+                    hint-placeholder-count="3">
+                    <span
+                      style="
+                        padding: 6px 11px 5px;
+                        border-radius: 999px;
+                        background: var(--rd-white);
+                        border: 2px solid var(--rd-ink);
+                        font: 700 11.5px/1 &quot;Nunito Sans&quot;;
+                        color: var(--rd-ink);
+                      "
+                      >{{ note }}</span
+                    >
+                  </sc-for>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 7px;
+                    margin-top: 4px;
+                  ">
+                  <span
+                    style="
+                      font: 800 10.5px/1 &quot;Nunito Sans&quot;;
+                      letter-spacing: 0.15em;
+                      text-transform: uppercase;
+                      color: var(--rd-ink-soft);
+                    "
+                    >Size</span
+                  >
+                  <div style="display: flex; gap: 8px">
+                    <sc-for
+                      list="{{ sizes }}"
+                      as="sz"
+                      hint-placeholder-count="3">
+                      <button
+                        onClick="{{ sz.pick }}"
+                        style="flex:1 1 0;padding:11px 8px 10px;border-radius:16px;border:2.5px solid var(--rd-ink);cursor:pointer;font:800 12.5px/1 'Nunito Sans';background:{{ sz.bg }};color:{{ sz.fg }}">
+                        {{ sz.label }}
+                      </button>
+                    </sc-for>
+                  </div>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 12px;
+                    margin-top: auto;
+                    padding-top: 14px;
+                  ">
+                  <span
+                    style="
+                      font:
+                        800 32px/1 &quot;Baloo 2&quot;,
+                        system-ui;
+                      color: var(--rd-pink-deep);
+                    "
+                    >{{ productPrice }}</span
+                  >
+                  <button
+                    onClick="{{ addProductAndCheckout }}"
+                    style="
+                      flex: 1 1 auto;
+                      padding: 15px 18px 14px;
+                      border-radius: 999px;
+                      border: 3px solid var(--rd-ink);
+                      background: var(--rd-yellow);
+                      color: var(--rd-ink);
+                      font: 800 13px/1 &quot;Nunito Sans&quot;;
+                      letter-spacing: 0.06em;
+                      text-transform: uppercase;
+                      cursor: pointer;
+                      box-shadow: 0 4px 0 0 var(--rd-ink);
+                    ">
+                    Add &amp; pay
+                  </button>
+                </div>
+                <button
+                  onClick="{{ addProductOnly }}"
+                  style="
+                    width: 100%;
+                    padding: 12px;
+                    border-radius: 999px;
+                    border: 2.5px solid var(--rd-ink);
+                    background: transparent;
+                    color: var(--rd-ink);
+                    font: 800 12px/1 &quot;Nunito Sans&quot;;
+                    letter-spacing: 0.06em;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                  ">
+                  Just add to bag
+                </button>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ checkout }}" hint-placeholder-val="{{ false }}">
+          <div
+            style="
+              position: fixed;
+              inset: 0;
+              z-index: 120;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 20px;
+              pointer-events: none;
+            ">
+            <div
+              data-modal=""
+              style="
+                pointer-events: auto;
+                width: min(94vw, 600px);
+                max-height: 88vh;
+                overflow-y: auto;
+                border-radius: 32px;
+                border: 3px solid var(--rd-ink);
+                background: var(--rd-cream);
+                box-shadow: 0 30px 70px -24px rgba(67, 38, 60, 0.6);
+                display: flex;
+                flex-direction: column;
+              ">
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  gap: 12px;
+                  padding: 20px 24px;
+                  border-bottom: 2.5px solid var(--rd-ink);
+                  background: var(--rd-pink);
+                ">
+                <span
+                  style="
+                    font:
+                      800 22px/1 &quot;Baloo 2&quot;,
+                      system-ui;
+                    color: var(--rd-ink);
+                  "
+                  >{{ stepTitle }}</span
+                >
+                <button
+                  onClick="{{ closeAll }}"
+                  style="
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 34px;
+                    height: 34px;
+                    border-radius: 999px;
+                    border: 2.5px solid var(--rd-ink);
+                    background: var(--rd-cream);
+                    color: var(--rd-ink);
+                    font: 800 15px/1 &quot;Nunito Sans&quot;;
+                    cursor: pointer;
+                  ">
+                  &#10005;
+                </button>
+              </div>
+              <div style="display: flex; gap: 8px; padding: 16px 24px 0">
+                <sc-for list="{{ steps }}" as="st" hint-placeholder-count="3">
+                  <div
+                    style="
+                      flex: 1 1 0;
+                      display: flex;
+                      flex-direction: column;
+                      gap: 6px;
+                    ">
+                    <span
+                      style="height:6px;border-radius:999px;background:{{ st.bar }}"></span>
+                    <span
+                      style="font:800 10.5px/1 'Nunito Sans';letter-spacing:.1em;text-transform:uppercase;color:{{ st.fg }}"
+                      >{{ st.label }}</span
+                    >
+                  </div>
+                </sc-for>
+              </div>
+              <div
+                style="
+                  padding: 20px 24px 24px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 14px;
+                ">
+                <sc-if value="{{ atBag }}" hint-placeholder-val="{{ false }}">
+                  <div style="display: flex; flex-direction: column; gap: 10px">
+                    <sc-for
+                      list="{{ cartLines }}"
+                      as="line"
+                      hint-placeholder-count="2">
+                      <div
+                        style="
+                          display: flex;
+                          align-items: center;
+                          justify-content: space-between;
+                          gap: 12px;
+                          padding: 13px 15px;
+                          border-radius: 18px;
+                          border: 2.5px solid var(--rd-ink);
+                          background: var(--rd-white);
+                        ">
+                        <span
+                          style="
+                            flex: 1 1 auto;
+                            min-width: 0;
+                            font: 700 14px/1.3 &quot;Nunito Sans&quot;;
+                            color: var(--rd-ink);
+                          "
+                          >{{ line.qty }}&#215; {{ line.name }}</span
+                        >
+                        <span
+                          style="
+                            flex: none;
+                            font:
+                              800 15px/1 &quot;Baloo 2&quot;,
+                              system-ui;
+                            color: var(--rd-ink);
+                          "
+                          >{{ line.lineTotal }}</span
+                        >
+                      </div>
+                    </sc-for>
+                    <div
+                      style="
+                        display: flex;
+                        justify-content: space-between;
+                        padding-top: 8px;
+                        font:
+                          800 22px/1 &quot;Baloo 2&quot;,
+                          system-ui;
+                        color: var(--rd-ink);
+                      ">
+                      <span>Total</span><span>{{ total }}</span>
+                    </div>
+                  </div>
+                </sc-if>
+                <sc-if
+                  value="{{ atDetails }}"
+                  hint-placeholder-val="{{ false }}">
+                  <div style="display: flex; flex-direction: column; gap: 12px">
+                    <label
+                      style="
+                        display: flex;
+                        flex-direction: column;
+                        gap: 6px;
+                        font: 800 10.5px/1 &quot;Nunito Sans&quot;;
+                        letter-spacing: 0.14em;
+                        text-transform: uppercase;
+                        color: var(--rd-ink-soft);
+                      "
+                      >Full name
+                      <input
+                        type="text"
+                        placeholder="Sok Dara"
+                        style="
+                          padding: 14px 16px;
+                          border-radius: 16px;
+                          border: 2.5px solid var(--rd-ink);
+                          background: var(--rd-white);
+                          font: 600 14.5px/1 &quot;Nunito Sans&quot;;
+                          color: var(--rd-ink);
+                          outline: none;
+                        " />
+                    </label>
+                    <label
+                      style="
+                        display: flex;
+                        flex-direction: column;
+                        gap: 6px;
+                        font: 800 10.5px/1 &quot;Nunito Sans&quot;;
+                        letter-spacing: 0.14em;
+                        text-transform: uppercase;
+                        color: var(--rd-ink-soft);
+                      "
+                      >Delivery address
+                      <input
+                        type="text"
+                        placeholder="Street 240, Daun Penh"
+                        style="
+                          padding: 14px 16px;
+                          border-radius: 16px;
+                          border: 2.5px solid var(--rd-ink);
+                          background: var(--rd-white);
+                          font: 600 14.5px/1 &quot;Nunito Sans&quot;;
+                          color: var(--rd-ink);
+                          outline: none;
+                        " />
+                    </label>
+                    <label
+                      style="
+                        display: flex;
+                        flex-direction: column;
+                        gap: 6px;
+                        font: 800 10.5px/1 &quot;Nunito Sans&quot;;
+                        letter-spacing: 0.14em;
+                        text-transform: uppercase;
+                        color: var(--rd-ink-soft);
+                      "
+                      >Phone
+                      <input
+                        type="tel"
+                        placeholder="+855 12 345 678"
+                        style="
+                          padding: 14px 16px;
+                          border-radius: 16px;
+                          border: 2.5px solid var(--rd-ink);
+                          background: var(--rd-white);
+                          font: 600 14.5px/1 &quot;Nunito Sans&quot;;
+                          color: var(--rd-ink);
+                          outline: none;
+                        " />
+                    </label>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ atPay }}" hint-placeholder-val="{{ false }}">
+                  <div style="display: flex; flex-direction: column; gap: 12px">
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px">
+                      <sc-for
+                        list="{{ methods }}"
+                        as="m"
+                        hint-placeholder-count="3">
+                        <button
+                          onClick="{{ m.pick }}"
+                          style="flex:1 1 120px;padding:13px 10px;border-radius:16px;border:2.5px solid var(--rd-ink);cursor:pointer;font:800 12.5px/1 'Nunito Sans';background:{{ m.bg }};color:{{ m.fg }}">
+                          {{ m.label }}
+                        </button>
+                      </sc-for>
+                    </div>
+                    <label
+                      style="
+                        display: flex;
+                        flex-direction: column;
+                        gap: 6px;
+                        font: 800 10.5px/1 &quot;Nunito Sans&quot;;
+                        letter-spacing: 0.14em;
+                        text-transform: uppercase;
+                        color: var(--rd-ink-soft);
+                      "
+                      >Card number
+                      <input
+                        type="text"
+                        placeholder="4242 4242 4242 4242"
+                        style="
+                          padding: 14px 16px;
+                          border-radius: 16px;
+                          border: 2.5px solid var(--rd-ink);
+                          background: var(--rd-white);
+                          font: 600 14.5px/1 &quot;Nunito Sans&quot;;
+                          color: var(--rd-ink);
+                          outline: none;
+                        " />
+                    </label>
+                    <div style="display: flex; gap: 10px">
+                      <label
+                        style="
+                          flex: 1 1 0;
+                          display: flex;
+                          flex-direction: column;
+                          gap: 6px;
+                          font: 800 10.5px/1 &quot;Nunito Sans&quot;;
+                          letter-spacing: 0.14em;
+                          text-transform: uppercase;
+                          color: var(--rd-ink-soft);
+                        "
+                        >Expiry
+                        <input
+                          type="text"
+                          placeholder="09 / 29"
+                          style="
+                            padding: 14px 16px;
+                            border-radius: 16px;
+                            border: 2.5px solid var(--rd-ink);
+                            background: var(--rd-white);
+                            font: 600 14.5px/1 &quot;Nunito Sans&quot;;
+                            color: var(--rd-ink);
+                            outline: none;
+                          " />
+                      </label>
+                      <label
+                        style="
+                          flex: 1 1 0;
+                          display: flex;
+                          flex-direction: column;
+                          gap: 6px;
+                          font: 800 10.5px/1 &quot;Nunito Sans&quot;;
+                          letter-spacing: 0.14em;
+                          text-transform: uppercase;
+                          color: var(--rd-ink-soft);
+                        "
+                        >CVC
+                        <input
+                          type="text"
+                          placeholder="123"
+                          style="
+                            padding: 14px 16px;
+                            border-radius: 16px;
+                            border: 2.5px solid var(--rd-ink);
+                            background: var(--rd-white);
+                            font: 600 14.5px/1 &quot;Nunito Sans&quot;;
+                            color: var(--rd-ink);
+                            outline: none;
+                          " />
+                      </label>
+                    </div>
+                    <div
+                      style="
+                        display: flex;
+                        justify-content: space-between;
+                        padding-top: 6px;
+                        font:
+                          800 22px/1 &quot;Baloo 2&quot;,
+                          system-ui;
+                        color: var(--rd-ink);
+                      ">
+                      <span>Pay now</span><span>{{ total }}</span>
+                    </div>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ atDone }}" hint-placeholder-val="{{ false }}">
+                  <div
+                    style="
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      gap: 12px;
+                      padding: 24px 6px;
+                      text-align: center;
+                    ">
+                    <span
+                      data-tick=""
+                      style="
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 82px;
+                        height: 82px;
+                        border-radius: 999px;
+                        background: var(--rd-yellow);
+                        border: 3px solid var(--rd-ink);
+                        font: 800 38px/1 &quot;Nunito Sans&quot;;
+                        color: var(--rd-ink);
+                      "
+                      >&#10003;</span
+                    >
+                    <h3
+                      style="
+                        margin: 0;
+                        font:
+                          800 27px/1.05 &quot;Baloo 2&quot;,
+                          system-ui;
+                        color: var(--rd-ink);
+                      ">
+                      Paid! It&rsquo;s brewing.
+                    </h3>
+                    <p
+                      style="
+                        margin: 0;
+                        max-width: 32ch;
+                        font: 400 14px/1.5 &quot;Nunito Sans&quot;;
+                        color: var(--rd-ink-soft);
+                      ">
+                      Order <strong>{{ orderId }}</strong> is with the barista.
+                      Arriving in about 25 minutes.
+                    </p>
+                  </div>
+                </sc-if>
+                <div style="display: flex; gap: 10px; margin-top: 4px">
+                  <sc-if
+                    value="{{ canGoBack }}"
+                    hint-placeholder-val="{{ false }}">
+                    <button
+                      onClick="{{ prevStep }}"
+                      style="
+                        flex: none;
+                        padding: 15px 20px 14px;
+                        border-radius: 999px;
+                        border: 2.5px solid var(--rd-ink);
+                        background: transparent;
+                        color: var(--rd-ink);
+                        font: 800 12.5px/1 &quot;Nunito Sans&quot;;
+                        letter-spacing: 0.06em;
+                        text-transform: uppercase;
+                        cursor: pointer;
+                      ">
+                      Back
+                    </button>
+                  </sc-if>
+                  <button
+                    onClick="{{ nextStep }}"
+                    style="
+                      flex: 1 1 auto;
+                      padding: 15px 20px 14px;
+                      border-radius: 999px;
+                      border: 3px solid var(--rd-ink);
+                      background: var(--rd-ink);
+                      color: var(--rd-yellow);
+                      font: 800 13px/1 &quot;Nunito Sans&quot;;
+                      letter-spacing: 0.07em;
+                      text-transform: uppercase;
+                      cursor: pointer;
+                    ">
+                    {{ nextLabel }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <div
+          data-toast=""
+          style="
+            position: fixed;
+            left: 50%;
+            bottom: 26px;
+            z-index: 130;
+            transform: translate(-50%, 140%);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 20px;
+            border-radius: 999px;
+            border: 2.5px solid var(--rd-ink);
+            background: var(--rd-ink);
+            box-shadow: 0 14px 34px -12px rgba(67, 38, 60, 0.6);
+            pointer-events: none;
+          ">
+          <span
+            style="
+              display: inline-flex;
+              width: 8px;
+              height: 8px;
+              border-radius: 999px;
+              background: var(--rd-yellow);
+            "></span>
+          <span
+            style="
+              font: 800 13px/1 &quot;Nunito Sans&quot;;
+              color: var(--rd-cream);
+              white-space: nowrap;
+            "
+            >{{ toast }}</span
+          >
+        </div>
+      </div>
+    </x-dc>
+    <script
+      type="text/x-dc"
+      data-dc-script
+      data-props='{"cardStackMode":{"editor":"enum","default":"fan","options":["fan","grid"],"tsType":"string","section":"Motion"},"ribbonSpeed":{"editor":"range","default":34,"min":10,"max":90,"step":2,"unit":"s","tsType":"number","section":"Motion"},"freeDeliveryOver":{"editor":"int","default":12,"min":0,"max":50,"unit":"$","tsType":"number","section":"Commerce"}}'>
+      const MENU = [
+        { id: 'm1', name: 'Kafe Toek Doh Ko', cat: 'Coffee', tag: 'Bestseller', price: 3.2, desc: 'The classic: dark Mondulkiri roast poured over ice and sweet condensed milk.', notes: ['Iced', 'Condensed milk', 'Strong'] },
+        { id: 'm2', name: 'Rumdoul Latte', cat: 'Coffee', tag: 'Signature', price: 4.5, desc: 'Espresso, steamed milk and a whisper of rumdoul-flower syrup. Floral, not sweet.', notes: ['Floral', 'Hot or iced', 'House syrup'] },
+        { id: 'm3', name: 'Palm Sugar Cold Brew', cat: 'Coffee', tag: '18h steep', price: 4.2, desc: 'Steeped overnight, finished with Kampong Speu palm sugar. Zero bitterness.', notes: ['Cold brew', 'Low acid', 'Vegan'] },
+        { id: 'm4', name: 'Kampot Pepper Mocha', cat: 'Coffee', tag: 'Bold', price: 4.8, desc: 'Dark chocolate, espresso and a crack of Kampot black pepper on the foam.', notes: ['Spicy finish', 'Cocoa', 'Hot'] },
+        { id: 'm5', name: 'Pandan Matcha Ice', cat: 'Tea', tag: 'New', price: 4.6, desc: 'Ceremonial matcha shaken with fresh pandan milk over crushed ice.', notes: ['Caffeine light', 'Pandan', 'Iced'] },
+        { id: 'm6', name: 'Lemongrass Ginger Tea', cat: 'Tea', tag: 'Caffeine free', price: 3.4, desc: 'Whole lemongrass and young ginger, steeped 8 minutes with wild honey.', notes: ['Herbal', 'Honey', 'Hot'] },
+        { id: 'm7', name: 'Mango Sticky Rice Frappe', cat: 'Frappe', tag: 'Crowd pleaser', price: 5.2, desc: 'Blended mango, coconut cream and a scoop of warm sticky rice at the bottom.', notes: ['Blended', 'Dessert', 'Coconut'] },
+        { id: 'm8', name: 'Coconut Espresso Tonic', cat: 'Frappe', tag: 'Refresher', price: 4.9, desc: 'Double shot over coconut water tonic. Fizzy, bright, dangerously drinkable.', notes: ['Sparkling', 'Vegan', 'Iced'] },
+        { id: 'm9', name: 'Num Kong Donut', cat: 'Pastry', tag: 'Baked 6am', price: 2.6, desc: 'The street-side ring, fried light and glazed in caramelised palm sugar.', notes: ['Warm', 'Palm sugar', 'Sharing'] },
+        { id: 'm10', name: 'Banh Chao Croissant', cat: 'Pastry', tag: 'Savoury', price: 3.8, desc: 'Turmeric-laminated croissant filled with pork, bean sprout and herbs.', notes: ['Savoury', 'Herbs', 'Warm'] },
+        { id: 'm11', name: 'Nom Ansom Slice', cat: 'Pastry', tag: 'Homestyle', price: 3.1, desc: 'Banana sticky-rice cake, steamed in banana leaf and griddled to order.', notes: ['Gluten free', 'Banana', 'Steamed'] },
+        { id: 'm12', name: 'Kralan Bamboo Bar', cat: 'Pastry', tag: 'Grab & go', price: 2.9, desc: 'Coconut sticky rice and black bean, roasted the traditional way in bamboo.', notes: ['Vegan', 'Portable', 'Roasted'] }
+      ];
+      MENU.forEach(function (m) { m.slotId = 'rd-' + m.id; });
+
+      const SPOTLIGHTS = [
+        { id: 'm1', n: '01', kind: 'Top drink', name: 'Kafe Toek Doh Ko', desc: 'Sold every 90 seconds since 2019. Mondulkiri beans, ice, condensed milk, nothing else.', price: 3.2, bg: 'var(--rd-violet-soft,#C9BEF5)', slotId: 'rd-spot-1' },
+        { id: 'm9', n: '02', kind: 'Top food', name: 'Num Kong Donut', desc: 'Fried at six, glazed in palm sugar, gone by eleven. Best eaten standing up.', price: 2.6, bg: 'var(--rd-coral-soft,#FFAE94)', slotId: 'rd-spot-2' },
+        { id: 'm7', n: '03', kind: 'Top drink', name: 'Mango Sticky Rice Frappe', desc: 'Dessert that survived the blender. Real mango, coconut cream, warm rice at the base.', price: 5.2, bg: 'var(--rd-pink-soft,#FFD3E2)', slotId: 'rd-spot-3' },
+        { id: 'm10', n: '04', kind: 'Top food', name: 'Banh Chao Croissant', desc: 'Turmeric lamination, pork and herbs inside. Our pastry chef will not explain the recipe.', price: 3.8, bg: 'var(--rd-yellow,#FFD93B)', slotId: 'rd-spot-4' }
+      ];
+
+      const CATEGORIES = [
+        { id: 'c1', title: 'Morning rush', desc: 'Order at 7, sipping by 7:25. Straight to the office.', slotId: 'rd-cat-1', filter: 'Coffee' },
+        { id: 'c2', title: 'Study & chill', desc: 'Big cups, slow tables, plugs at every seat.', slotId: 'rd-cat-2', filter: 'Tea' },
+        { id: 'c3', title: 'Khmer sweets', desc: 'Num kong, nom ansom, kralan — baked daily.', slotId: 'rd-cat-3', filter: 'Pastry' },
+        { id: 'c4', title: 'Party boxes', desc: 'Twelve drinks, one box, one very happy team.', slotId: 'rd-cat-4', filter: 'Frappe' }
+      ];
+
+      const PERKS = [
+        { stat: '-20%', title: 'Members-only prices', desc: 'On every drink, every day.' },
+        { stat: '4x', title: 'Free pastry Fridays', desc: 'One sweet on the house, weekly.' },
+        { stat: '0s', title: 'Skip the queue', desc: 'Your order jumps to the front.' },
+        { stat: '2', title: 'Guest passes', desc: 'Bring a friend, twice a month.' }
+      ];
+
+      const REVIEWS = [
+        { name: 'Chanthou N.', role: 'Designer, BKK1', stars: '\u2605\u2605\u2605\u2605\u2605', quote: 'The palm sugar cold brew ruined every other iced coffee in this city for me. Delivery is always early.', bg: 'var(--rd-pink-soft,#FFD3E2)', slotId: 'rd-rev-1' },
+        { name: 'Marc D.', role: 'Regular since 2021', stars: '\u2605\u2605\u2605\u2605\u2605', quote: 'Ordered a party box for twelve people at 9pm. It arrived at 9:22, still warm, perfectly labelled.', bg: 'var(--rd-yellow-soft,#FFF0AD)', slotId: 'rd-rev-2' },
+        { name: 'Sreymom K.', role: 'Student, RUPP', stars: '\u2605\u2605\u2605\u2605\u2605', quote: 'I come for the num kong and stay four hours. Nobody rushes you. The wifi actually works.', bg: 'var(--rd-violet-soft,#C9BEF5)', slotId: 'rd-rev-3' }
+      ];
+
+      const SHOPS = [
+        { name: 'Daun Penh', address: '#42, Street 240, Phnom Penh', hours: '6:30 – 21:00', note: 'Flagship roastery', slotId: 'rd-shop-1', hint: 'Daun Penh shopfront' },
+        { name: 'BKK1', address: '#118, Street 51, Boeung Keng Kang', hours: '7:00 – 22:00', note: 'Late-night seats', slotId: 'rd-shop-2', hint: 'BKK1 interior' },
+        { name: 'Toul Kork', address: '#7, Street 315, Toul Kork', hours: '6:30 – 20:00', note: 'Drive-through', slotId: 'rd-shop-3', hint: 'Toul Kork counter' }
+      ];
+
+      const GRAM = [
+        { slotId: 'rd-ig-1', hint: 'Latte art' }, { slotId: 'rd-ig-2', hint: 'Num kong tray' },
+        { slotId: 'rd-ig-3', hint: 'Barista at work' }, { slotId: 'rd-ig-4', hint: 'Shopfront' },
+        { slotId: 'rd-ig-5', hint: 'Cold brew pour' }, { slotId: 'rd-ig-6', hint: 'Party box' }
+      ];
+
+      const SIZES = [{ id: 'S', label: 'Small', d: -0.5 }, { id: 'M', label: 'Regular', d: 0 }, { id: 'L', label: 'Large', d: 0.8 }];
+      const METHODS = [{ id: 'aba', label: 'ABA Pay' }, { id: 'card', label: 'Card' }, { id: 'wing', label: 'Wing' }];
+      const STEP_KEYS = ['bag', 'details', 'pay', 'done'];
+
+      class Component extends DCLogic {
+        constructor(p) {
+          super(p);
+          this.state = {
+            cart: [], drawer: false, product: null, size: 'M', method: 'card',
+            checkout: false, step: 0, filter: 'All', toast: '', subscribed: false, orderId: '', navOpen: false
+          };
+          this.stackRoot = React.createRef();
+        }
+
+        componentDidMount() { this.boot(); }
+        componentWillUnmount() {
+          clearTimeout(this._b); clearTimeout(this._toastT); clearTimeout(this._refresh); clearTimeout(this._safety);
+          if (this.mm) this.mm.revert();
+          if (this.ctx) this.ctx.revert();
+        }
+
+        boot() {
+          const g = window.gsap, ST = window.ScrollTrigger;
+          if (!g || !ST) { this._b = setTimeout(() => this.boot(), 180); return; }
+          if (this._booted) return;
+          this._booted = true;
+          g.registerPlugin(ST);
+          this.g = g;
+          this.ctx = g.context(() => { this.setupReveals(); }, document.body);
+          this.setupStack();
+          this._refresh = setTimeout(function () { ST.refresh(); }, 1000);
+          this._safety = setTimeout(function () {
+            if (g.ticker.frame > 2) return;
+            document.body.querySelectorAll('[data-hero-h],section h2,[data-cat]').forEach(function (el) {
+              el.style.opacity = ''; el.style.visibility = ''; el.style.transform = '';
+            });
+          }, 2600);
+        }
+
+        setupReveals() {
+          const g = this.g;
+          const root = document.body;
+          root.querySelectorAll('[data-hero-h]').forEach(function (el) {
+            g.from(el, { y: 34, opacity: 0, duration: .9, ease: 'power3.out' });
+          });
+          root.querySelectorAll('section h2').forEach(function (el) {
+            g.from(el, { y: 30, opacity: 0, duration: .7, ease: 'power3.out', immediateRender: false, scrollTrigger: { trigger: el, start: 'top 90%' } });
+          });
+          root.querySelectorAll('[data-cat]').forEach(function (el, i) {
+            g.from(el, { y: 38, opacity: 0, duration: .6, delay: i * .06, ease: 'power3.out', immediateRender: false, scrollTrigger: { trigger: el, start: 'top 94%' } });
+          });
+        }
+
+        setupStack() {
+          const g = this.g;
+          const wrap = document.querySelector('[data-stack-wrap]');
+          const section = document.querySelector('[data-stack-section]');
+          if (!wrap || !section) { this._b = setTimeout(() => this.setupStack(), 250); return; }
+          const cards = Array.from(wrap.querySelectorAll('[data-stack-card]'));
+          if (cards.length < 4) { this._b = setTimeout(() => this.setupStack(), 250); return; }
+          cards.forEach(function (c) {
+            const inner = c.firstElementChild;
+            if (inner) { inner.style.width = '100%'; inner.style.height = '100%'; inner.style.display = 'block'; }
+          });
+          const mm = g.matchMedia();
+          this.mm = mm;
+          const grid = (this.props.cardStackMode || 'fan') === 'grid';
+          const rot = grid ? [0, 0, 0, 0] : [-5.5, 3.5, -3, 5.5];
+          const bumps = grid ? [0, 0, 0, 0] : [0, -26, 16, -12];
+          const hint = document.querySelector('[data-stack-hint]');
+
+          // Cards already sit in a plain CSS grid — that is the no-JS fallback.
+          // GSAP measures it, freezes the layout absolutely, then scrubs a stacked deck into it.
+          const boxes = [];
+          const freeze = function () {
+            cards.forEach(function (c) { g.set(c, { clearProps: 'all' }); });
+            wrap.style.height = '';
+            const wr = wrap.getBoundingClientRect();
+            boxes.length = 0;
+            cards.forEach(function (c) {
+              const r = c.getBoundingClientRect();
+              boxes.push({ x: r.left - wr.left, y: r.top - wr.top, w: r.width, h: r.height });
+            });
+            wrap.style.height = wr.height + 'px';
+            cards.forEach(function (c, i) {
+              g.set(c, { position: 'absolute', left: boxes[i].x, top: boxes[i].y, width: boxes[i].w, height: boxes[i].h, zIndex: 10 + i, rotate: rot[i % 4], y: bumps[i % 4] });
+            });
+            return wr;
+          };
+
+          const build = function () {
+            const wr = freeze();
+            if (wr.height < 120 || !boxes.length) return function () { };
+            window.ScrollTrigger.addEventListener('refreshInit', freeze);
+            const deckX = (wr.width - boxes[0].w) / 2;
+            const tl = g.timeline({
+              scrollTrigger: {
+                trigger: section, start: 'top top', end: '+=' + Math.round(window.innerHeight * 1.1),
+                pin: true, scrub: .8, anticipatePin: 1, invalidateOnRefresh: true
+              }
+            });
+            cards.forEach(function (c, i) {
+              tl.from(c, {
+                x: deckX - boxes[i].x + i * 8,
+                y: bumps[i % 4] - boxes[i].y + i * 14,
+                rotate: (i - 1.5) * 2.6, scale: .93,
+                ease: 'power2.inOut', duration: 1, immediateRender: false
+              }, i * .09);
+            });
+            if (hint) tl.to(hint, { opacity: 0, duration: .4, immediateRender: false }, 0);
+            return function () {
+              window.ScrollTrigger.removeEventListener('refreshInit', freeze);
+              if (tl.scrollTrigger) tl.scrollTrigger.kill();
+              tl.kill();
+              cards.forEach(function (c) { g.set(c, { clearProps: 'all' }); });
+              wrap.style.height = '';
+              if (hint) hint.style.opacity = '';
+            };
+          };
+
+          mm.add('(min-width: 760px)', build);
+          mm.add('(max-width: 759px)', function () {
+            if (hint) hint.style.display = 'none';
+            cards.forEach(function (c, i) {
+              g.from(c, { y: 40, opacity: 0, duration: .6, delay: i * .05, ease: 'power3.out', immediateRender: false, scrollTrigger: { trigger: c, start: 'top 93%' } });
+            });
+            return function () { if (hint) hint.style.display = ''; };
+          });
+        }
+
+        flash(msg) {
+          this.setState({ toast: msg });
+          const el = document.querySelector('[data-toast]');
+          const g = window.gsap;
+          if (el && g) {
+            g.killTweensOf(el);
+            g.fromTo(el, { y: '140%' }, { y: '0%', duration: .45, ease: 'back.out(1.7)' });
+            clearTimeout(this._toastT);
+            this._toastT = setTimeout(function () { g.to(el, { y: '140%', duration: .35, ease: 'power2.in' }); }, 2100);
+          }
+          const btn = document.querySelector('[data-cart-count]');
+          if (btn && g) g.fromTo(btn, { scale: 1 }, { scale: 1.45, duration: .18, yoyo: true, repeat: 1, ease: 'power2.out' });
+        }
+
+        add(item, qty, sizeId) {
+          const size = sizeId || 'M';
+          const key = item.id + '-' + size;
+          const n = qty || 1;
+          this.setState(function (s) {
+            const exists = s.cart.some(function (l) { return l.key === key; });
+            if (exists) {
+              return { cart: s.cart.map(function (l) { return l.key === key ? Object.assign({}, l, { qty: l.qty + n }) : l; }) };
+            }
+            const sz = SIZES.filter(function (x) { return x.id === size; })[0] || SIZES[1];
+            return {
+              cart: s.cart.concat([{
+                key: key, id: item.id,
+                name: item.name + (size === 'M' ? '' : ' (' + sz.label + ')'),
+                slotId: item.slotId || ('rd-' + item.id),
+                price: item.price + sz.d, qty: n
+              }])
+            };
+          });
+          this.flash(item.name + ' added to your bag');
+        }
+
+        money(n) { return '$' + Number(n).toFixed(2); }
+
+        totals() {
+          const threshold = this.props.freeDeliveryOver != null ? this.props.freeDeliveryOver : 12;
+          const sub = this.state.cart.reduce(function (a, l) { return a + l.price * l.qty; }, 0);
+          const del = sub === 0 ? 0 : (sub >= threshold ? 0 : 1.5);
+          return { sub: sub, del: del, total: sub + del, threshold: threshold };
+        }
+
+        renderVals() {
+          const self = this;
+          const s = this.state;
+          const t = this.totals();
+          const prod = s.product;
+          const sz = SIZES.filter(function (x) { return x.id === s.size; })[0] || SIZES[1];
+          const stepKey = STEP_KEYS[s.step];
+
+          const cartLines = s.cart.map(function (l) {
+            return {
+              key: l.key, name: l.name, qty: l.qty, slotId: l.slotId,
+              lineTotal: self.money(l.price * l.qty),
+              inc: function () { self.setState(function (st) { return { cart: st.cart.map(function (x) { return x.key === l.key ? Object.assign({}, x, { qty: x.qty + 1 }) : x; }) }; }); },
+              dec: function () { self.setState(function (st) { return { cart: st.cart.map(function (x) { return x.key === l.key ? Object.assign({}, x, { qty: Math.max(1, x.qty - 1) }) : x; }) }; }); },
+              remove: function () { self.setState(function (st) { return { cart: st.cart.filter(function (x) { return x.key !== l.key; }) }; }); }
+            };
+          });
+
+          const filters = ['All', 'Coffee', 'Tea', 'Frappe', 'Pastry'].map(function (f) {
+            const on = s.filter === f;
+            return {
+              label: f, bg: on ? 'var(--rd-ink)' : 'var(--rd-white)', fg: on ? 'var(--rd-yellow)' : 'var(--rd-ink)',
+              pick: function () { self.setState({ filter: f }); }
+            };
+          });
+
+          const visible = s.filter === 'All' ? MENU : MENU.filter(function (m) { return m.cat === s.filter; });
+
+          const sizes = SIZES.map(function (x) {
+            const on = s.size === x.id;
+            return { label: x.label, bg: on ? 'var(--rd-ink)' : 'var(--rd-white)', fg: on ? 'var(--rd-yellow)' : 'var(--rd-ink)', pick: function () { self.setState({ size: x.id }); } };
+          });
+
+          const methods = METHODS.map(function (x) {
+            const on = s.method === x.id;
+            return { label: x.label, bg: on ? 'var(--rd-yellow)' : 'var(--rd-white)', fg: 'var(--rd-ink)', pick: function () { self.setState({ method: x.id }); } };
+          });
+
+          const steps = [{ k: 'bag', label: 'Bag' }, { k: 'details', label: 'Details' }, { k: 'pay', label: 'Payment' }].map(function (x, i) {
+            const done = s.step >= i;
+            return { label: x.label, bar: done ? 'var(--rd-ink)' : 'var(--rd-pink-soft)', fg: done ? 'var(--rd-ink)' : 'var(--rd-ink-soft)' };
+          });
+
+          const stepTitles = { bag: 'Review your bag', details: 'Where to?', pay: 'Pay securely', done: 'Order confirmed' };
+          const nextLabels = { bag: 'Continue \u2192', details: 'Go to payment \u2192', pay: 'Pay ' + this.money(t.total), done: 'Done' };
+
+          const closeAll = function () { self.setState({ drawer: false, product: null, checkout: false }); };
+
+          return {
+            cartCount: s.cart.reduce(function (a, l) { return a + l.qty; }, 0),
+            cartLines: cartLines,
+            cartEmpty: s.cart.length === 0,
+            subtotal: this.money(t.sub),
+            delivery: t.del === 0 ? 'Free' : this.money(t.del),
+            total: this.money(t.total),
+            drawerT: s.drawer ? 'translateX(0)' : 'translateX(105%)',
+            scrimO: (s.drawer || s.product || s.checkout) ? 1 : 0,
+            scrimPE: (s.drawer || s.product || s.checkout) ? 'auto' : 'none',
+
+            ribbonSpeed: this.props.ribbonSpeed || 34,
+            freeOver: '$' + (t.threshold),
+            categories: CATEGORIES, spotlights: SPOTLIGHTS, perks: PERKS,
+            reviews: REVIEWS, shops: SHOPS, gram: GRAM,
+            filters: filters, visibleItems: visible,
+
+            product: !!prod,
+            productName: prod ? prod.name : '',
+            productDesc: prod ? (MENU.filter(function (m) { return m.id === prod.id; })[0] || prod).desc : '',
+            productTag: prod ? (MENU.filter(function (m) { return m.id === prod.id; })[0] || prod).tag || 'Menu' : '',
+            productNotes: prod ? ((MENU.filter(function (m) { return m.id === prod.id; })[0] || {}).notes || []) : [],
+            productSlot: prod ? (prod.slotId || 'rd-' + prod.id) : 'rd-none',
+            productHint: prod ? 'Drop a photo of ' + prod.name : '',
+            productPrice: prod ? this.money(prod.price + sz.d) : '',
+            sizes: sizes, methods: methods,
+
+            checkout: s.checkout, steps: steps,
+            stepTitle: stepTitles[stepKey],
+            nextLabel: nextLabels[stepKey],
+            atBag: stepKey === 'bag', atDetails: stepKey === 'details', atPay: stepKey === 'pay', atDone: stepKey === 'done',
+            canGoBack: s.step > 0 && s.step < 3,
+            orderId: s.orderId,
+            toast: s.toast,
+            subscribeLabel: s.subscribed ? 'You\u2019re in \u2713' : 'Sign me up',
+
+            navH: s.navOpen ? '160px' : '0px',
+            navO: s.navOpen ? 1 : 0,
+            toggleNav: function () { self.setState({ navOpen: !self.state.navOpen }); },
+            closeNav: function () { self.setState({ navOpen: false }); },
+            openCart: function () { self.setState({ drawer: true, product: null, checkout: false }); },
+            closeAll: closeAll,
+            filterTo: function (cat) {
+              self.setState({ filter: cat.filter });
+              const el = document.getElementById('menu');
+              if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 70, behavior: 'smooth' });
+            },
+            openProduct: function (item) {
+              const full = MENU.filter(function (m) { return m.id === item.id; })[0] || item;
+              self.setState({ product: full, size: 'M', drawer: false, checkout: false });
+            },
+            addProductOnly: function () { if (prod) { self.add(prod, 1, s.size); self.setState({ product: null, drawer: true }); } },
+            addProductAndCheckout: function () { if (prod) { self.add(prod, 1, s.size); self.setState({ product: null, checkout: true, step: 0 }); } },
+            addToCart: function (item) { self.add(item, 1, 'M'); },
+            addSurprise: function () {
+              [MENU[0], MENU[4], MENU[8], MENU[6]].forEach(function (m) { self.add(m, 1, 'M'); });
+              self.setState({ drawer: true });
+            },
+            startCheckout: function () {
+              if (self.state.cart.length === 0) { self.add(MENU[0], 1, 'M'); }
+              self.setState({ checkout: true, step: 0, drawer: false, product: null });
+            },
+            joinClub: function () { self.flash('Rumdoul Club — welcome aboard!'); },
+            subscribe: function (e) { if (e) e.preventDefault(); self.setState({ subscribed: true }); self.flash('Free drink unlocked. Check your inbox.'); },
+            nextStep: function () {
+              const st = self.state.step;
+              if (st < 2) { self.setState({ step: st + 1 }); return; }
+              if (st === 2) {
+                self.setState({ step: 3, orderId: '#RD-' + Math.floor(1000 + Math.random() * 8999) });
+                setTimeout(function () {
+                  const tick = document.querySelector('[data-tick]');
+                  if (tick && window.gsap) window.gsap.fromTo(tick, { scale: 0, rotate: -40 }, { scale: 1, rotate: 0, duration: .7, ease: 'back.out(2.2)' });
+                }, 30);
+                return;
+              }
+              self.setState({ checkout: false, cart: [], step: 0 });
+            },
+            prevStep: function () { self.setState({ step: Math.max(0, self.state.step - 1) }); }
+          };
+        }
+      }
+    </script>
+  </body>
+</html>

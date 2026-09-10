@@ -1,0 +1,82 @@
+.rd-shops {
+  background: var(--rd-cream-2);
+  border-top: 3px solid var(--rd-ink);
+  border-bottom: 3px solid var(--rd-ink);
+  padding: clamp(56px, 7vw, 100px) 0;
+}
+
+.rd-shops__inner {
+  width: min(94vw, 1320px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(26px, 3.2vw, 42px);
+}
+
+.rd-shops__head {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rd-shops__eyebrow {
+  font: 800 11.5px/1 var(--rd-font-text);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rd-pink-deep);
+}
+
+.rd-shops__title {
+  margin: 0;
+  font: 800 clamp(30px, 5vw, 60px) / 0.97 var(--rd-font-display);
+  letter-spacing: -0.025em;
+  color: var(--rd-ink);
+}
+
+.rd-shops__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+  gap: 20px;
+}
+
+.rd-shops__card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 26px;
+  border: 2.5px solid var(--rd-ink);
+  background: var(--rd-white);
+  overflow: hidden;
+  box-shadow: var(--rd-shadow-hard);
+}
+
+.rd-shops__photo {
+  position: relative;
+  height: 158px;
+  border-bottom: 2.5px solid var(--rd-ink);
+}
+
+.rd-shops__body {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 20px;
+}
+
+.rd-shops__name {
+  margin: 0;
+  font: 800 21px/1.1 var(--rd-font-display);
+  color: var(--rd-ink);
+}
+
+.rd-shops__address {
+  margin: 0;
+  font: 400 13.5px/1.45 var(--rd-font-text);
+  color: var(--rd-ink-soft);
+}
+
+.rd-shops__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}

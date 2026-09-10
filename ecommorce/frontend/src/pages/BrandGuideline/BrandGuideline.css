@@ -1,0 +1,123 @@
+/*
+ * Styles unique to the brand guideline's own page shapes (cover,
+ * pull-quote, logo lockup, do/don't grid, chip row, signature block,
+ * closing min-heights). Anything shared with CaseStudy — the closing
+ * headline/footer, the right-aligned eyebrow, the muted text, monospace
+ * `code` — lives once in DocSection.css instead of being duplicated here.
+ */
+
+.rd-brand-guide {
+  display: flex;
+  flex-direction: column;
+}
+
+.rd-brand-guide__cover {
+  min-height: 70vh;
+  justify-content: space-between;
+}
+
+.rd-brand-guide__cover-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  align-items: flex-start;
+}
+
+.rd-brand-guide__cover-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  padding-top: 22px;
+  border-top: 3px solid var(--rd-ink);
+  font: 800 13px/1.5 var(--rd-font-text);
+}
+
+.rd-brand-guide__quote {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 18px 22px;
+  border-radius: 20px;
+  background: var(--rd-ink);
+}
+
+.rd-brand-guide__quote-mark {
+  font: 800 30px/1 var(--rd-font-display);
+  color: var(--rd-yellow);
+}
+
+.rd-brand-guide__quote p {
+  margin: 0;
+  font: 600 15px/1.5 var(--rd-font-text);
+  color: var(--rd-cream);
+}
+
+.rd-brand-guide__lockup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 34px;
+  border-radius: 24px;
+  border: 2.5px solid var(--rd-ink);
+  background: var(--rd-white);
+}
+
+.rd-brand-guide__donts {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.rd-brand-guide__dont {
+  padding: 16px;
+  border-radius: 18px;
+  border: 2.5px solid var(--rd-pink-deep);
+  background: var(--rd-white);
+  font: 800 11px/1.4 var(--rd-font-text);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rd-pink-deep);
+}
+
+.rd-brand-guide__chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  padding: 20px;
+  border-radius: 20px;
+  border: 2.5px solid var(--rd-ink);
+  background: var(--rd-white);
+}
+
+.rd-brand-guide__chip-active {
+  background: var(--rd-ink) !important;
+  color: var(--rd-yellow) !important;
+}
+
+.rd-brand-guide__signature {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  border-radius: 20px;
+  background: var(--rd-ink);
+}
+
+.rd-brand-guide__signature-title {
+  margin: 0;
+  font: 800 30px/1 var(--rd-font-display);
+  color: var(--rd-yellow);
+  letter-spacing: -0.02em;
+}
+
+.rd-brand-guide__signature p:not(.rd-brand-guide__signature-title) {
+  margin: 0;
+  font: 400 14px/1.55 var(--rd-font-text);
+  color: var(--rd-cream);
+  opacity: 0.85;
+}
+
+.rd-brand-guide__closing {
+  min-height: 60vh;
+  justify-content: space-between;
+}

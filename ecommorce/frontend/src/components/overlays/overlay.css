@@ -1,0 +1,13 @@
+/* Shared fixed-position centering wrapper for the product and checkout
+   modals — both mockup blocks used the identical
+   position:fixed;inset:0;display:flex;align-items:center;justify-content:center
+   recipe, just with different z-index, so it lives here once. */
+.rd-overlay-wrap {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  pointer-events: none;
+}

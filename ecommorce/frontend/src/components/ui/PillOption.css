@@ -1,0 +1,23 @@
+.rd-pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.rd-pill-option {
+  padding: 9px 14px 8px;
+  border-radius: 999px;
+  border: 2px solid var(--rd-ink);
+  background: var(--rd-white);
+  color: var(--rd-ink);
+  cursor: pointer;
+  font: 800 12px/1 var(--rd-font-text);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.rd-pill-option--active {
+  background: var(--rd-ink);
+  color: var(--rd-yellow);
+}

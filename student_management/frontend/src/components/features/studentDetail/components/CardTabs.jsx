@@ -8,11 +8,11 @@ import Results from "./tabs/Results";
 import Fees from "./tabs/Fees";
 import Documents from "./tabs/Documents";
 
-import { useStudentDetail } from "@/context/StudentDetailContext";
+import { useStudent } from "@/context/StudentContext";
 
 const CardTabs = () => {
   const [activeTab, setActiveTab] = useState("overview");
-  const { tabsRef, tabIndicatorRef, moveIndicator } = useStudentDetail();
+  const { tabsRef, tabIndicatorRef, moveIndicator } = useStudent();
 
   useEffect(() => {
     const activeEl = tabsRef.current?.querySelector(".is-active");

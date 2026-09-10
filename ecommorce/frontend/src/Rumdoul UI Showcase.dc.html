@@ -1,0 +1,2274 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="./support.js"></script>
+  </head>
+  <body>
+    <x-dc>
+      <helmet>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Noto+Sans+Khmer:wght@500;700&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,600;6..12,700;6..12,800&display=swap"
+          rel="stylesheet" />
+        <script src="./doc-page.js"></script>
+        <style>
+          :root {
+            --rd-cream: #fdf2e4;
+            --rd-cream-2: #fff9f0;
+            --rd-pink: #f76d9e;
+            --rd-pink-deep: #de3372;
+            --rd-pink-soft: #ffd3e2;
+            --rd-yellow: #ffd93b;
+            --rd-yellow-soft: #fff0ad;
+            --rd-ink: #43263c;
+            --rd-ink-soft: #7a5a6f;
+            --rd-violet-soft: #c9bef5;
+            --rd-coral-soft: #ffae94;
+            --rd-white: #ffffff;
+            --rd-leaf: #3f8f6b;
+          }
+          *,
+          *::before,
+          *::after {
+            box-sizing: border-box;
+          }
+          doc-page:not(:defined) {
+            visibility: hidden;
+          }
+          a {
+            color: var(--rd-pink-deep);
+            text-decoration: none;
+          }
+          a:hover {
+            color: var(--rd-ink);
+          }
+        </style>
+      </helmet>
+
+      <doc-page size="letter">
+        <section
+          class="page"
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 60px 56px;
+            background: var(--rd-pink);
+            font-family: &quot;Nunito Sans&quot;, system-ui;
+            overflow: hidden;
+          ">
+          <div
+            style="
+              position: absolute;
+              inset: 0;
+              background-image: radial-gradient(
+                rgba(67, 38, 60, 0.14) 2.4px,
+                transparent 2.5px
+              );
+              background-size: 26px 26px;
+            "></div>
+          <div
+            style="
+              position: relative;
+              display: flex;
+              justify-content: space-between;
+              align-items: flex-start;
+              gap: 20px;
+            ">
+            <div style="display: flex; align-items: center; gap: 13px">
+              <span
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: center;
+                  width: 54px;
+                  height: 54px;
+                  border-radius: 999px;
+                  background: var(--rd-yellow);
+                  border: 3px solid var(--rd-ink);
+                ">
+                <svg viewBox="0 0 24 24" style="width: 31px; height: 31px">
+                  <g fill="#43263C">
+                    <ellipse cx="12" cy="5.6" rx="2.5" ry="4.4"></ellipse>
+                    <ellipse cx="12" cy="18.4" rx="2.5" ry="4.4"></ellipse>
+                    <ellipse cx="5.6" cy="12" rx="4.4" ry="2.5"></ellipse>
+                    <ellipse cx="18.4" cy="12" rx="4.4" ry="2.5"></ellipse>
+                  </g>
+                  <circle cx="12" cy="12" r="2.6" fill="#DE3372"></circle>
+                </svg>
+              </span>
+              <span
+                style="display: flex; flex-direction: column; line-height: 1">
+                <span
+                  style="
+                    font:
+                      800 30px/1 &quot;Baloo 2&quot;,
+                      system-ui;
+                    letter-spacing: -0.02em;
+                    color: var(--rd-ink);
+                  "
+                  >Rumdoul</span
+                >
+                <span
+                  style="
+                    font:
+                      500 13px/1.4 &quot;Noto Sans Khmer&quot;,
+                      system-ui;
+                    color: var(--rd-ink);
+                    opacity: 0.75;
+                  "
+                  >&#6042;&#6086;&#6026;&#6076;&#6043; &#183; Khmer vibe</span
+                >
+              </span>
+            </div>
+            <span
+              style="
+                padding: 9px 16px 8px;
+                border-radius: 999px;
+                background: var(--rd-ink);
+                color: var(--rd-yellow);
+                font: 800 11px/1 &quot;Nunito Sans&quot;;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+              "
+              >UI / UX case study</span
+            >
+          </div>
+          <div
+            style="
+              position: relative;
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+            ">
+            <h1
+              style="
+                margin: 0;
+                font:
+                  800 66px/0.94 &quot;Baloo 2&quot;,
+                  system-ui;
+                letter-spacing: -0.03em;
+                color: var(--rd-ink);
+                text-shadow: 6px 6px 0 var(--rd-yellow);
+              ">
+              Coffee shop<br />ecommerce UI
+            </h1>
+            <p
+              style="
+                margin: 0;
+                max-width: 46ch;
+                font: 400 16.5px/1.6 &quot;Nunito Sans&quot;;
+                color: var(--rd-ink);
+                opacity: 0.9;
+              ">
+              A scroll-driven storefront for a Phnom Penh coffee shop &mdash;
+              hero to checkout, built in React with GSAP ScrollTrigger and
+              Tailwind, fully responsive from 360px up.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 9px">
+              <span
+                style="
+                  padding: 8px 15px 7px;
+                  border-radius: 999px;
+                  border: 2.5px solid var(--rd-ink);
+                  background: var(--rd-yellow);
+                  font: 800 11.5px/1 &quot;Nunito Sans&quot;;
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                  color: var(--rd-ink);
+                "
+                >React</span
+              >
+              <span
+                style="
+                  padding: 8px 15px 7px;
+                  border-radius: 999px;
+                  border: 2.5px solid var(--rd-ink);
+                  background: var(--rd-yellow);
+                  font: 800 11.5px/1 &quot;Nunito Sans&quot;;
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                  color: var(--rd-ink);
+                "
+                >GSAP + ScrollTrigger</span
+              >
+              <span
+                style="
+                  padding: 8px 15px 7px;
+                  border-radius: 999px;
+                  border: 2.5px solid var(--rd-ink);
+                  background: var(--rd-yellow);
+                  font: 800 11.5px/1 &quot;Nunito Sans&quot;;
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                  color: var(--rd-ink);
+                "
+                >Tailwind CSS</span
+              >
+              <span
+                style="
+                  padding: 8px 15px 7px;
+                  border-radius: 999px;
+                  border: 2.5px solid var(--rd-ink);
+                  background: var(--rd-white);
+                  font: 800 11.5px/1 &quot;Nunito Sans&quot;;
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                  color: var(--rd-ink);
+                "
+                >SVG motion</span
+              >
+            </div>
+          </div>
+          <div
+            style="
+              position: relative;
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: space-between;
+              align-items: flex-end;
+              gap: 20px;
+              padding-top: 22px;
+              border-top: 3px solid var(--rd-ink);
+            ">
+            <div style="display: flex; flex-direction: column; gap: 2px">
+              <span
+                style="
+                  font: 800 10.5px/1 &quot;Nunito Sans&quot;;
+                  letter-spacing: 0.18em;
+                  text-transform: uppercase;
+                  color: var(--rd-ink);
+                  opacity: 0.7;
+                "
+                >Design &amp; front-end</span
+              >
+              <span
+                style="
+                  font:
+                    800 21px/1.2 &quot;Baloo 2&quot;,
+                    system-ui;
+                  color: var(--rd-ink);
+                "
+                >Sean Manutnithya</span
+              >
+              <a
+                href="mailto:sean.manutnithya.cs@gmail.com"
+                style="
+                  font: 600 13.5px/1.4 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink);
+                "
+                >sean.manutnithya.cs@gmail.com</a
+              >
+            </div>
+            <span
+              style="
+                font: 800 11px/1 &quot;Nunito Sans&quot;;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+                color: var(--rd-ink);
+                opacity: 0.75;
+              "
+              >Available for hire</span
+            >
+          </div>
+        </section>
+
+        <section
+          class="page"
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 52px 56px;
+            background: var(--rd-cream);
+            font-family: &quot;Nunito Sans&quot;, system-ui;
+            color: var(--rd-ink);
+          ">
+          <span
+            style="
+              font: 800 11px/1 &quot;Nunito Sans&quot;;
+              letter-spacing: 0.2em;
+              text-transform: uppercase;
+              color: var(--rd-pink-deep);
+            "
+            >01 &#183; Overview</span
+          >
+          <h2
+            style="
+              margin: 0;
+              font:
+                800 42px/1 &quot;Baloo 2&quot;,
+                system-ui;
+              letter-spacing: -0.025em;
+            ">
+            The brief, and what I shipped
+          </h2>
+          <p
+            style="
+              margin: 0;
+              max-width: 62ch;
+              font: 400 15px/1.6 &quot;Nunito Sans&quot;;
+              color: var(--rd-ink-soft);
+            ">
+            Take a loud, playful food-delivery layout as reference and rebuild
+            it as a coffee shop storefront &mdash; but make the motion do real
+            work: cards that stack like a deck and fan out under the scrollbar,
+            a ribbon that draws itself down the page, and an ordering path that
+            never leaves the page.
+          </p>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(4, 1fr);
+              gap: 12px;
+            ">
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                padding: 18px;
+                border-radius: 20px;
+                border: 2.5px solid var(--rd-ink);
+                background: var(--rd-yellow);
+              ">
+              <span
+                style="
+                  font:
+                    800 34px/1 &quot;Baloo 2&quot;,
+                    system-ui;
+                "
+                >11</span
+              ><span style="font: 700 12px/1.3 &quot;Nunito Sans&quot;"
+                >sections</span
+              >
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                padding: 18px;
+                border-radius: 20px;
+                border: 2.5px solid var(--rd-ink);
+                background: var(--rd-pink-soft);
+              ">
+              <span
+                style="
+                  font:
+                    800 34px/1 &quot;Baloo 2&quot;,
+                    system-ui;
+                "
+                >6</span
+              ><span style="font: 700 12px/1.3 &quot;Nunito Sans&quot;"
+                >reusable components</span
+              >
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                padding: 18px;
+                border-radius: 20px;
+                border: 2.5px solid var(--rd-ink);
+                background: var(--rd-violet-soft);
+              ">
+              <span
+                style="
+                  font:
+                    800 34px/1 &quot;Baloo 2&quot;,
+                    system-ui;
+                "
+                >4</span
+              ><span style="font: 700 12px/1.3 &quot;Nunito Sans&quot;"
+                >step order flow</span
+              >
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                padding: 18px;
+                border-radius: 20px;
+                border: 2.5px solid var(--rd-ink);
+                background: var(--rd-coral-soft);
+              ">
+              <span
+                style="
+                  font:
+                    800 34px/1 &quot;Baloo 2&quot;,
+                    system-ui;
+                "
+                >3</span
+              ><span style="font: 700 12px/1.3 &quot;Nunito Sans&quot;"
+                >breakpoints</span
+              >
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px">
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 9px;
+                padding: 20px;
+                border-radius: 20px;
+                border: 2.5px solid var(--rd-ink);
+                background: var(--rd-white);
+              ">
+              <h3
+                style="
+                  margin: 0;
+                  font:
+                    800 18px/1.1 &quot;Baloo 2&quot;,
+                    system-ui;
+                ">
+                The problem
+              </h3>
+              <p
+                style="
+                  margin: 0;
+                  font: 400 13.5px/1.55 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink-soft);
+                ">
+                Reference layouts like this look great in a static mock and fall
+                apart in build: the fun is all in the scroll, and the scroll is
+                where accessibility and performance usually break.
+              </p>
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 9px;
+                padding: 20px;
+                border-radius: 20px;
+                border: 2.5px solid var(--rd-ink);
+                background: var(--rd-white);
+              ">
+              <h3
+                style="
+                  margin: 0;
+                  font:
+                    800 18px/1.1 &quot;Baloo 2&quot;,
+                    system-ui;
+                ">
+                The approach
+              </h3>
+              <p
+                style="
+                  margin: 0;
+                  font: 400 13.5px/1.55 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink-soft);
+                ">
+                Build the correct static layout first, then let GSAP take it
+                apart. Every animated section renders complete with zero
+                animation frames &mdash; motion is strictly additive.
+              </p>
+            </div>
+          </div>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+              padding: 20px;
+              border-radius: 20px;
+              border: 2.5px solid var(--rd-ink);
+              background: var(--rd-ink);
+            ">
+            <h3
+              style="
+                margin: 0;
+                font:
+                  800 18px/1.1 &quot;Baloo 2&quot;,
+                  system-ui;
+                color: var(--rd-yellow);
+              ">
+              Scope
+            </h3>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 6px 22px;
+              ">
+              <span
+                style="
+                  font: 400 13px/1.6 &quot;Nunito Sans&quot;;
+                  color: var(--rd-cream);
+                "
+                >&#8226; Sticky header, cart counter, mobile nav</span
+              >
+              <span
+                style="
+                  font: 400 13px/1.6 &quot;Nunito Sans&quot;;
+                  color: var(--rd-cream);
+                "
+                >&#8226; Hero with floating product frames</span
+              >
+              <span
+                style="
+                  font: 400 13px/1.6 &quot;Nunito Sans&quot;;
+                  color: var(--rd-cream);
+                "
+                >&#8226; Four category entry cards</span
+              >
+              <span
+                style="
+                  font: 400 13px/1.6 &quot;Nunito Sans&quot;;
+                  color: var(--rd-cream);
+                "
+                >&#8226; Pinned deck-to-fan spotlight cards</span
+              >
+              <span
+                style="
+                  font: 400 13px/1.6 &quot;Nunito Sans&quot;;
+                  color: var(--rd-cream);
+                "
+                >&#8226; Scroll-drawn zigzag ribbon &amp; spine</span
+              >
+              <span
+                style="
+                  font: 400 13px/1.6 &quot;Nunito Sans&quot;;
+                  color: var(--rd-cream);
+                "
+                >&#8226; Filterable 12-item menu grid</span
+              >
+              <span
+                style="
+                  font: 400 13px/1.6 &quot;Nunito Sans&quot;;
+                  color: var(--rd-cream);
+                "
+                >&#8226; Product modal with size pricing</span
+              >
+              <span
+                style="
+                  font: 400 13px/1.6 &quot;Nunito Sans&quot;;
+                  color: var(--rd-cream);
+                "
+                >&#8226; Cart drawer with live totals</span
+              >
+              <span
+                style="
+                  font: 400 13px/1.6 &quot;Nunito Sans&quot;;
+                  color: var(--rd-cream);
+                "
+                >&#8226; Three-step checkout &amp; payment</span
+              >
+              <span
+                style="
+                  font: 400 13px/1.6 &quot;Nunito Sans&quot;;
+                  color: var(--rd-cream);
+                "
+                >&#8226; Subscription, reviews, store locator</span
+              >
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="page"
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            padding: 52px 56px;
+            background: var(--rd-cream);
+            font-family: &quot;Nunito Sans&quot;, system-ui;
+            color: var(--rd-ink);
+          ">
+          <span
+            style="
+              font: 800 11px/1 &quot;Nunito Sans&quot;;
+              letter-spacing: 0.2em;
+              text-transform: uppercase;
+              color: var(--rd-pink-deep);
+            "
+            >02 &#183; Landing</span
+          >
+          <h2
+            style="
+              margin: 0;
+              font:
+                800 42px/1 &quot;Baloo 2&quot;,
+                system-ui;
+              letter-spacing: -0.025em;
+            ">
+            Above the fold
+          </h2>
+          <p
+            style="
+              margin: 0;
+              max-width: 64ch;
+              font: 400 14.5px/1.6 &quot;Nunito Sans&quot;;
+              color: var(--rd-ink-soft);
+            ">
+            Flat pink with a halftone dot field instead of a gradient wash. The
+            headline carries a 5px hard yellow shadow &mdash; ink on pink reads
+            at 5.1:1, so nothing is sacrificed for the loud look.
+          </p>
+          <div
+            style="
+              border-radius: 20px;
+              border: 3px solid var(--rd-ink);
+              overflow: hidden;
+              background: var(--rd-white);
+              box-shadow: 0 10px 0 -2px rgba(67, 38, 60, 0.2);
+            ">
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                padding: 9px 14px;
+                background: var(--rd-ink);
+              ">
+              <span
+                style="
+                  width: 9px;
+                  height: 9px;
+                  border-radius: 999px;
+                  background: #ff6058;
+                  display: block;
+                "></span>
+              <span
+                style="
+                  width: 9px;
+                  height: 9px;
+                  border-radius: 999px;
+                  background: #ffbd2e;
+                  display: block;
+                "></span>
+              <span
+                style="
+                  width: 9px;
+                  height: 9px;
+                  border-radius: 999px;
+                  background: #28c93f;
+                  display: block;
+                "></span>
+              <span
+                style="
+                  margin-left: 10px;
+                  font: 600 11px/1 &quot;Nunito Sans&quot;;
+                  color: var(--rd-cream);
+                  opacity: 0.7;
+                "
+                >rumdoul.coffee</span
+              >
+            </div>
+            <img
+              src="shots/hero.png"
+              alt="Rumdoul hero section"
+              style="display: block; width: 100%" />
+          </div>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 12px;
+            ">
+            <div
+              style="
+                padding: 16px;
+                border-radius: 18px;
+                border: 2.5px solid var(--rd-ink);
+                background: var(--rd-white);
+              ">
+              <h3
+                style="
+                  margin: 0 0 6px;
+                  font:
+                    800 15px/1.1 &quot;Baloo 2&quot;,
+                    system-ui;
+                ">
+                Two-tap promise
+              </h3>
+              <p
+                style="
+                  margin: 0;
+                  font: 400 12.5px/1.5 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink-soft);
+                ">
+                Primary CTA goes to the menu, secondary jumps straight into
+                checkout with a default order.
+              </p>
+            </div>
+            <div
+              style="
+                padding: 16px;
+                border-radius: 18px;
+                border: 2.5px solid var(--rd-ink);
+                background: var(--rd-white);
+              ">
+              <h3
+                style="
+                  margin: 0 0 6px;
+                  font:
+                    800 15px/1.1 &quot;Baloo 2&quot;,
+                    system-ui;
+                ">
+                Bleeding frames
+              </h3>
+              <p
+                style="
+                  margin: 0;
+                  font: 400 12.5px/1.5 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink-soft);
+                ">
+                Product photos sit in rotated frames that bob on a 7&ndash;8.5s
+                loop and drop out below 768px.
+              </p>
+            </div>
+            <div
+              style="
+                padding: 16px;
+                border-radius: 18px;
+                border: 2.5px solid var(--rd-ink);
+                background: var(--rd-white);
+              ">
+              <h3
+                style="
+                  margin: 0 0 6px;
+                  font:
+                    800 15px/1.1 &quot;Baloo 2&quot;,
+                    system-ui;
+                ">
+                Rotating stamp
+              </h3>
+              <p
+                style="
+                  margin: 0;
+                  font: 400 12.5px/1.5 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink-soft);
+                ">
+                Text on a circular SVG path, built imperatively so the reference
+                resolves reliably in React.
+              </p>
+            </div>
+          </div>
+          <div
+            style="
+              border-radius: 20px;
+              border: 3px solid var(--rd-ink);
+              overflow: hidden;
+              background: var(--rd-white);
+            ">
+            <img
+              src="shots/club.png"
+              alt="Subscription section"
+              style="display: block; width: 100%" />
+          </div>
+        </section>
+
+        <section
+          class="page"
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 52px 56px;
+            background: var(--rd-cream);
+            font-family: &quot;Nunito Sans&quot;, system-ui;
+            color: var(--rd-ink);
+          ">
+          <span
+            style="
+              font: 800 11px/1 &quot;Nunito Sans&quot;;
+              letter-spacing: 0.2em;
+              text-transform: uppercase;
+              color: var(--rd-pink-deep);
+            "
+            >03 &#183; Signature interaction</span
+          >
+          <h2
+            style="
+              margin: 0;
+              font:
+                800 42px/1 &quot;Baloo 2&quot;,
+                system-ui;
+              letter-spacing: -0.025em;
+            ">
+            Deck to fan, on scroll
+          </h2>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 300px;
+              gap: 18px;
+              align-items: start;
+            ">
+            <div
+              style="
+                border-radius: 20px;
+                border: 3px solid var(--rd-ink);
+                overflow: hidden;
+                background: var(--rd-white);
+                height: 600px;
+              ">
+              <img
+                src="shots/spotlight.png"
+                alt="Spotlight cards fanned out"
+                style="display: block; width: 100%" />
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px">
+              <div
+                style="
+                  padding: 16px;
+                  border-radius: 18px;
+                  border: 2.5px solid var(--rd-ink);
+                  background: var(--rd-violet-soft);
+                ">
+                <span
+                  style="
+                    font: 800 11px/1 &quot;Nunito Sans&quot;;
+                    letter-spacing: 0.14em;
+                    text-transform: uppercase;
+                  "
+                  >Step 1</span
+                >
+                <p
+                  style="
+                    margin: 6px 0 0;
+                    font: 400 12.5px/1.5 &quot;Nunito Sans&quot;;
+                  ">
+                  Four cards render in a plain CSS grid. That is the layout the
+                  page has with JavaScript disabled.
+                </p>
+              </div>
+              <div
+                style="
+                  padding: 16px;
+                  border-radius: 18px;
+                  border: 2.5px solid var(--rd-ink);
+                  background: var(--rd-coral-soft);
+                ">
+                <span
+                  style="
+                    font: 800 11px/1 &quot;Nunito Sans&quot;;
+                    letter-spacing: 0.14em;
+                    text-transform: uppercase;
+                  "
+                  >Step 2</span
+                >
+                <p
+                  style="
+                    margin: 6px 0 0;
+                    font: 400 12.5px/1.5 &quot;Nunito Sans&quot;;
+                  ">
+                  GSAP measures every cell, freezes the cards absolutely at
+                  those coordinates, and pins the section.
+                </p>
+              </div>
+              <div
+                style="
+                  padding: 16px;
+                  border-radius: 18px;
+                  border: 2.5px solid var(--rd-ink);
+                  background: var(--rd-pink-soft);
+                ">
+                <span
+                  style="
+                    font: 800 11px/1 &quot;Nunito Sans&quot;;
+                    letter-spacing: 0.14em;
+                    text-transform: uppercase;
+                  "
+                  >Step 3</span
+                >
+                <p
+                  style="
+                    margin: 6px 0 0;
+                    font: 400 12.5px/1.5 &quot;Nunito Sans&quot;;
+                  ">
+                  A scrubbed
+                  <code
+                    style="
+                      font:
+                        600 11.5px ui-monospace,
+                        Menlo,
+                        monospace;
+                    "
+                    >from()</code
+                  >
+                  timeline pulls them back into a squared-up deck. Scrolling
+                  plays it forward.
+                </p>
+              </div>
+              <div
+                style="
+                  padding: 16px;
+                  border-radius: 18px;
+                  border: 2.5px solid var(--rd-ink);
+                  background: var(--rd-yellow);
+                ">
+                <span
+                  style="
+                    font: 800 11px/1 &quot;Nunito Sans&quot;;
+                    letter-spacing: 0.14em;
+                    text-transform: uppercase;
+                  "
+                  >Re-measure</span
+                >
+                <p
+                  style="
+                    margin: 6px 0 0;
+                    font: 400 12.5px/1.5 &quot;Nunito Sans&quot;;
+                  ">
+                  A
+                  <code
+                    style="
+                      font:
+                        600 11.5px ui-monospace,
+                        Menlo,
+                        monospace;
+                    "
+                    >refreshInit</code
+                  >
+                  hook re-runs the measurement on resize, so the fan never
+                  drifts.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            style="
+              display: flex;
+              gap: 14px;
+              padding: 18px 20px;
+              border-radius: 20px;
+              background: var(--rd-ink);
+            ">
+            <span
+              style="
+                font:
+                  800 26px/1 &quot;Baloo 2&quot;,
+                  system-ui;
+                color: var(--rd-yellow);
+                flex: none;
+              "
+              >&#9755;</span
+            >
+            <p
+              style="
+                margin: 0;
+                font: 600 13.5px/1.55 &quot;Nunito Sans&quot;;
+                color: var(--rd-cream);
+              ">
+              All four cards share one type ramp and one ink colour &mdash; only
+              the ground changes. Each card carries a single hero drink or food
+              item, and hovering slides up an ink bar reading &ldquo;Click to
+              order &#183; pay in 2 taps&rdquo;.
+            </p>
+          </div>
+        </section>
+
+        <section
+          class="page"
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 52px 56px;
+            background: var(--rd-cream);
+            font-family: &quot;Nunito Sans&quot;, system-ui;
+            color: var(--rd-ink);
+          ">
+          <span
+            style="
+              font: 800 11px/1 &quot;Nunito Sans&quot;;
+              letter-spacing: 0.2em;
+              text-transform: uppercase;
+              color: var(--rd-pink-deep);
+            "
+            >04 &#183; Catalogue</span
+          >
+          <h2
+            style="
+              margin: 0;
+              font:
+                800 42px/1 &quot;Baloo 2&quot;,
+                system-ui;
+              letter-spacing: -0.025em;
+            ">
+            Menu &amp; filtering
+          </h2>
+          <p
+            style="
+              margin: 0;
+              max-width: 64ch;
+              font: 400 14.5px/1.6 &quot;Nunito Sans&quot;;
+              color: var(--rd-ink-soft);
+            ">
+            Twelve items across four categories. The sidebar holds the filter,
+            the reassurance list and a &ldquo;surprise me&rdquo; shortcut that
+            drops four bestsellers straight into the bag.
+          </p>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 260px;
+              gap: 16px;
+              align-items: start;
+            ">
+            <div
+              style="
+                border-radius: 20px;
+                border: 3px solid var(--rd-ink);
+                overflow: hidden;
+                background: var(--rd-white);
+                height: 520px;
+              ">
+              <img
+                src="shots/menu.png"
+                alt="Menu grid with filter sidebar"
+                style="display: block; width: 100%" />
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 11px">
+              <div
+                style="
+                  padding: 15px;
+                  border-radius: 18px;
+                  border: 2.5px solid var(--rd-ink);
+                  background: var(--rd-white);
+                ">
+                <h3
+                  style="
+                    margin: 0 0 5px;
+                    font:
+                      800 15px/1.1 &quot;Baloo 2&quot;,
+                      system-ui;
+                  ">
+                  Sidebar that folds
+                </h3>
+                <p
+                  style="
+                    margin: 0;
+                    font: 400 12px/1.5 &quot;Nunito Sans&quot;;
+                    color: var(--rd-ink-soft);
+                  ">
+                  Flexbox holy-grail sizing &mdash; the filter sits beside the
+                  grid on desktop and becomes a bar above it when the grid runs
+                  out of room. No media query.
+                </p>
+              </div>
+              <div
+                style="
+                  padding: 15px;
+                  border-radius: 18px;
+                  border: 2.5px solid var(--rd-ink);
+                  background: var(--rd-white);
+                ">
+                <h3
+                  style="
+                    margin: 0 0 5px;
+                    font:
+                      800 15px/1.1 &quot;Baloo 2&quot;,
+                      system-ui;
+                  ">
+                  Card hover
+                </h3>
+                <p
+                  style="
+                    margin: 0;
+                    font: 400 12px/1.5 &quot;Nunito Sans&quot;;
+                    color: var(--rd-ink-soft);
+                  ">
+                  Lift, tilt, photo zoom to 1.10, and the order cue slides over
+                  the image &mdash; one paused GSAP timeline per card, reversed
+                  on leave.
+                </p>
+              </div>
+              <div
+                style="
+                  padding: 15px;
+                  border-radius: 18px;
+                  border: 2.5px solid var(--rd-ink);
+                  background: var(--rd-white);
+                ">
+                <h3
+                  style="
+                    margin: 0 0 5px;
+                    font:
+                      800 15px/1.1 &quot;Baloo 2&quot;,
+                      system-ui;
+                  ">
+                  Two targets, one card
+                </h3>
+                <p
+                  style="
+                    margin: 0;
+                    font: 400 12px/1.5 &quot;Nunito Sans&quot;;
+                    color: var(--rd-ink-soft);
+                  ">
+                  The card opens the detail modal; the Add button stops
+                  propagation and drops straight into the bag.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            style="
+              border-radius: 20px;
+              border: 3px solid var(--rd-ink);
+              overflow: hidden;
+              background: var(--rd-white);
+              height: 190px;
+            ">
+            <img
+              src="shots/reviews.png"
+              alt="Reviews section"
+              style="display: block; width: 100%" />
+          </div>
+        </section>
+
+        <section
+          class="page"
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 52px 56px;
+            background: var(--rd-cream);
+            font-family: &quot;Nunito Sans&quot;, system-ui;
+            color: var(--rd-ink);
+          ">
+          <span
+            style="
+              font: 800 11px/1 &quot;Nunito Sans&quot;;
+              letter-spacing: 0.2em;
+              text-transform: uppercase;
+              color: var(--rd-pink-deep);
+            "
+            >05 &#183; Order flow</span
+          >
+          <h2
+            style="
+              margin: 0;
+              font:
+                800 42px/1 &quot;Baloo 2&quot;,
+                system-ui;
+              letter-spacing: -0.025em;
+            ">
+            From hover to paid
+          </h2>
+          <p
+            style="
+              margin: 0;
+              max-width: 64ch;
+              font: 400 14.5px/1.6 &quot;Nunito Sans&quot;;
+              color: var(--rd-ink-soft);
+            ">
+            Four states, no page loads: hover cue &rarr; product detail with
+            size pricing &rarr; cart drawer with live totals and a free-delivery
+            threshold &rarr; three-step checkout ending in a confirmed order
+            number.
+          </p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px">
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <span
+                style="
+                  font: 800 11px/1 &quot;Nunito Sans&quot;;
+                  letter-spacing: 0.14em;
+                  text-transform: uppercase;
+                  color: var(--rd-pink-deep);
+                "
+                >Product detail</span
+              >
+              <div
+                style="
+                  border-radius: 18px;
+                  border: 3px solid var(--rd-ink);
+                  overflow: hidden;
+                  background: var(--rd-white);
+                ">
+                <img
+                  src="shots/product.png"
+                  alt="Product detail modal"
+                  style="display: block; width: 100%" />
+              </div>
+              <p
+                style="
+                  margin: 0;
+                  font: 400 12.5px/1.5 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink-soft);
+                ">
+                Size changes the price live (&minus;$0.50 / base / +$0.80). Two
+                exits: add and pay, or just add.
+              </p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <span
+                style="
+                  font: 800 11px/1 &quot;Nunito Sans&quot;;
+                  letter-spacing: 0.14em;
+                  text-transform: uppercase;
+                  color: var(--rd-pink-deep);
+                "
+                >Payment step</span
+              >
+              <div
+                style="
+                  border-radius: 18px;
+                  border: 3px solid var(--rd-ink);
+                  overflow: hidden;
+                  background: var(--rd-white);
+                ">
+                <img
+                  src="shots/pay.png"
+                  alt="Payment step"
+                  style="display: block; width: 100%" />
+              </div>
+              <p
+                style="
+                  margin: 0;
+                  font: 400 12.5px/1.5 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink-soft);
+                ">
+                Local rails first &mdash; ABA Pay and Wing alongside card, which
+                is what people in Phnom Penh actually use.
+              </p>
+            </div>
+          </div>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 260px 1fr;
+              gap: 16px;
+              align-items: start;
+            ">
+            <div
+              style="
+                border-radius: 18px;
+                border: 3px solid var(--rd-ink);
+                overflow: hidden;
+                background: var(--rd-white);
+                height: 330px;
+              ">
+              <img
+                src="shots/cart.png"
+                alt="Cart drawer"
+                style="display: block; width: 100%" />
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 11px">
+              <div
+                style="
+                  padding: 15px;
+                  border-radius: 18px;
+                  border: 2.5px solid var(--rd-ink);
+                  background: var(--rd-yellow-soft);
+                ">
+                <h3
+                  style="
+                    margin: 0 0 5px;
+                    font:
+                      800 15px/1.1 &quot;Baloo 2&quot;,
+                      system-ui;
+                  ">
+                  Live totals
+                </h3>
+                <p
+                  style="
+                    margin: 0;
+                    font: 400 12.5px/1.5 &quot;Nunito Sans&quot;;
+                    color: var(--rd-ink-soft);
+                  ">
+                  Subtotal, delivery and total recompute on every quantity
+                  change. Delivery flips to free at $12 &mdash; the threshold is
+                  a component prop, not a magic number.
+                </p>
+              </div>
+              <div
+                style="
+                  padding: 15px;
+                  border-radius: 18px;
+                  border: 2.5px solid var(--rd-ink);
+                  background: var(--rd-pink-soft);
+                ">
+                <h3
+                  style="
+                    margin: 0 0 5px;
+                    font:
+                      800 15px/1.1 &quot;Baloo 2&quot;,
+                      system-ui;
+                  ">
+                  Shared photo slots
+                </h3>
+                <p
+                  style="
+                    margin: 0;
+                    font: 400 12.5px/1.5 &quot;Nunito Sans&quot;;
+                    color: var(--rd-ink-soft);
+                  ">
+                  Drawer thumbnails key off the same slot id as the menu card,
+                  so one uploaded photo shows everywhere the item appears.
+                </p>
+              </div>
+              <div
+                style="
+                  padding: 15px;
+                  border-radius: 18px;
+                  border: 2.5px solid var(--rd-ink);
+                  background: var(--rd-white);
+                ">
+                <h3
+                  style="
+                    margin: 0 0 5px;
+                    font:
+                      800 15px/1.1 &quot;Baloo 2&quot;,
+                      system-ui;
+                  ">
+                  Empty state
+                </h3>
+                <p
+                  style="
+                    margin: 0;
+                    font: 400 12.5px/1.5 &quot;Nunito Sans&quot;;
+                    color: var(--rd-ink-soft);
+                  ">
+                  &ldquo;Nothing brewing yet&rdquo; with a route back to the
+                  menu &mdash; written in the brand voice, not the
+                  framework&rsquo;s.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="page"
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            padding: 52px 56px;
+            background: var(--rd-cream);
+            font-family: &quot;Nunito Sans&quot;, system-ui;
+            color: var(--rd-ink);
+          ">
+          <span
+            style="
+              font: 800 11px/1 &quot;Nunito Sans&quot;;
+              letter-spacing: 0.2em;
+              text-transform: uppercase;
+              color: var(--rd-pink-deep);
+            "
+            >06 &#183; System</span
+          >
+          <h2
+            style="
+              margin: 0;
+              font:
+                800 42px/1 &quot;Baloo 2&quot;,
+                system-ui;
+              letter-spacing: -0.025em;
+            ">
+            One theme file, six components
+          </h2>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(6, 1fr);
+              gap: 9px;
+            ">
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                border-radius: 14px;
+                overflow: hidden;
+                border: 2.5px solid var(--rd-ink);
+              ">
+              <span style="height: 56px; background: #fdf2e4"></span
+              ><span
+                style="
+                  padding: 7px 8px;
+                  background: var(--rd-white);
+                  font: 700 9px/1.4 &quot;Nunito Sans&quot;;
+                "
+                >#FDF2E4</span
+              >
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                border-radius: 14px;
+                overflow: hidden;
+                border: 2.5px solid var(--rd-ink);
+              ">
+              <span style="height: 56px; background: #f76d9e"></span
+              ><span
+                style="
+                  padding: 7px 8px;
+                  background: var(--rd-white);
+                  font: 700 9px/1.4 &quot;Nunito Sans&quot;;
+                "
+                >#F76D9E</span
+              >
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                border-radius: 14px;
+                overflow: hidden;
+                border: 2.5px solid var(--rd-ink);
+              ">
+              <span style="height: 56px; background: #ffd93b"></span
+              ><span
+                style="
+                  padding: 7px 8px;
+                  background: var(--rd-white);
+                  font: 700 9px/1.4 &quot;Nunito Sans&quot;;
+                "
+                >#FFD93B</span
+              >
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                border-radius: 14px;
+                overflow: hidden;
+                border: 2.5px solid var(--rd-ink);
+              ">
+              <span style="height: 56px; background: #43263c"></span
+              ><span
+                style="
+                  padding: 7px 8px;
+                  background: var(--rd-white);
+                  font: 700 9px/1.4 &quot;Nunito Sans&quot;;
+                "
+                >#43263C</span
+              >
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                border-radius: 14px;
+                overflow: hidden;
+                border: 2.5px solid var(--rd-ink);
+              ">
+              <span style="height: 56px; background: #c9bef5"></span
+              ><span
+                style="
+                  padding: 7px 8px;
+                  background: var(--rd-white);
+                  font: 700 9px/1.4 &quot;Nunito Sans&quot;;
+                "
+                >#C9BEF5</span
+              >
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                border-radius: 14px;
+                overflow: hidden;
+                border: 2.5px solid var(--rd-ink);
+              ">
+              <span style="height: 56px; background: #ffae94"></span
+              ><span
+                style="
+                  padding: 7px 8px;
+                  background: var(--rd-white);
+                  font: 700 9px/1.4 &quot;Nunito Sans&quot;;
+                "
+                >#FFAE94</span
+              >
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px">
+            <div
+              style="
+                padding: 18px;
+                border-radius: 20px;
+                border: 2.5px solid var(--rd-ink);
+                background: var(--rd-white);
+              ">
+              <p
+                style="
+                  margin: 0 0 4px;
+                  font:
+                    800 30px/1 &quot;Baloo 2&quot;,
+                    system-ui;
+                  letter-spacing: -0.02em;
+                ">
+                Baloo 2
+              </p>
+              <p
+                style="
+                  margin: 0;
+                  font: 400 12.5px/1.5 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink-soft);
+                ">
+                Display &mdash; 700/800, headings, prices, numerals.
+              </p>
+            </div>
+            <div
+              style="
+                padding: 18px;
+                border-radius: 20px;
+                border: 2.5px solid var(--rd-ink);
+                background: var(--rd-white);
+              ">
+              <p
+                style="
+                  margin: 0 0 4px;
+                  font: 700 30px/1 &quot;Nunito Sans&quot;;
+                ">
+                Nunito Sans
+              </p>
+              <p
+                style="
+                  margin: 0;
+                  font: 400 12.5px/1.5 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink-soft);
+                ">
+                Text &amp; UI &mdash; 400 body, 800 uppercase labels.
+              </p>
+            </div>
+          </div>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 11px;
+            ">
+            <div
+              style="
+                padding: 15px;
+                border-radius: 18px;
+                border: 2.5px solid var(--rd-ink);
+                background: var(--rd-white);
+              ">
+              <h3
+                style="
+                  margin: 0 0 4px;
+                  font:
+                    800 14.5px/1.1 &quot;Baloo 2&quot;,
+                    system-ui;
+                ">
+                MenuCard
+              </h3>
+              <p
+                style="
+                  margin: 0;
+                  font: 400 11.5px/1.45 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink-soft);
+                ">
+                Grid item, 12 instances
+              </p>
+            </div>
+            <div
+              style="
+                padding: 15px;
+                border-radius: 18px;
+                border: 2.5px solid var(--rd-ink);
+                background: var(--rd-white);
+              ">
+              <h3
+                style="
+                  margin: 0 0 4px;
+                  font:
+                    800 14.5px/1.1 &quot;Baloo 2&quot;,
+                    system-ui;
+                ">
+                SpotlightCard
+              </h3>
+              <p
+                style="
+                  margin: 0;
+                  font: 400 11.5px/1.45 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink-soft);
+                ">
+                Pinned deck, 4 instances
+              </p>
+            </div>
+            <div
+              style="
+                padding: 15px;
+                border-radius: 18px;
+                border: 2.5px solid var(--rd-ink);
+                background: var(--rd-white);
+              ">
+              <h3
+                style="
+                  margin: 0 0 4px;
+                  font:
+                    800 14.5px/1.1 &quot;Baloo 2&quot;,
+                    system-ui;
+                ">
+                CategoryCard
+              </h3>
+              <p
+                style="
+                  margin: 0;
+                  font: 400 11.5px/1.45 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink-soft);
+                ">
+                Entry strip, 4 instances
+              </p>
+            </div>
+            <div
+              style="
+                padding: 15px;
+                border-radius: 18px;
+                border: 2.5px solid var(--rd-ink);
+                background: var(--rd-white);
+              ">
+              <h3
+                style="
+                  margin: 0 0 4px;
+                  font:
+                    800 14.5px/1.1 &quot;Baloo 2&quot;,
+                    system-ui;
+                ">
+                ZigzagBand
+              </h3>
+              <p
+                style="
+                  margin: 0;
+                  font: 400 11.5px/1.45 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink-soft);
+                ">
+                Horizontal draw + text path
+              </p>
+            </div>
+            <div
+              style="
+                padding: 15px;
+                border-radius: 18px;
+                border: 2.5px solid var(--rd-ink);
+                background: var(--rd-white);
+              ">
+              <h3
+                style="
+                  margin: 0 0 4px;
+                  font:
+                    800 14.5px/1.1 &quot;Baloo 2&quot;,
+                    system-ui;
+                ">
+                ZigzagSpine
+              </h3>
+              <p
+                style="
+                  margin: 0;
+                  font: 400 11.5px/1.45 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink-soft);
+                ">
+                Vertical scroll progress
+              </p>
+            </div>
+            <div
+              style="
+                padding: 15px;
+                border-radius: 18px;
+                border: 2.5px solid var(--rd-ink);
+                background: var(--rd-white);
+              ">
+              <h3
+                style="
+                  margin: 0 0 4px;
+                  font:
+                    800 14.5px/1.1 &quot;Baloo 2&quot;,
+                    system-ui;
+                ">
+                StickerBadge
+              </h3>
+              <p
+                style="
+                  margin: 0;
+                  font: 400 11.5px/1.45 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink-soft);
+                ">
+                Rotating circular stamp
+              </p>
+            </div>
+          </div>
+          <div
+            style="
+              border-radius: 20px;
+              border: 3px solid var(--rd-ink);
+              overflow: hidden;
+              background: var(--rd-white);
+            ">
+            <img
+              src="shots/footer.png"
+              alt="Footer"
+              style="display: block; width: 100%" />
+          </div>
+        </section>
+
+        <section
+          class="page"
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            padding: 52px 56px;
+            background: var(--rd-cream);
+            font-family: &quot;Nunito Sans&quot;, system-ui;
+            color: var(--rd-ink);
+          ">
+          <span
+            style="
+              font: 800 11px/1 &quot;Nunito Sans&quot;;
+              letter-spacing: 0.2em;
+              text-transform: uppercase;
+              color: var(--rd-pink-deep);
+            "
+            >07 &#183; Build</span
+          >
+          <h2
+            style="
+              margin: 0;
+              font:
+                800 42px/1 &quot;Baloo 2&quot;,
+                system-ui;
+              letter-spacing: -0.025em;
+            ">
+            Tech stack &amp; my role
+          </h2>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px">
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                padding: 20px;
+                border-radius: 20px;
+                border: 2.5px solid var(--rd-ink);
+                background: var(--rd-white);
+              ">
+              <h3
+                style="
+                  margin: 0;
+                  font:
+                    800 18px/1.1 &quot;Baloo 2&quot;,
+                    system-ui;
+                ">
+                Stack
+              </h3>
+              <div style="display: flex; flex-direction: column; gap: 7px">
+                <span
+                  style="
+                    font: 400 13px/1.5 &quot;Nunito Sans&quot;;
+                    color: var(--rd-ink-soft);
+                  "
+                  ><strong style="color: var(--rd-ink)">React</strong> &mdash;
+                  one component per UI element, props-driven, no global store
+                  needed at this size.</span
+                >
+                <span
+                  style="
+                    font: 400 13px/1.5 &quot;Nunito Sans&quot;;
+                    color: var(--rd-ink-soft);
+                  "
+                  ><strong style="color: var(--rd-ink)"
+                    >GSAP + ScrollTrigger</strong
+                  >
+                  &mdash; pinning, scrubbing, matchMedia breakpoints,
+                  context-scoped cleanup.</span
+                >
+                <span
+                  style="
+                    font: 400 13px/1.5 &quot;Nunito Sans&quot;;
+                    color: var(--rd-ink-soft);
+                  "
+                  ><strong style="color: var(--rd-ink)">Tailwind CSS</strong>
+                  &mdash; breakpoint utilities layered over an inline-style base
+                  so first paint never waits on a stylesheet.</span
+                >
+                <span
+                  style="
+                    font: 400 13px/1.5 &quot;Nunito Sans&quot;;
+                    color: var(--rd-ink-soft);
+                  "
+                  ><strong style="color: var(--rd-ink)">SVG</strong> &mdash;
+                  ribbon paths, text-on-path, dash-offset drawing, the flower
+                  mark.</span
+                >
+              </div>
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                padding: 20px;
+                border-radius: 20px;
+                border: 2.5px solid var(--rd-ink);
+                background: var(--rd-ink);
+              ">
+              <h3
+                style="
+                  margin: 0;
+                  font:
+                    800 18px/1.1 &quot;Baloo 2&quot;,
+                    system-ui;
+                  color: var(--rd-yellow);
+                ">
+                My role
+              </h3>
+              <p
+                style="
+                  margin: 0;
+                  font: 400 13px/1.55 &quot;Nunito Sans&quot;;
+                  color: var(--rd-cream);
+                  opacity: 0.88;
+                ">
+                End to end: brand direction, colour and type system, wireframes,
+                high-fidelity UI, motion design, and the front-end build.
+                Copywriting for every screen is mine too.
+              </p>
+              <div
+                style="
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 7px;
+                  margin-top: 4px;
+                ">
+                <span
+                  style="
+                    padding: 6px 12px 5px;
+                    border-radius: 999px;
+                    border: 2px solid var(--rd-yellow);
+                    font: 800 10.5px/1 &quot;Nunito Sans&quot;;
+                    letter-spacing: 0.1em;
+                    text-transform: uppercase;
+                    color: var(--rd-yellow);
+                  "
+                  >Brand</span
+                >
+                <span
+                  style="
+                    padding: 6px 12px 5px;
+                    border-radius: 999px;
+                    border: 2px solid var(--rd-yellow);
+                    font: 800 10.5px/1 &quot;Nunito Sans&quot;;
+                    letter-spacing: 0.1em;
+                    text-transform: uppercase;
+                    color: var(--rd-yellow);
+                  "
+                  >UI design</span
+                >
+                <span
+                  style="
+                    padding: 6px 12px 5px;
+                    border-radius: 999px;
+                    border: 2px solid var(--rd-yellow);
+                    font: 800 10.5px/1 &quot;Nunito Sans&quot;;
+                    letter-spacing: 0.1em;
+                    text-transform: uppercase;
+                    color: var(--rd-yellow);
+                  "
+                  >Motion</span
+                >
+                <span
+                  style="
+                    padding: 6px 12px 5px;
+                    border-radius: 999px;
+                    border: 2px solid var(--rd-yellow);
+                    font: 800 10.5px/1 &quot;Nunito Sans&quot;;
+                    letter-spacing: 0.1em;
+                    text-transform: uppercase;
+                    color: var(--rd-yellow);
+                  "
+                  >Front-end</span
+                >
+                <span
+                  style="
+                    padding: 6px 12px 5px;
+                    border-radius: 999px;
+                    border: 2px solid var(--rd-yellow);
+                    font: 800 10.5px/1 &quot;Nunito Sans&quot;;
+                    letter-spacing: 0.1em;
+                    text-transform: uppercase;
+                    color: var(--rd-yellow);
+                  "
+                  >Copy</span
+                >
+              </div>
+            </div>
+          </div>
+          <h3
+            style="
+              margin: 4px 0 0;
+              font:
+                800 22px/1 &quot;Baloo 2&quot;,
+                system-ui;
+            ">
+            Engineering decisions worth naming
+          </h3>
+          <div style="display: flex; flex-direction: column; gap: 10px">
+            <div
+              style="
+                display: flex;
+                gap: 14px;
+                padding: 16px 18px;
+                border-radius: 18px;
+                border: 2.5px solid var(--rd-ink);
+                background: var(--rd-white);
+              ">
+              <span
+                style="
+                  flex: none;
+                  font:
+                    800 15px/1.3 &quot;Baloo 2&quot;,
+                    system-ui;
+                  color: var(--rd-pink-deep);
+                "
+                >01</span
+              >
+              <p
+                style="
+                  margin: 0;
+                  font: 400 13px/1.55 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink-soft);
+                ">
+                <strong style="color: var(--rd-ink)"
+                  >Motion never gates content.</strong
+                >
+                Every scroll tween uses
+                <code
+                  style="
+                    font:
+                      600 12px ui-monospace,
+                      Menlo,
+                      monospace;
+                  "
+                  >immediateRender: false</code
+                >, so a backgrounded tab, a reduced-motion setting or a print
+                render still shows a complete page.
+              </p>
+            </div>
+            <div
+              style="
+                display: flex;
+                gap: 14px;
+                padding: 16px 18px;
+                border-radius: 18px;
+                border: 2.5px solid var(--rd-ink);
+                background: var(--rd-white);
+              ">
+              <span
+                style="
+                  flex: none;
+                  font:
+                    800 15px/1.3 &quot;Baloo 2&quot;,
+                    system-ui;
+                  color: var(--rd-pink-deep);
+                "
+                >02</span
+              >
+              <p
+                style="
+                  margin: 0;
+                  font: 400 13px/1.55 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink-soft);
+                ">
+                <strong style="color: var(--rd-ink)">Scoped teardown.</strong>
+                Each component owns a
+                <code
+                  style="
+                    font:
+                      600 12px ui-monospace,
+                      Menlo,
+                      monospace;
+                  "
+                  >gsap.context()</code
+                >
+                and reverts only its own tweens, so a hot reload in one card
+                can&rsquo;t kill the ScrollTriggers of another.
+              </p>
+            </div>
+            <div
+              style="
+                display: flex;
+                gap: 14px;
+                padding: 16px 18px;
+                border-radius: 18px;
+                border: 2.5px solid var(--rd-ink);
+                background: var(--rd-white);
+              ">
+              <span
+                style="
+                  flex: none;
+                  font:
+                    800 15px/1.3 &quot;Baloo 2&quot;,
+                    system-ui;
+                  color: var(--rd-pink-deep);
+                "
+                >03</span
+              >
+              <p
+                style="
+                  margin: 0;
+                  font: 400 13px/1.55 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink-soft);
+                ">
+                <strong style="color: var(--rd-ink)"
+                  >Intrinsic responsiveness.</strong
+                >
+                Layout is
+                <code
+                  style="
+                    font:
+                      600 12px ui-monospace,
+                      Menlo,
+                      monospace;
+                  "
+                  >auto-fit/minmax()</code
+                >,
+                <code
+                  style="
+                    font:
+                      600 12px ui-monospace,
+                      Menlo,
+                      monospace;
+                  "
+                  >clamp()</code
+                >
+                and flex-wrap; breakpoints only handle what CSS can&rsquo;t
+                infer, like hiding the desktop nav.
+              </p>
+            </div>
+            <div
+              style="
+                display: flex;
+                gap: 14px;
+                padding: 16px 18px;
+                border-radius: 18px;
+                border: 2.5px solid var(--rd-ink);
+                background: var(--rd-white);
+              ">
+              <span
+                style="
+                  flex: none;
+                  font:
+                    800 15px/1.3 &quot;Baloo 2&quot;,
+                    system-ui;
+                  color: var(--rd-pink-deep);
+                "
+                >04</span
+              >
+              <p
+                style="
+                  margin: 0;
+                  font: 400 13px/1.55 &quot;Nunito Sans&quot;;
+                  color: var(--rd-ink-soft);
+                ">
+                <strong style="color: var(--rd-ink)"
+                  >Pure state updates.</strong
+                >
+                Cart quantities are updated immutably, which is what keeps the
+                counter honest under React&rsquo;s double-invoked updaters in
+                development.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="page"
+          style="
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 60px 56px;
+            background: var(--rd-ink);
+            font-family: &quot;Nunito Sans&quot;, system-ui;
+            overflow: hidden;
+          ">
+          <div
+            style="
+              position: absolute;
+              inset: 0;
+              opacity: 0.22;
+              background:
+                radial-gradient(circle at 18% 22%, #f76d9e 0, transparent 42%),
+                radial-gradient(circle at 82% 78%, #ffd93b 0, transparent 44%);
+            "></div>
+          <div
+            style="
+              position: relative;
+              display: flex;
+              align-items: center;
+              gap: 12px;
+            ">
+            <span
+              style="
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 46px;
+                height: 46px;
+                border-radius: 999px;
+                background: var(--rd-yellow);
+              ">
+              <svg viewBox="0 0 24 24" style="width: 27px; height: 27px">
+                <g fill="#43263C">
+                  <ellipse cx="12" cy="5.6" rx="2.5" ry="4.4"></ellipse>
+                  <ellipse cx="12" cy="18.4" rx="2.5" ry="4.4"></ellipse>
+                  <ellipse cx="5.6" cy="12" rx="4.4" ry="2.5"></ellipse>
+                  <ellipse cx="18.4" cy="12" rx="4.4" ry="2.5"></ellipse>
+                </g>
+                <circle cx="12" cy="12" r="2.6" fill="#DE3372"></circle>
+              </svg>
+            </span>
+            <span
+              style="
+                font:
+                  800 26px/1 &quot;Baloo 2&quot;,
+                  system-ui;
+                color: var(--rd-cream);
+              "
+              >Rumdoul</span
+            >
+          </div>
+          <div
+            style="
+              position: relative;
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+            ">
+            <h2
+              style="
+                margin: 0;
+                font:
+                  800 60px/0.97 &quot;Baloo 2&quot;,
+                  system-ui;
+                letter-spacing: -0.03em;
+                color: var(--rd-cream);
+              ">
+              Need something<br />like this built?
+            </h2>
+            <p
+              style="
+                margin: 0;
+                max-width: 44ch;
+                font: 400 16.5px/1.65 &quot;Nunito Sans&quot;;
+                color: var(--rd-cream);
+                opacity: 0.85;
+              ">
+              I design and build marketing sites, storefronts and product UI
+              &mdash; from the brand system down to the scroll timings. Happy to
+              start with a single page or take the whole thing.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px">
+              <span
+                style="
+                  padding: 12px 20px 11px;
+                  border-radius: 999px;
+                  background: var(--rd-yellow);
+                  font: 800 12.5px/1 &quot;Nunito Sans&quot;;
+                  letter-spacing: 0.08em;
+                  text-transform: uppercase;
+                  color: var(--rd-ink);
+                "
+                >Landing pages</span
+              >
+              <span
+                style="
+                  padding: 12px 20px 11px;
+                  border-radius: 999px;
+                  background: var(--rd-pink);
+                  font: 800 12.5px/1 &quot;Nunito Sans&quot;;
+                  letter-spacing: 0.08em;
+                  text-transform: uppercase;
+                  color: var(--rd-ink);
+                "
+                >Ecommerce UI</span
+              >
+              <span
+                style="
+                  padding: 12px 20px 11px;
+                  border-radius: 999px;
+                  background: var(--rd-violet-soft);
+                  font: 800 12.5px/1 &quot;Nunito Sans&quot;;
+                  letter-spacing: 0.08em;
+                  text-transform: uppercase;
+                  color: var(--rd-ink);
+                "
+                >Scroll animation</span
+              >
+              <span
+                style="
+                  padding: 12px 20px 11px;
+                  border-radius: 999px;
+                  background: var(--rd-coral-soft);
+                  font: 800 12.5px/1 &quot;Nunito Sans&quot;;
+                  letter-spacing: 0.08em;
+                  text-transform: uppercase;
+                  color: var(--rd-ink);
+                "
+                >Design systems</span
+              >
+            </div>
+          </div>
+          <div
+            style="
+              position: relative;
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: space-between;
+              align-items: flex-end;
+              gap: 20px;
+              padding-top: 24px;
+              border-top: 2px solid rgba(253, 242, 228, 0.3);
+            ">
+            <div style="display: flex; flex-direction: column; gap: 5px">
+              <span
+                style="
+                  font: 800 11px/1 &quot;Nunito Sans&quot;;
+                  letter-spacing: 0.18em;
+                  text-transform: uppercase;
+                  color: var(--rd-yellow);
+                "
+                >Get in touch</span
+              >
+              <span
+                style="
+                  font:
+                    800 26px/1.2 &quot;Baloo 2&quot;,
+                    system-ui;
+                  color: var(--rd-cream);
+                "
+                >Sean Manutnithya</span
+              >
+              <a
+                href="mailto:sean.manutnithya.cs@gmail.com"
+                style="
+                  font: 600 16px/1.4 &quot;Nunito Sans&quot;;
+                  color: var(--rd-yellow);
+                "
+                >sean.manutnithya.cs@gmail.com</a
+              >
+            </div>
+            <span
+              style="
+                font: 400 12px/1.5 &quot;Nunito Sans&quot;;
+                color: var(--rd-cream);
+                opacity: 0.6;
+                text-align: right;
+              "
+              >&copy; 2026 Sean Manutnithya<br />Rumdoul is a concept brand
+              created for portfolio purposes.</span
+            >
+          </div>
+        </section>
+      </doc-page>
+    </x-dc>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+.rd-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+}
+
+.rd-logo__disc {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  border-radius: 999px;
+  background: var(--rd-yellow);
+  border: 2.5px solid var(--rd-ink);
+}
+
+.rd-logo--lg .rd-logo__disc {
+  border-width: 3px;
+}
+
+.rd-logo__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.rd-logo__name {
+  font-family: var(--rd-font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.rd-logo__name--ink {
+  color: var(--rd-ink);
+}
+
+.rd-logo__name--cream {
+  color: var(--rd-cream);
+}
+
+.rd-logo__khmer {
+  margin-top: 3px;
+  font-family: var(--rd-font-khmer);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--rd-pink-deep);
+}

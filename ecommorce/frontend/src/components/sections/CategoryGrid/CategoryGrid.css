@@ -1,0 +1,12 @@
+.rd-category-grid {
+  position: relative;
+  padding: 8px 0 clamp(48px, 6vw, 86px);
+}
+
+.rd-category-grid__grid {
+  width: min(94vw, 1320px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(258px, 1fr));
+  gap: 18px;
+}

@@ -7,7 +7,7 @@ import StatCard from "@/components/cards/StatCard";
 import CardTabs from "@/components/features/studentDetail/components/CardTabs";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { StudentDetailProvider } from "@/context/StudentDetailContext";
+import { StudentProvider } from "@/context/StudentContext";
 const StudentDetail = () => {
   useGSAP(() => {
     const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
@@ -43,7 +43,7 @@ const StudentDetail = () => {
       );
   }, []);
   return (
-    <StudentDetailProvider>
+    <StudentProvider>
       <main className="main">
         <div className="page">
           <div className="page-head">
@@ -66,7 +66,7 @@ const StudentDetail = () => {
           </div>
 
           {/* <!-- ============ Profile header ============ --> */}
-          <ProfileHeader />
+          <ProfileHeader studentId={studentId} />
 
           {/* <!-- ============ Stat cards ============ --> */}
           <section className="stat-grid">
@@ -85,7 +85,7 @@ const StudentDetail = () => {
           <CardTabs />
         </div>
       </main>
-    </StudentDetailProvider>
+    </StudentProvider>
   );
 };
 

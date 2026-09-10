@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Noto+Sans+Khmer:wght@500;700&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,600;6..12,700;6..12,800&display=swap');
+
+/*
+ * Rumdoul design tokens — single source of truth for every color used
+ * across the app. Components reference these custom properties instead
+ * of hard-coding hex values, so the whole theme can be re-skinned here.
+ */
+:root {
+  --rd-cream: #fdf2e4;
+  --rd-cream-2: #fff9f0;
+  --rd-pink: #f76d9e;
+  --rd-pink-deep: #de3372;
+  --rd-pink-soft: #ffd3e2;
+  --rd-yellow: #ffd93b;
+  --rd-yellow-soft: #fff0ad;
+  --rd-ink: #43263c;
+  --rd-ink-soft: #7a5a6f;
+  --rd-violet-soft: #c9bef5;
+  --rd-coral-soft: #ffae94;
+  --rd-white: #ffffff;
+  --rd-ember: #f0532b;
+  --rd-leaf: #3f8f6b;
+
+  --rd-font-display: 'Baloo 2', system-ui, sans-serif;
+  --rd-font-text: 'Nunito Sans', system-ui, sans-serif;
+  --rd-font-khmer: 'Noto Sans Khmer', system-ui, sans-serif;
+
+  /* motion timing, shared by every gsap hook (see src/theme/motion.js) */
+  --rd-ease-out: power3.out;
+  --rd-shadow-hard: 0 8px 0 -1px rgba(67, 38, 60, 0.16);
+
+  color-scheme: light;
+  color: var(--rd-ink);
+  background: var(--rd-cream);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--rd-cream);
+  color: var(--rd-ink);
+  font-family: var(--rd-font-text);
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--rd-pink-deep);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--rd-ink);
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--rd-yellow);
+  color: var(--rd-ink);
+}
+
+@keyframes rd-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes rd-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--r, 0deg));
+  }
+  50% {
+    transform: translateY(-14px) rotate(var(--r, 0deg));
+  }
+}
+
+@keyframes rd-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
