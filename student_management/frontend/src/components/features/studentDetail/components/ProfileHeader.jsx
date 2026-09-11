@@ -1,21 +1,33 @@
-import React, { useRef, useState } from "react";
-import { Save, Mail, Phone, MapPin, Pencil, Trash2 } from "lucide-react";
+import React from "react";
+import { Save, Phone, Pencil, Trash2, Mail } from "lucide-react";
 import { Modal } from "@/components/ui";
 import { useStudent } from "@/context/StudentContext";
 import { Button } from "@/components/ui";
 import StudentDetailFormModal from "./StudentDetailFormModal";
-
-const ProfileHeader = ({ studentId }) => {
-  const { students, modalOpen, openEdit, closeModal, handleSave } =
-    useStudent();
-
+import stu001 from "@/./assets/imgs/stu001.jpg";
+import ConfirmDialog from "../../students/components/ConfirmDialog";
+import { useNavigate } from "react-router-dom";
+const ProfileHeader = () => {
+  const {
+    modalOpen,
+    openEdit,
+    closeModal,
+    handleSave,
+    setIsDetailForm,
+    requestDeleteSingle,
+    openStudent,
+  } = useStudent();
+  const handleDelete = async () => {
+    requestDeleteSingle(openStudent.id);
+  };
+  if (!openStudent) return null;
   return (
     <>
       <section className="card profile-header" id="profileHeader">
         <div className="profile-header-main">
           <div className="profile-avatar-wrap">
             <img
-              src="https://i.pravatar.cc/160?img=9"
+              src={stu001}
               alt=""
               className="profile-avatar"
               id="profileAvatar"
@@ -23,15 +35,16 @@ const ProfileHeader = ({ studentId }) => {
             <span className="status-badge status-badge--active">Active</span>
           </div>
           <div className="profile-header-info">
-            <h2 className="profile-name">Jessia Rose</h2>
-            <p className="profile-meta">Roll #10 · className 02 · Section B</p>
+            <h2 className="profile-name">{openStudent.name}</h2>
+            <p className="profile-meta">{openStudent.std_class}</p>
             <div className="profile-contact-row">
-              <span className="profile-contact">jessia.rose@iaacademy.edu</span>
               <span className="profile-contact">
-                <Phone />
-                +123 8988 569
+                <Mail /> {openStudent.email},<Phone /> {openStudent.phone}
               </span>
-              <span className="profile-contact">TA-107, Newyork</span>
+              <span className="profile-contact">{openStudent.address}</span>
+              <span className="profile-contact">
+                {openStudent.guardianName}, {openStudent.guardianPhone}
+              </span>
             </div>
           </div>
         </div>
@@ -39,11 +52,17 @@ const ProfileHeader = ({ studentId }) => {
           <button
             className="btn btn-secondary"
             id="editStudentBtn"
-            onClick={() => openEdit(studentId)}>
+            onClick={() => {
+              setIsDetailForm(true);
+              openEdit(openStudent.id);
+            }}>
             <Pencil />
             <span>Edit</span>
           </button>
-          <button className="btn btn-danger" id="deleteStudentBtn">
+          <button
+            className="btn btn-danger"
+            id="deleteStudentBtn"
+            onClick={handleDelete}>
             <Trash2 />
             <span>Delete</span>
           </button>
@@ -64,7 +83,7 @@ const ProfileHeader = ({ studentId }) => {
             </Button>
           </>
         }>
-        <StudentDetailFormModal student={students} />
+        <StudentDetailFormModal student={openStudent} />
       </Modal>
     </>
   );

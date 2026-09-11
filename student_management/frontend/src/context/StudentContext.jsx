@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useDebugValue, useState } from "react";
 import studentData from "../../../database/data.json";
 import { useToast } from "@/components/ui";
 import { shake } from "@/animation/shake";
@@ -18,6 +18,8 @@ export function StudentProvider({ children }) {
   const [editingId, setEditingId] = useState(null);
   const [isDetailForm, setIsDetailForm] = useState(false);
   const [errors, setErrors] = useState({});
+  const [openStudent, setOpenStudent] = useState(null);
+  const [detailOpen, setDetailOpen] = useState(false);
 
   const gridRef = useRef(null);
   const tabElRef = useRef(null);
@@ -42,14 +44,7 @@ export function StudentProvider({ children }) {
     guardianName: "",
     guardianPhone: "",
   };
-
   const [formData, setFormData] = useState(regEmptyForm);
-
-  useEffect(() => {
-    setFormData(
-      isDetailForm ? { ...regEmptyForm, ...detailEmptyForm } : regEmptyForm,
-    );
-  }, [isDetailForm]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -61,9 +56,7 @@ export function StudentProvider({ children }) {
 
   const handleSave = () => {
     saveStudent(formData, formRef);
-
     // turn form data to empty
-    console.log(formData);
   };
 
   const toggleSelect = (index) => {
@@ -107,29 +100,53 @@ export function StudentProvider({ children }) {
     setPendingDeleteIds(null);
   };
   const openAddStudent = () => {
+    setIsDetailForm(true);
+    setFormData({ ...regEmptyForm, ...detailEmptyForm });
     setModalOpen(true);
   };
+  const openDetail = (id) => {
+    setOpenStudent(students.find((s) => s.id === id));
+    setDetailOpen(true);
+  };
+  const closeDetail = () => {
+    setDetailOpen(false);
+    setOpenStudent(null);
+  };
   const openEdit = (id) => {
+    setErrors({});
     setEditingId(id);
     setModalOpen(true);
     const student = students.find((s) => s.id === id);
-    console.log(student);
-    setFormData(
-      isDetailForm ?
-        { ...detailEmptyForm, ...student }
-      : { ...regEmptyForm, ...student },
-    );
+    setFormData({ ...regEmptyForm, ...detailEmptyForm, ...student });
   };
   const closeModal = () => {
     setEditingId(null);
     setModalOpen(false);
   };
   const saveStudent = (data, ref) => {
-    const requiredFields = ["name", "gender", "ids", "std_class", "phone"];
-    const isFormInvalid = requiredFields.some(
+    const requiredFields =
+      isDetailForm ?
+        [
+          "name",
+          "gender",
+          "id",
+          "std_class",
+          "phone",
+          "email",
+          "dob",
+          "address",
+          "guardianName",
+          "guardianPhone",
+        ]
+      : ["name", "gender", "id", "std_class", "phone"];
+    const invalidFields = requiredFields.filter(
       (key) => !data[key] || String(data[key]).trim() === "",
     );
-    if (isFormInvalid) {
+    if (invalidFields.length > 0) {
+      setErrors((prev) => ({
+        ...prev,
+        ...Object.fromEntries(invalidFields.map((key) => [key, true])),
+      }));
       if (ref?.current) shake(ref.current);
       toast.info("Please fill in all required fields");
       return;
@@ -137,7 +154,7 @@ export function StudentProvider({ children }) {
     setStudents((prev) =>
       editingId !== null ?
         prev.map((s) => (s.id === editingId ? { ...s, ...data } : s))
-      : [...prev, { ...data, id: data.ids || Date.now().toString() }],
+      : [...prev, { ...data, id: data.id || Date.now().toString() }],
     );
 
     toast.success(editingId !== null ? "Saved" : "Added");
@@ -228,11 +245,17 @@ export function StudentProvider({ children }) {
       confirmDelete,
       cancelDelete,
       modalOpen,
+      editingId,
+      editingStudent: editingId !== null,
 
       openEdit,
       closeModal,
       saveStudent,
       openAddStudent,
+      openDetail,
+      closeDetail,
+      openStudent,
+      detailOpen,
 
       handleChange,
       handleSave,
@@ -263,10 +286,16 @@ export function StudentProvider({ children }) {
       confirmDelete,
       cancelDelete,
       modalOpen,
+      editingId,
+      detailOpen,
+
       openEdit,
       closeModal,
       saveStudent,
       openAddStudent,
+      openDetail,
+      closeDetail,
+      openStudent,
 
       handleChange,
       handleSave,

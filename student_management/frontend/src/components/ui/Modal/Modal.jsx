@@ -55,7 +55,7 @@ const Modal = ({
       ref={overlayRef}
       onClick={onClose}>
       <div
-        className={`modal${size === "sm" ? " modal--sm" : ""}`}
+        className={`modal${size === "sm" ? " modal--sm" : ""}${size === "lg" ? " modal--lg" : ""}`}
         ref={modalRef}
         role={role}
         aria-modal="true"

@@ -7,7 +7,6 @@ import StatCard from "@/components/cards/StatCard";
 import CardTabs from "@/components/features/studentDetail/components/CardTabs";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { StudentProvider } from "@/context/StudentContext";
 const StudentDetail = () => {
   useGSAP(() => {
     const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
@@ -43,49 +42,47 @@ const StudentDetail = () => {
       );
   }, []);
   return (
-    <StudentProvider>
-      <main className="main">
-        <div className="page">
-          <div className="page-head">
-            <div>
-              <h1 className="page-title">Student Details</h1>
-              <p className="breadcrumb">
-                <Link to={"/"}>Home</Link>
-                <ChevronRight />
-                <Link to={"/allstudents"}>Students</Link>
-                <ChevronRight />
-                <span className="is-current">Jessia Rose</span>
-              </p>
-            </div>
-            <div className="page-head-actions">
-              <button className="btn btn-secondary" id="backBtn">
-                <ArrowLeft />
-                <Link to={"/allstudents"}>Back to list</Link>
-              </button>
-            </div>
+    <main className="main">
+      <div className="page">
+        <div className="page-head">
+          <div>
+            <h1 className="page-title">Student Details</h1>
+            <p className="breadcrumb">
+              <Link to={"/"}>Home</Link>
+              <ChevronRight />
+              <Link to={"/allstudents"}>Students</Link>
+              <ChevronRight />
+              <span className="is-current">Jessia Rose</span>
+            </p>
           </div>
-
-          {/* <!-- ============ Profile header ============ --> */}
-          <ProfileHeader studentId={studentId} />
-
-          {/* <!-- ============ Stat cards ============ --> */}
-          <section className="stat-grid">
-            {studentDetailStat.map((s, idx) => (
-              <StatCard
-                key={idx}
-                Icon={s.icon}
-                colorClass={s.colorClass}
-                value={s.value}
-                label={s.label}
-                ring={s.ring}
-              />
-            ))}
-          </section>
-          {/* <!-- ============ Tabs ============ --> */}
-          <CardTabs />
+          <div className="page-head-actions">
+            <button className="btn btn-secondary" id="backBtn">
+              <ArrowLeft />
+              <Link to={"/allstudents"}>Back to list</Link>
+            </button>
+          </div>
         </div>
-      </main>
-    </StudentProvider>
+
+        {/* <!-- ============ Profile header ============ --> */}
+        <ProfileHeader />
+
+        {/* <!-- ============ Stat cards ============ --> */}
+        <section className="stat-grid">
+          {studentDetailStat.map((s, idx) => (
+            <StatCard
+              key={idx}
+              Icon={s.icon}
+              colorClass={s.colorClass}
+              value={s.value}
+              label={s.label}
+              ring={s.ring}
+            />
+          ))}
+        </section>
+        {/* <!-- ============ Tabs ============ --> */}
+        <CardTabs />
+      </div>
+    </main>
   );
 };
 

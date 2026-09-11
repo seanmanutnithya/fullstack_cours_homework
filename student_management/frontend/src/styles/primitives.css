@@ -370,6 +370,9 @@ input[type="checkbox"] {
   opacity: 0;
   visibility: hidden;
 }
+#confirmOverlay {
+  z-index: 110;
+}
 .modal {
   width: 100%;
   max-width: 560px;
@@ -383,6 +386,9 @@ input[type="checkbox"] {
 }
 .modal--sm {
   max-width: 400px;
+}
+.modal--lg {
+  max-width: 960px;
 }
 
 .modal-head {

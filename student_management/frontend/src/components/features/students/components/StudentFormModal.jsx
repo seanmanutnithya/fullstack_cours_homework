@@ -13,7 +13,80 @@ const StudentFormModal = () => {
     handleSave,
     errors,
   } = useStudent();
-
+  const fields = [
+    {
+      id: "studentName",
+      name: "name",
+      label: "Full name",
+      placeholder: "e.g Sean Manutnithya",
+      value: formData.name,
+      error: errors.name,
+    },
+    {
+      id: "studentGender",
+      name: "gender",
+      label: "Gender",
+      placeholder: "e.g F/M",
+      value: formData.gender,
+      error: errors.gender,
+    },
+    {
+      id: "studentId",
+      name: "id",
+      label: "Student ID",
+      placeholder: "e.g STU001",
+      value: formData.id,
+      error: errors.id,
+    },
+    {
+      id: "studentClass",
+      name: "std_class",
+      label: "Class",
+      placeholder: "e.g I2-GIC",
+      value: formData.std_class,
+      error: errors.std_class,
+    },
+    {
+      id: "studentPhon",
+      name: "phone",
+      label: "Phone number",
+      placeholder: "e.g  +855 123123123",
+      value: formData.phone,
+      error: errors.phone,
+    },
+    {
+      id: "studentAddress",
+      name: "address",
+      label: "Address",
+      placeholder: "e.g  Tuek Tla, Sen Sok, Phnom Penh",
+      value: formData.address,
+      error: errors.address,
+    },
+    {
+      id: "studentGuardianName",
+      name: "guardianName",
+      label: "Guardian name",
+      placeholder: "e.g  Brak Somphors",
+      value: formData.guardianName,
+      error: errors.guardianName,
+    },
+    {
+      id: "studentGuardianPhone",
+      name: "guardianPhone",
+      label: "Guardian phone",
+      placeholder: "e.g  +855 234234234",
+      value: formData.guardianPhone,
+      error: errors.guardianPhone,
+    },
+    {
+      id: "studentEmail",
+      name: "email",
+      label: "Email",
+      placeholder: "e.g  manutnithya.sean@gmail.com",
+      value: formData.email,
+      error: errors.email,
+    },
+  ];
   return (
     <Modal
       open={modalOpen}
@@ -36,51 +109,25 @@ const StudentFormModal = () => {
         id="studentForm"
         ref={formRef}
         onSubmit={(e) => e.preventDefault()}>
+        {fields.map((field, idx) => (
+          <TextField
+            key={idx}
+            id={field.id}
+            name={field.name}
+            label={field.label}
+            placeholder={field.placeholder}
+            value={field.value}
+            onChange={handleChange}
+            error={field.error ? `${field.label} is required.` : null}
+          />
+        ))}
         <TextField
-          id="studentName"
-          name="name"
-          label="Full name"
-          placeholder="e.g. Eleanor Pena"
-          value={formData.name}
+          id={"studentDob"}
+          name={"dob"}
+          type="date"
+          label={"Date of birth"}
+          value={formData.dob}
           onChange={handleChange}
-          error={errors.name ? "Full name is required." : null}
-        />
-        <TextField
-          id="studentGender"
-          name="gender"
-          label="Gender"
-          placeholder="e.g. M/F"
-          value={formData.gender}
-          onChange={handleChange}
-          error={errors.gender ? "Gender is required." : null}
-        />
-        <TextField
-          id="studentId"
-          name="ids"
-          label="Student ID"
-          placeholder="e.g. #01"
-          value={formData.ids}
-          onChange={handleChange}
-          error={errors.ids ? "Student ID is required." : null}
-        />
-        <TextField
-          id="studentclassName"
-          name="std_class"
-          label="Class"
-          placeholder="e.g. 12A"
-          value={formData.std_class}
-          onChange={handleChange}
-          error={errors.std_class ? "Class is required." : null}
-        />
-        <TextField
-          id="studentPhone"
-          name="phone"
-          type="tel"
-          label="Phone number"
-          placeholder="+123 0000000"
-          value={formData.phone}
-          onChange={handleChange}
-          error={errors.phone ? "Phone number is required." : null}
         />
         <TextField
           id="studentRemark"

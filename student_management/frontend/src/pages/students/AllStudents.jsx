@@ -11,14 +11,27 @@ import { usePagination } from "@/hooks/usePagination";
 import { useStudent } from "@/context/StudentContext";
 import { ChevronDown } from "lucide-react";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { wireHoverScale } from "../../animation/hover";
+import StudentDetail from "../StudentDetails/StudentDetail";
+import { Modal } from "@/components/ui";
+import { useNavigate, useParams } from "react-router-dom";
 
 const AllStudents = () => {
   const containerRef = useRef(null);
-  const { students } = useStudent();
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const { students, detailOpen, openDetail, closeDetail } = useStudent();
+
+  useEffect(() => {
+    if (id) {
+      openDetail(id);
+    } else {
+      closeDetail();
+    }
+  }, [id]);
   const { page, pageCount, pageStart, pageEnd, setPage } = usePagination({
     total: students.length,
     pageSize: 10,
@@ -100,6 +113,14 @@ const AllStudents = () => {
           </section>
         </div>
       </main>
+      {detailOpen && (
+        <Modal
+          open={detailOpen}
+          onClose={() => navigate("/allstudents")}
+          size="lg">
+          <StudentDetail />
+        </Modal>
+      )}
     </>
   );
 };

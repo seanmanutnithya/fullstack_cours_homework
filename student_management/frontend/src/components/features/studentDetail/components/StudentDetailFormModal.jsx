@@ -1,9 +1,92 @@
 import React, { useState } from "react";
 import { useStudent } from "@/context/StudentContext";
-
+import { Field, TextField } from "@/components/ui";
+import stu001 from "@/./assets/imgs/stu001.jpg";
 const StudentDetailFormModal = ({ student }) => {
-  const { formRef, formData, handleChange } = useStudent();
-
+  const { formRef, formData, handleChange, errors } = useStudent();
+  const fields = [
+    {
+      id: "eiditName",
+      name: "name",
+      label: "Full name",
+      className: "field--full",
+      placeholder: "e.g Sean Manutnithya",
+      value: formData.name,
+      error: errors.name,
+    },
+    {
+      id: "editId",
+      name: "id",
+      label: "Id",
+      className: "field",
+      placeholder: "e.g STU001",
+      value: formData.id,
+      error: errors.id,
+    },
+    {
+      id: "editGender",
+      name: "gender",
+      label: "Gender",
+      className: "field",
+      placeholder: "e.g F/M",
+      value: formData.gender,
+      error: errors.gender,
+    },
+    {
+      id: "editClass",
+      name: "std_class",
+      label: "Class",
+      className: "field",
+      placeholder: "e.g I2-GIC2A",
+      value: formData.std_class,
+      error: errors.std_class,
+    },
+    {
+      id: "editPhone",
+      name: "phone",
+      label: "Phone number",
+      className: "field",
+      placeholder: "e.g +855 123 123 123",
+      value: formData.phone,
+      error: errors.phone,
+    },
+    {
+      id: "editEmail",
+      name: "email",
+      label: "Email address",
+      className: "field--full",
+      placeholder: "e.g manutnithya.sean@gmail.com",
+      value: formData.email,
+      error: errors.email,
+    },
+    {
+      id: "editAddress",
+      name: "address",
+      label: "Address",
+      className: "field--full",
+      placeholder: "e.g Tuek Tla, Sek Sok, Phnom Penh",
+      value: formData.address,
+      error: errors.address,
+    },
+    {
+      id: "editGuardianName",
+      name: "guardianName",
+      label: "Guardian name",
+      className: "field",
+      placeholder: "e.g Brak Somphors",
+      value: formData.guardianName,
+      error: errors.guardianName,
+    },
+    {
+      id: "editGuardianPhone",
+      name: "guardianPhone",
+      label: "Guardian phone",
+      className: "field",
+      placeholder: "e.g +855 234 234 234",
+      value: formData.guardianPhone,
+      error: errors.guardianPhone,
+    },
+  ];
   return (
     <form
       className="modal-body"
@@ -13,7 +96,7 @@ const StudentDetailFormModal = ({ student }) => {
       onSubmit={(e) => e.preventDefault()}>
       <div className="upload-field">
         <div className="upload-preview" id="uploadPreview">
-          <img src="https://i.pravatar.cc/160?img=9" alt="" />
+          <img src={stu001} alt="" />
         </div>
         <div className="upload-controls">
           <label className="btn btn-secondary btn-sm" htmlFor="editPhoto">
@@ -23,114 +106,29 @@ const StudentDetailFormModal = ({ student }) => {
           <p className="field-hint">PNG or JPG, up to 5MB</p>
         </div>
       </div>
-
       <div className="form-grid">
-        <div className="field field--full" data-field="editName">
-          <label htmlFor="editName">Full name</label>
-          <input
-            type="text"
-            id="editName"
-            name="name"
-            value={formData.name}
+        {fields.map((field, idx) => (
+          <TextField
+            key={idx}
+            id={field.id}
+            name={field.name}
+            label={field.label}
+            placeholder={field.placeholder}
+            className={field.className}
+            value={field.value}
             onChange={handleChange}
+            error={field.error ? `${field.label} is required.` : ""}
           />
-          <span className="field-error">
-            Please enter the student's full name.
-          </span>
-        </div>
-
-        <div className="field" data-field="editEmail">
-          <label htmlFor="editEmail">Email address</label>
-          <div className="">
-            <input
-              type="email"
-              id="editEmail"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-            />
-          </div>
-          <span className="field-error">Enter a valid email address.</span>
-        </div>
-
-        <div className="field" data-field="editPhone">
-          <label htmlFor="editPhone">Phone number</label>
-          <div className="">
-            <input
-              type="tel"
-              id="editPhone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-            />
-          </div>
-          <span className="field-error">
-            Enter a valid phone number (7–15 digits).
-          </span>
-        </div>
-
-        <div className="field">
-          <label htmlFor="editClass">Class</label>
-          <select
-            id="editClass"
-            name="class"
-            value={formData.class}
-            onChange={handleChange}>
-            <option value="01">01</option>
-            <option value="02">02</option>
-            <option value="03">03</option>
-            <option value="04">04</option>
-          </select>
-        </div>
-        <div className="field">
-          <label htmlFor="editDob">Date of birth</label>
-          <input
-            type="date"
-            id="editDob"
-            name="dob"
-            value={formData.dob}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div className="field field--full" data-field="editAddress">
-          <label htmlFor="editAddress">Address</label>
-          <input
-            type="text"
-            id="editAddress"
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-          />
-          <span className="field-error">Please enter an address.</span>
-        </div>
-
-        <div className="field" data-field="editGuardianName">
-          <label htmlFor="editGuardianName">Guardian name</label>
-          <input
-            type="text"
-            id="editGuardianName"
-            name="guardianName"
-            value={formData.guardianName}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="field" data-field="editGuardianPhone">
-          <label htmlFor="editGuardianPhone">Guardian phone</label>
-          <div className="">
-            <i data-lucide="phone" className="input-icon"></i>
-            <input
-              type="tel"
-              id="editGuardianPhone"
-              name="guardianPhone"
-              value={formData.guardianPhone}
-              onChange={handleChange}
-            />
-          </div>
-          <span className="field-error">
-            Enter a valid phone number (7–15 digits).
-          </span>
-        </div>
+        ))}
+        <TextField
+          id={"editStudentDob"}
+          name={"dob"}
+          label={"Date of birth"}
+          type="date"
+          value={formData.dob}
+          error={errors.dob ? "Date of birth is requried" : ""}
+          onChange={handleChange}
+        />
       </div>
     </form>
   );

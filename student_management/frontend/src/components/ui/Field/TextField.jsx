@@ -1,5 +1,6 @@
 import { AlertCircle, CheckCircle2 } from "lucide-react";
 import Field from "./Field";
+import { useStudent } from "@/context/StudentContext";
 
 const TextField = ({
   id,
@@ -14,6 +15,7 @@ const TextField = ({
   className,
   ...rest
 }) => {
+  const { handleChange } = useStudent();
   const inputId = id ?? name;
   const input = <input id={inputId} name={name} type={type} {...rest} />;
 
@@ -24,7 +26,8 @@ const TextField = ({
       error={error}
       valid={valid}
       hint={hint}
-      className={className}>
+      className={className}
+      onChange={handleChange}>
       {Icon || statusIcons ?
         <div className="input-wrap">
           {Icon && <Icon className="input-icon" />}

@@ -38,6 +38,16 @@ const App = () => {
                 }
               />
               <Route
+                path="/allstudents/studentdetail/:id"
+                element={
+                  <ProtectedRoute>
+                    <DashboardLayout>
+                      <AllStudents />
+                    </DashboardLayout>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
                 path="/studentDetail"
                 element={
                   <ProtectedRoute>
