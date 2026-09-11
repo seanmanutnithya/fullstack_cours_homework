@@ -5,8 +5,6 @@ import { useStudent } from "@/context/StudentContext";
 import { Button } from "@/components/ui";
 import StudentDetailFormModal from "./StudentDetailFormModal";
 import stu001 from "@/./assets/imgs/stu001.jpg";
-import ConfirmDialog from "../../students/components/ConfirmDialog";
-import { useNavigate } from "react-router-dom";
 const ProfileHeader = () => {
   const {
     modalOpen,
@@ -16,11 +14,14 @@ const ProfileHeader = () => {
     setIsDetailForm,
     requestDeleteSingle,
     openStudent,
+    detailOpen,
   } = useStudent();
-  const handleDelete = async () => {
+  const handleDelete = () => {
     requestDeleteSingle(openStudent.id);
   };
+
   if (!openStudent) return null;
+
   return (
     <>
       <section className="card profile-header" id="profileHeader">
@@ -38,12 +39,14 @@ const ProfileHeader = () => {
             <h2 className="profile-name">{openStudent.name}</h2>
             <p className="profile-meta">{openStudent.std_class}</p>
             <div className="profile-contact-row">
-              <span className="profile-contact">
-                <Mail /> {openStudent.email},<Phone /> {openStudent.phone}
-              </span>
+              <span className="profile-contact">{openStudent.email}</span>
+              <span className="profile-contact">{openStudent.phone}</span>
               <span className="profile-contact">{openStudent.address}</span>
               <span className="profile-contact">
-                {openStudent.guardianName}, {openStudent.guardianPhone}
+                {openStudent.guardianName}
+              </span>
+              <span className="profile-contact">
+                {openStudent.guardianPhone}
               </span>
             </div>
           </div>

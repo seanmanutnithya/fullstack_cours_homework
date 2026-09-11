@@ -4,11 +4,13 @@ import { useToast } from "@/components/ui";
 import { shake } from "@/animation/shake";
 import { useCallback, useMemo, useRef } from "react";
 import gsap from "gsap";
+import { useNavigate } from "react-router-dom";
 
 const StudentContext = createContext(null);
 
 export function StudentProvider({ children }) {
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const [students, setStudents] = useState(studentData);
   const [selectedIds, setSelectedIds] = useState([]);
@@ -94,6 +96,7 @@ export function StudentProvider({ children }) {
     }
     setConfirmOpen(false);
     setPendingDeleteIds(null);
+    navigate("/allstudents");
   };
   const cancelDelete = () => {
     setConfirmOpen(false);
