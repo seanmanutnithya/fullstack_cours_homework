@@ -1,7 +1,7 @@
 /* ============================================================
-   AUTH PAGE — front-end only. No backend/database calls.
-   Validates email + phone formats and shows inline UI states.
-   ============================================================ */
+    AUTH PAGE — front-end only. No backend/database calls.
+    Validates email + phone formats and shows inline UI states.
+    ============================================================ */
 (() => {
   "use strict";
 
